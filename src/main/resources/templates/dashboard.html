@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>NotePlan</title>
+<link rel="stylesheet" href="css/stylesheet.css">
+
+<!--Bootstrap4-->
+<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!--color picker--> 
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script> 
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
+</script> 
+<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+</script> 
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/js/bootstrap-colorpicker.js" > </script> 
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/js/bootstrap-colorpicker.min.js" > </script>
+<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/css/bootstrap-colorpicker.min.css"/>
+<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/css/bootstrap-colorpicker.css"/>
+
+<!--semantic calendar-->
+<link rel = "stylesheet" href = "css/calendarStyleSheet.css"/>
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"/>
+</head>
+
+<body>
+<!--Navbar-->
+<table id="Navbar">
+  <tr>
+    <td class="Btn" style="width:20%; font-size: 25px;"><p class="button"> NotePlan </p></td>
+    <td class="Btn" style="width:5%;"><p class="button">Dashboard </p></td>
+    <td class="Btn" style="width:65%;"></td>
+    <td class="Btn" style="width:10%;"><a class="button" id="logout" onClick="loadLogoutOverlay()" target="iframe1"> Logout </a></td>
+  </tr>
+</table>
+
+<!--mainContainer-->
+<table id="mainContainer">
+  <tr> 
+    <!--events-->
+    <td id="currentEvents"><div class="flexContainer">
+        <div class="scrollContainer">
+          <p style="font-size: 40px; padding:10px; font-weight: 100;">Upcoming events</p>
+          <div class="eventDay">
+            <hr class="bigHr">
+            <p class="eventDate">2023-09-08</p>
+            <hr class="bigHr">
+            <div class="upcomingEvent">
+              <hr class="smallHr" style="background-color: red;">
+              <div class="title">
+                <p class="eventTitle">Title 1</p>
+                &nbsp;-&nbsp;
+                <p class="eventTime">20:17</p>
+              </div>
+              <p class="eventDescription">A description</p>
+              <hr class="smallHr" style="background-color: red;">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--eventsButton-->
+      
+      <div id="eventsButtonDiv">
+        <hr class="bigHr">
+        <button class="eventsButton" onClick="loadAddNewEventOverlay()">Add new event</button>
+      </div></td>
+    <!--/events--> 
+    <!--calendar-->
+    <td id="calendar"><div class="left">
+        <div class="calendar">
+          <div class="month"> <i class="fas fa-angle-left prev"></i>
+            <div class="date">december 2015</div>
+            <i class="fas fa-angle-right next"></i> </div>
+          <div class="weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+          <div class="days"></div>
+          <div class="goto-today">
+            <div class="goto">
+              <input type="text" name="goto" placeholder="mm/yyyy" class="date-input" />
+              <button class="goto-btn">Go</button>
+            </div>
+            <button class="today-btn">Today</button>
+          </div>
+        </div>
+      </div>
+      
+      <!--
+      <div class="right">
+        <div class="today-date">
+          <div class="event-day">wed</div>
+          <div class="event-date">12th december 2022</div>
+        </div>
+        <div class="events"></div>
+        <div class="add-event-wrapper">
+          <div class="add-event-header">
+            <div class="title">Add Event</div>
+            <i class="fas fa-times close"></i>
+          </div>
+          <div class="add-event-body">
+            <div class="add-event-input">
+              <input type="text" placeholder="Event Name" class="event-name" />
+            </div>
+            <div class="add-event-input">
+              <input
+                type="text"
+                placeholder="Event Time From"
+                class="event-time-from"
+              />
+            </div>
+            <div class="add-event-input">
+              <input
+                type="text"
+                placeholder="Event Time To"
+                class="event-time-to"
+              />
+            </div>
+          </div>
+        </div>
+      </div>--> 
+      <!--/calendar--></td>
+    <!--notes-->
+    <td id="notes"><div class="flexContainer">
+        <p style="font-size: 40px; padding:10px; font-weight: 100;">Notes</p>
+        <hr class="bigHr">
+        <div class="scrollContainer">
+          <div id="notesContainer">
+            <div class="note">
+              <p class="noteTitle">asvdsbr dnthsgeaf</p>
+              <p class="noteText">In this example, the .no-wrap-text class is applied to the element. The white-space: nowrap; CSS rule ensures that the text inside the div does not wrap. The overflow: hidden; property hides the overflowing content if it exceeds the width of the div.
+                
+                This will cause the text to overflow horizontally and won't wrap onto a new line, regardless of the size of the container.</p>
+            </div>
+            <div class="note">
+              <p class="noteTitle">asvdsbr dnthsgeaf</p>
+              <p class="noteText">In this example, the .no-wrap-text class is applied to the element. The white-space: nowrap; CSS rule ensures that the text inside the div does not wrap. The overflow: hidden; property hides the overflowing content if it exceeds the width of the div.
+                
+                This will cause the text to overflow horizontally and won't wrap onto a new line, regardless of the size of the container.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div> 
+        <!--notesButton-->
+        <hr class="bigHr">
+        <button id="notesButton" onClick="loadAddNewNoteOverlay()">Add new note</button>
+      </div></td>
+    <!--/notes--> 
+  </tr>
+</table>
+
+<!--addNewEventOverlay-->
+<div class="overlay" id="addNewEventOverlay" style="display: none;">
+  <div class="overlayMainDiv">
+    <p class="smallText">Add a new event</p>
+    <hr class="bigHr">
+    <form th:action="@{/dashboard}" method="post">
+      <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <div class="form-group">
+        <input class="formEntry" name="title" type="text" placeholder="Add title"  th:field="${event.title}" required>
+      </div>
+      <div class="form-group">
+        <label>Date:
+          <input class="formEntry" name="date" style="width: 60%;" type="datetime-local" th:field="${event.date}" required>
+        </label>
+      </div>
+      <div class="formGroup">
+        <div>
+          <label >Color:
+            <input id="color-picker" class="formEntry" style="width: 50%;" type = "text" autocomplete="off" placeholder = "#000000" value="#000000"  th:field="${event.color}"/>
+          </label>
+        </div>
+        <script>
+		$(function () {
+		$('#color-picker').colorpicker();
+		});
+		</script> 
+      </div>
+      <div class="form-group">
+        <label>Description
+          <textarea class="formEntry" name="description" rows="4" maxlength="5000" th:field="${event.description}"></textarea>
+        </label>
+      </div>
+      <hr class="bigHr">
+      <div class="form-group buttonDiv">
+        <button type="submit" class="overlayButton submitBtn">Submit</button>
+        <button type="button" class="overlayButton cancelBtn" onClick="unloadAddNewEventOverlay()">Close</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--/addNewEventOverlay--> 
+
+<!--addNewNoteOverlay-->
+<div class="overlay" id="addNewNoteOverlay" style="display: none;">
+  <div class="overlayMainDiv">
+    <p class="smallText">Add a new note</p>
+    <hr class="bigHr">
+    <form th:action="@{/dashboard}" method="post">
+      <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <div class="form-group">
+        <input class="formEntry" name="title" type="text" placeholder="Title" value="New note"  th:field="${event.title}">
+      </div>
+      <div class="form-group">
+        <label>Description
+          <textarea class="formEntry" name="description" rows="4" maxlength="5000" th:field="${event.description}" required></textarea>
+        </label>
+      </div>
+      <hr class="bigHr">
+      <div class="form-group buttonDiv">
+        <button type="submit" class="overlayButton noteBtn">Create</button>
+        <button type="button" class="overlayButton cancelBtn" onClick="unloadAddNewNoteOverlay()">Close</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--/addNewNoteOverlay--> 
+
+<!--viewNoteOverlay-->
+<div class="overlay" id="viewNoteOverlay" style="display: none;">
+  <div class="overlayMainDiv">
+    <p class="smallText"></p>
+  </div>
+</div>
+<!--/viewNoteOverlay--> 
+
+<!--logoutOverlay-->
+<div class="overlay" id="logoutOverlay" style="display: none;">
+  <div class="overlayMainDiv">
+    <p class="smallText" style="font-weight: 100;">Are you sure<br>
+      you want to log out?</p>
+    <hr class="bigHr">
+    <div class="form-group buttonDiv">
+      <form action="logout" method="post">
+        <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit" class="overlayButton cancelBtn">Logout</button>
+        <button type="button" class="overlayButton notLogout" onClick="unloadLogoutOverlay()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!--/logoutOverlay-->
+</body>
+
+<!--scripts-->
+<script src = "js/script.js" > </script>
+<script src = "js/calendarScripts.js" > </script>
+<!--/scripts-->
+</html>

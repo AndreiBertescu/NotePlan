@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>NotePlan</title>
+<link rel="stylesheet" href="css/stylesheet.css">
+
+<!--Bootstrap4-->
+<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!--semantic calendar-->
+<link rel = "stylesheet" href = "css/calendarStyleSheet.css"/>
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"/>
+</head>
+
+<body>
+<!--Navbar-->
+<table id="Navbar">
+  <tr>
+    <td class="Btn" style="width:20%; font-size: 25px;"><p class="button"> NotePlan </p></td>
+    <td class="Btn" style="width:5%;"><p class="button">Preview </p></td>
+    <td class="Btn" style="width:55%;"></td>
+    <td class="Btn" style="width:10%;"><form action="register" method="get">
+        <button type="submit" class="button" id="logout" style="margin-right: -50px;">Register</button>
+      </form></td>
+    <td class="Btn" style="width:10%;">
+	<form action="login" method="get">
+        <button type="submit" class="button eventsButton">Login </button>
+      </form>
+	  </td>
+  </tr>
+</table>
+
+<!--mainContainer-->
+<table id="mainContainer">
+  <tr> 
+    <!--events-->
+    <td id="currentEvents"><div class="flexContainer">
+        <div class="scrollContainer">
+          <p style="font-size: 40px; padding:10px; font-weight: 100;">Upcoming events</p>
+          <div class="eventDay">
+            <hr class="bigHr">
+            <p class="eventDate">15 of November 2035</p>
+            <hr class="bigHr">
+            <div class="upcomingEvent">
+              <hr class="smallHr" style="background-color: red;">
+              <div class="title">
+                <p class="eventTitle">Financial Wellness Consultation</p>
+                &nbsp;-&nbsp;
+                <p class="eventTime">14:20</p>
+              </div>
+              <p class="eventDescription">Book a Health Checkup appointment for a routine assessment of my overall well-being.</p>
+              <hr class="smallHr" style="background-color: red;">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--eventsButton-->
+      
+      <div id="eventsButtonDiv">
+        <hr class="bigHr">
+        <button class="eventsButton" onClick="loadLogoutOverlay()">Add new event</button>
+      </div></td>
+    <!--/events--> 
+    <!--calendar-->
+    <td id="calendar"><div class="left">
+        <div class="calendar">
+          <div class="month"> <i class="fas fa-angle-left prev"></i>
+            <div class="date">December 2023</div>
+            <i class="fas fa-angle-right next"></i> </div>
+          <div class="weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+          <div class="days"></div>
+          <div class="goto-today">
+            <div class="goto">
+              <input type="text" name="goto" placeholder="mm/yyyy" class="date-input" />
+              <button class="goto-btn">Go</button>
+            </div>
+            <button class="today-btn">Today</button>
+          </div>
+        </div>
+      </div></td>
+    <!--notes-->
+    <td id="notes"><div class="flexContainer">
+        <p style="font-size: 40px; padding:10px; font-weight: 100;">Notes</p>
+        <hr class="bigHr">
+        <div class="scrollContainer">
+          <div id="notesContainer">
+            <div class="note">
+              <p class="noteTitle">Healthy Meal Prep Ideas</p>
+              <p class="noteText">In this note, you'll find a collection of nutritious and easy-to-make meal prep ideas to help you stay on track with your health and fitness goals. From simple breakfast recipes to delicious and balanced lunch and dinner options, these recipes are designed to save you time and make healthy eating a breeze. Each recipe comes with detailed instructions, ingredient lists, and tips for storing and reheating.</p>
+            </div>
+            <div class="note">
+              <p class="noteTitle">Mindful Morning Routine for a Productive Day</p>
+              <p class="noteText">Dive into this comprehensive guide on creating a mindful morning routine that sets a positive tone for your entire day. Learn how to craft a series of rituals that promote mindfulness, reduce stress, and enhance your overall well-being. From gentle stretching exercises and meditation techniques to gratitude journaling and healthy breakfast ideas, this note provides step-by-step instructions to help you design a morning routine tailored to your preferences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div> 
+        <!--notesButton-->
+        <hr class="bigHr">
+        <button id="notesButton" onClick="loadLogoutOverlay()">Add new note</button>
+      </div></td>
+    <!--/notes--> 
+  </tr>
+</table>
+
+<!--logoutOverlay-->
+<div class="overlay" id="logoutOverlay" style="display: none;">
+  <div class="overlayMainDiv">
+    <p class="smallText" style="font-weight: 100;">To use the features of NotePlan<br>
+      you need to have an account.</p>
+    <hr class="bigHr">
+    <div class="form-group buttonDiv">
+      <button type="button" class="overlayButton cancelBtn" onClick="unloadLogoutOverlay()">Cancel</button>
+      <form action="login" method="get">
+        <button type="submit" class="overlayButton submitBtn">Login</button>
+      </form>
+      <form action="register" method="get">
+        <button type="submit" class="overlayButton notLogout">register </button>
+      </form>
+    </div>
+  </div>
+</div>
+<!--/logoutOverlay-->
+</body>
+<!--scripts-->
+<script src = "js/script.js" > </script>
+<script src = "js/calendarScripts.js" > </script>
+<!--/scripts-->
+</html>

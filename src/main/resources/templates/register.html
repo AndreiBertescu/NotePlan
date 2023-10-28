@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>NotePlan-Register</title>
+<link rel="stylesheet" href="css/stylesheet.css">
+
+<!--Bootstrap4-->
+<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="overlay" id="auth">
+  <div class="overlayMainDiv">
+    <p class="smallText" style="font-weight: 100; font-size: 30px;">Register to NotePlan</p>
+    <hr class="bigHr">
+    <form action="" method="post" id="registerForm" onsubmit="return validate()">
+      <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <div class="form-group">
+	  
+        <p th:if="${error}" class="errorText" id="incorrectPassword">*This email is already in use.</p>
+        <label>E-mail:&nbsp;
+          <input class="formEntry" id="email" style="width: 70%;" type="email" placeholder="john.doe@example.com" autocomplete="username" required th:field="${user.username}">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Username:&nbsp;
+          <input class="formEntry" id="userName" style="width: 60%;" type="text" placeholder="John Doe" autocomplete="off" th:field="${user.name}">
+        </label>
+      </div>
+      <div class="form-group">
+        <p class="errorText" id="invalidPassword" style="display: none;">*Passwords is invalid.</p>
+        <label>Password:&nbsp;
+          <input class="formEntry" id="password" style="width: 50%;" type="password" required autocomplete="new-password" th:field="${user.password}">
+        </label>
+        <p class="errorText" style="color: black; margin-top: -15px; padding-bottom: 10px;">*Use at least one number and one uppercase letter.<br>
+          *At least 6 characters;</p>
+      </div>
+      <div class="form-group">
+        <p class="errorText" id="incorrectPassword" style="padding-left: 85px; display: none;">*Passwords do not match.</p>
+        <label>Confirm password:&nbsp;
+          <input class="formEntry" id="passwordConfirm" style="width: 50%;" type="password" required autocomplete="new-password">
+        </label>
+        <hr class="bigHr">
+      </div>
+      <button type="submit" class="overlayButton submitBtn">Register</button>
+    </form>
+    <hr style="margin-bottom: 3px;">
+    <form action="login" method="get">
+      <button type="submit" class="loginBtn">Or if you have an account, Login</button>
+    </form>
+  </div>
+</div>
+</body>
+
+<!--scripts-->
+<script src = "js/script.js" > </script>
+<!--/scripts-->
+</html>

@@ -1,0 +1,360 @@
+@charset "utf-8";
+/* CSS Document */ :root {
+  --primary-clr: #343a40;
+  --secondary-clr: greenyellow;
+  --notes-clr: #ffd557;
+  --events-clr: #007bff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  text-align: center;
+/*    	border: 1px dashed red;*/
+}
+html, body {
+  height: 100%;
+}
+#mainContainer, #mainContainer tr {
+  width: 100%;
+  height: calc(100% - 60px);
+}
+.flexContainer {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+.bigText {
+  font-size: 30px;
+}
+.smallText {
+  font-size: 25px;
+  color: #979797;
+}
+hr {
+  margin: 5px 0;
+  margin-left: 15%;
+  height: 1px;
+  width: 70%;
+  color: gray;
+  background: gray;
+}
+.bigHr {
+  margin: 4px 0;
+  margin-left: 5%;
+  height: 2px;
+  width: 90%;
+  background-color: var(--primary-clr);
+}
+/* --------------------Navbar-------------------- */
+#Navbar {
+  z-index: 100;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  background: #343a40;
+}
+#Navbar .button {
+  color: white;
+  text-transform: uppercase;
+	margin: 0;
+	margin-top: -5px;
+}
+#Navbar #logout {
+  border: 1px solid #28a745;
+  border-radius: 5px;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-size: 14px;
+  transition-duration: 0.2s;
+  color: #28a745;
+  cursor: pointer;
+	background: var(--primary-clr);
+}
+#Navbar #logout:hover {
+  background: #28a745;
+  color: white;
+}
+#Navbar #logout:active {
+  background: #1f7d35;
+  color: white;
+}
+/* --------------------/Navbar-------------------- */
+/* --------------------Upcoming Events-------------------- */
+#currentEvents {
+  width: 30%;
+}
+#currentEvents .flexContainer {
+  max-height: calc(100vh - 130px);
+}
+.scrollContainer {
+  width: 100%;
+  max-height: calc(100vh - 130px);
+  overflow: auto;
+}
+.eventDay {
+  margin: 3%;
+  padding: 0 5%;
+  padding-bottom: 5%;
+  border-radius: 2px;
+}
+.eventDate {
+  margin-top: 10px;
+  font-size: 20px;
+}
+.upcomingEvent {
+  margin-top: 15px;
+  border-radius: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.smallHr{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.title {
+  display: inline-flex;
+  text-align: center;
+	margin-bottom: -15px;
+	margin-top: 10px;
+}
+.eventTitle {
+  font-weight: bold;
+}
+.eventsButton {
+  margin-top: 5px;
+  padding: 5px 10px;
+  border: 1px solid var(--events-clr);
+  border-radius: 5px;
+  background-color: var(--events-clr);
+  cursor: pointer;
+  color: white;
+  transition-duration: 0.2s;
+  text-decoration: none;
+}
+.eventsButton:hover {
+  background-color: #1a6cc4;
+  text-decoration: none;
+}
+.eventsButton:active {
+  background-color: #16589e;
+}
+.eventsButtonDiv {
+  background: white;
+}
+#currentEvents .bigHr {
+  background-color: var(--events-clr);
+}
+/* --------------------/Upcoming Events-------------------- */
+/* --------------------Calendar-------------------- */
+#calendar {
+  width: 40%;
+  border-right: 2px solid var(--notes-clr);
+  border-left: 2px solid var(--events-clr);
+}
+/* --------------------/Calendar-------------------- */
+/* --------------------Notes-------------------- */
+#notes {
+  width: 30%;
+}
+#notesContainer {
+  max-height: 500px;
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#notes .flexContainer {
+  max-height: calc(100% - 70px);
+}
+.note {
+  background: var(--notes-clr);
+  color: black;
+  width: 40%;
+  height: 0;
+  padding: 5px;
+  padding-bottom: 40%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition-duration: 0.2s;
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.note:hover {
+  background-color: #e0b116;
+}
+.note:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+}
+#notesButton {
+  margin-top: 5px;
+  padding: 5px 10px;
+  border: 1px solid var(--notes-clr);
+  border-radius: 5px;
+  background-color: var(--notes-clr);
+  cursor: pointer;
+  color: var(#343a40);
+  transition-duration: 0.2s;
+}
+#notesButton:hover {
+  background-color: #e0b116;
+}
+#notesButton:active {
+  background-color: #bf9713;
+}
+.noteTitle {
+  text-align: left;
+  font-size: 20px;
+  padding: 7px 5px 3px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.noteText {
+  padding: 7px;
+  text-align: left;
+  font-size: 15px;
+}
+#notes .bigHr {
+  background-color: var(--notes-clr);
+}
+/* --------------------/Notes-------------------- */
+/* --------------------Overlay-------------------- */
+.overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overlayMainDiv {
+  z-index: 100;
+  background: white;
+  border: 2px solid #D8D8D8;
+  border-radius: 5px;
+}
+.overlayMainDiv .smallText {
+  padding: 10px 0;
+  color: var(--primary-clr);
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.overlay .bigHr {
+  margin-left: 10%;
+  width: 80%;
+}
+.form-group {
+  margin: 15px;
+  font-size: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.formEntry {
+  width: 80%;
+  background: white;
+  padding: 10px;
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+label {
+  font-size: 18px;
+}
+.buttonDiv {
+  display: flex;
+  justify-content: space-between;
+}
+.overlayButton {
+  padding: 10px 15px;
+  margin: 5px 30px;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  transition-duration: 0.2s;
+}
+.submitBtn {
+  background: var(--events-clr);
+}
+.cancelBtn {
+  background: #dc3545;
+}
+.submitBtn:hover {
+  background: #1a6cc4;
+}
+.cancelBtn:hover {
+  background: #b82a38;
+}
+.submitBtn:active {
+  background: #16589e;
+}
+.cancelBtn:active {
+  background: #991f2b;
+}
+.noteBtn {
+  background: var(--notes-clr);
+}
+.noteBtn:hover {
+  background: #e0b116;
+}
+.noteBtn:active {
+  background: #bf9713;
+}
+.notLogout {
+  background: #28a745;
+}
+.notLogout:hover {
+  background: #28a745;
+}
+.notLogout:active {
+  background: #1f7d35;
+}
+#addNewEventOverlay hr {
+  background: var(--events-clr);
+}
+#addNewNoteOverlay hr {
+  background: var(--notes-clr);
+}
+/* --------------------/Overlay-------------------- */
+/* --------------------Auth-------------------- */
+#auth{
+	background: white;
+}
+#auth .overlayMainDiv{
+	border: none;
+	width: 30%;
+	min-width: 450px;
+}
+#auth label{
+  font-size: 15px;
+	width: 85%;
+}
+.loginBtn{
+	background: white;
+	text-decoration: underline;
+	border: none;
+	color: blue;
+}
+.errorText{
+	color: red;
+	font-size: 12px;
+	margin-bottom: 0;
+}
+/* --------------------/Auth-------------------- */
+/* width */ ::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */ ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */ ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+/* Handle on hover */ ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
