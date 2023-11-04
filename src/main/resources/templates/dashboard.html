@@ -47,29 +47,32 @@
   <tr> 
     <!--events-->
     <td id="currentEvents"><div class="flexContainer">
-        <div class="scrollContainer">
-          <p style="font-size: 40px; padding:10px; font-weight: 100;">Upcoming events</p>
-          <div class="eventDay">
-            <hr class="bigHr">
-            <p class="eventDate">2023-09-08</p>
-            <hr class="bigHr">
-            <div class="upcomingEvent">
-              <hr class="smallHr" style="background-color: red;">
-              <div class="title">
-                <p class="eventTitle">Title 1</p>
-                &nbsp;-&nbsp;
-                <p class="eventTime">20:17</p>
+        <p class="pHeader">Upcoming events</p>
+        <hr class="bigHr">
+        <form id="eventsForm" th:action="@{/dashboard}" method="post">
+          <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+          <div class="scrollContainer">
+            <div class="eventDay" th:each="bigEvent: ${events}">
+              <hr class="bigHr">
+              <p class="eventDate" th:text="${bigEvent.date}">2023-09-08</p>
+              <div class="upcomingEvent" th:each="event: ${bigEvent.events}" th:onClick="|showEvent(${event.id})|">
+                <hr class="smallHr" th:style="|background-color: ${event.color};|">
+                <div class="title">
+                  <p class="eventTitle" th:text="${event.title}">Title 1</p>
+                  &nbsp;-&nbsp;
+                  <p class="eventTime" th:text="${event.date}">20:17</p>
+                </div>
+                <p class="eventDescription" th:text="${event.description}">A description</p>
+                <hr class="smallHr" th:style="|background-color: ${event.color};|">
               </div>
-              <p class="eventDescription">A description</p>
-              <hr class="smallHr" style="background-color: red;">
             </div>
           </div>
-        </div>
+        </form>
       </div>
       
       <!--eventsButton-->
       
-      <div id="eventsButtonDiv">
+      <div  class="addButtons">
         <hr class="bigHr">
         <button class="eventsButton" onClick="loadAddNewEventOverlay()">Add new event</button>
       </div></td>
@@ -100,63 +103,27 @@
         </div>
       </div>
       
-      <!--
-      <div class="right">
-        <div class="today-date">
-          <div class="event-day">wed</div>
-          <div class="event-date">12th december 2022</div>
-        </div>
-        <div class="events"></div>
-        <div class="add-event-wrapper">
-          <div class="add-event-header">
-            <div class="title">Add Event</div>
-            <i class="fas fa-times close"></i>
-          </div>
-          <div class="add-event-body">
-            <div class="add-event-input">
-              <input type="text" placeholder="Event Name" class="event-name" />
-            </div>
-            <div class="add-event-input">
-              <input
-                type="text"
-                placeholder="Event Time From"
-                class="event-time-from"
-              />
-            </div>
-            <div class="add-event-input">
-              <input
-                type="text"
-                placeholder="Event Time To"
-                class="event-time-to"
-              />
-            </div>
-          </div>
-        </div>
-      </div>--> 
       <!--/calendar--></td>
     <!--notes-->
     <td id="notes"><div class="flexContainer">
-        <p style="font-size: 40px; padding:10px; font-weight: 100;">Notes</p>
+        <p class="pHeader">Notes</p>
         <hr class="bigHr">
-        <div class="scrollContainer">
-          <div id="notesContainer">
-            <div class="note">
-              <p class="noteTitle">asvdsbr dnthsgeaf</p>
-              <p class="noteText">In this example, the .no-wrap-text class is applied to the element. The white-space: nowrap; CSS rule ensures that the text inside the div does not wrap. The overflow: hidden; property hides the overflowing content if it exceeds the width of the div.
-                
-                This will cause the text to overflow horizontally and won't wrap onto a new line, regardless of the size of the container.</p>
-            </div>
-            <div class="note">
-              <p class="noteTitle">asvdsbr dnthsgeaf</p>
-              <p class="noteText">In this example, the .no-wrap-text class is applied to the element. The white-space: nowrap; CSS rule ensures that the text inside the div does not wrap. The overflow: hidden; property hides the overflowing content if it exceeds the width of the div.
-                
-                This will cause the text to overflow horizontally and won't wrap onto a new line, regardless of the size of the container.</p>
+        <form id="notesForm" th:action="@{/dashboard}" method="post">
+          <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+          <div class="scrollContainer">
+            <div id="notesContainer">
+              <div class="note" th:each="note: ${notes}" th:onClick="|showNote(${note.id})|">
+                <p class="noteTitle" th:text="${note.title}"></p>
+                <p class="noteText" th:text="${note.text}"></p>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
-      <div> 
-        <!--notesButton-->
+      
+      <!--notesButton-->
+      
+      <div class="addButtons">
         <hr class="bigHr">
         <button id="notesButton" onClick="loadAddNewNoteOverlay()">Add new note</button>
       </div></td>
@@ -169,20 +136,20 @@
   <div class="overlayMainDiv">
     <p class="smallText">Add a new event</p>
     <hr class="bigHr">
-    <form th:action="@{/dashboard}" method="post">
+    <form th:action="@{/dashboard/saveEvent}" method="post">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
       <div class="form-group">
-        <input class="formEntry" name="title" type="text" placeholder="Add title"  th:field="${event.title}" required>
+        <input class="formEntry" name="title" type="text" maxlength="100" placeholder="Add title" th:field="${event.title}" required>
       </div>
       <div class="form-group">
         <label>Date:
-          <input class="formEntry" name="date" style="width: 60%;" type="datetime-local" th:field="${event.date}" required>
+          <input class="formEntry" name="date" style="width: 60%;"  maxlength="50" type="datetime-local" th:field="${event.date}" required>
         </label>
       </div>
       <div class="formGroup">
         <div>
           <label >Color:
-            <input id="color-picker" class="formEntry" style="width: 50%;" type = "text" autocomplete="off" placeholder = "#000000" value="#000000"  th:field="${event.color}"/>
+            <input id="color-picker" class="formEntry" style="width: 50%;"  maxlength="7" type = "text" autocomplete="off" placeholder = "#000000" th:field="${event.color}"/>
           </label>
         </div>
         <script>
@@ -193,7 +160,7 @@
       </div>
       <div class="form-group">
         <label>Description
-          <textarea class="formEntry" name="description" rows="4" maxlength="5000" th:field="${event.description}"></textarea>
+          <textarea class="formEntry" name="description" rows="4" maxlength="1000" th:field="${event.description}"></textarea>
         </label>
       </div>
       <hr class="bigHr">
@@ -211,14 +178,14 @@
   <div class="overlayMainDiv">
     <p class="smallText">Add a new note</p>
     <hr class="bigHr">
-    <form th:action="@{/dashboard}" method="post">
+    <form th:action="@{/dashboard/saveNote}" method="post">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
       <div class="form-group">
-        <input class="formEntry" name="title" type="text" placeholder="Title" value="New note"  th:field="${event.title}">
+        <input class="formEntry" name="title" type="text" maxlength="100" placeholder="New note" th:field="${note.title}" required>
       </div>
       <div class="form-group">
         <label>Description
-          <textarea class="formEntry" name="description" rows="4" maxlength="5000" th:field="${event.description}" required></textarea>
+          <textarea class="formEntry" name="description" rows="8" maxlength="5000" th:field="${note.text}" required></textarea>
         </label>
       </div>
       <hr class="bigHr">
@@ -231,21 +198,13 @@
 </div>
 <!--/addNewNoteOverlay--> 
 
-<!--viewNoteOverlay-->
-<div class="overlay" id="viewNoteOverlay" style="display: none;">
-  <div class="overlayMainDiv">
-    <p class="smallText"></p>
-  </div>
-</div>
-<!--/viewNoteOverlay--> 
-
 <!--logoutOverlay-->
 <div class="overlay" id="logoutOverlay" style="display: none;">
   <div class="overlayMainDiv">
     <p class="smallText" style="font-weight: 100;">Are you sure<br>
       you want to log out?</p>
     <hr class="bigHr">
-    <div class="form-group buttonDiv">
+    <div class="form-group">
       <form action="logout" method="post">
         <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <button type="submit" class="overlayButton cancelBtn">Logout</button>
@@ -254,11 +213,80 @@
     </div>
   </div>
 </div>
-<!--/logoutOverlay-->
+<!--/logoutOverlay--> 
+
+<!--viewEventOverlay-->
+<div class="overlay" id="viewEventOverlay" th:style="${selectedEvent.title == null} ? 'display: none;' : 'display: flex;'">
+  <div class="overlayMainDiv">
+    <form th:action="@{/dashboard/updateEvent}" id="viewEventOverlayForm" method="post">
+      <p class="smallText">Update an event</p>
+      <hr class="bigHr">
+      <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <div class="form-group">
+        <input class="formEntry" name="title" type="text" maxlength="100" placeholder="Add title" th:field="${selectedEvent.title}" required>
+      </div>
+      <div class="form-group">
+        <label>Date:
+          <input class="formEntry" name="date" style="width: 60%;"  maxlength="50" type="datetime-local" th:field="${selectedEvent.date}" required>
+        </label>
+      </div>
+      <div class="formGroup">
+        <div>
+          <label >Color:
+            <input id="color-picker2" class="formEntry" style="width: 50%;"  maxlength="7" type = "text" autocomplete="off" placeholder = "#000000" th:field="${selectedEvent.color}"/>
+          </label>
+        </div>
+        <script>
+		$(function () {
+		$('#color-picker2').colorpicker();
+		});
+		</script> 
+      </div>
+      <div class="form-group">
+        <label>Description
+          <textarea class="formEntry" name="description" rows="4" maxlength="1000" th:field="${selectedEvent.description}"></textarea>
+        </label>
+      </div>
+      <hr class="bigHr">
+      <div class="form-group buttonDiv">
+        <button type="button" class="overlayButton cancelBtn" onClick="deleteEvent()">Delete</button>
+        <button type="button" class="overlayButton submitBtn" onClick="unshowEvent()">Cancel</button>
+        <button type="submit" class="overlayButton notLogout">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--/viewEventOverlay--> 
+
+<!--viewNoteOverlay-->
+<div class="overlay" id="viewNoteOverlay" th:style="${selectedNote.title == null} ? 'display: none;' : 'display: flex;'">
+  <div class="overlayMainDiv">
+    <form th:action="@{/dashboard/updateNote}" id="viewNoteOverlayForm" method="post">
+      <p class="smallText">Edit a note</p>
+      <hr class="bigHr">
+      <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <div class="form-group">
+        <input class="formEntry" name="title" type="text" maxlength="100" placeholder="New note" th:field="${selectedNote.title}" required>
+      </div>
+      <div class="form-group">
+        <label>Description
+          <textarea class="formEntry" name="description" rows="8" maxlength="5000" th:field="${selectedNote.text}" required></textarea>
+        </label>
+      </div>
+      <hr class="bigHr">
+      <div class="form-group buttonDiv">
+        <button type="button" class="overlayButton cancelBtn" onClick="deleteNote()">Delete</button>
+        <button type="button" class="overlayButton submitBtn" onClick="unshowNote()">Cancel</button>
+        <button type="submit" class="overlayButton notLogout">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--/viewNoteOverlay-->
 </body>
 
 <!--scripts-->
-<script src = "js/script.js" > </script>
+<script th:inline="javascript" src = "js/script.js" > </script>
 <script src = "js/calendarScripts.js" > </script>
 <!--/scripts-->
 </html>

@@ -1,8 +1,8 @@
 //DO NOT PUT IN PRODUCTION
-//window.onload = function() {
-//    if (window.history.replaceState) {
-//        window.history.replaceState(null, null, window.location.href);
-//    }
+//window.onload = function () {
+//  if (window.history.replaceState) {
+//    window.history.replaceState(null, null, window.location.href);
+//  }
 //};
 
 function loadAddNewEventOverlay() {
@@ -35,6 +35,42 @@ function loadLogoutOverlay() {
 
 function unloadLogoutOverlay() {
   document.getElementById("logoutOverlay").style.display = "none";
+}
+
+function showNote(eventId) {
+  var form = document.getElementById("notesForm");
+  form.action = "/getNoteDetails/" + eventId;
+  form.submit();
+}
+
+function unshowNote() {
+  document.getElementById("viewNoteOverlay").style.display = "none";
+}
+
+function deleteNote() {
+  var form = document.getElementById("viewNoteOverlayForm");
+  var action = /*[[@{/dashboard/deleteNote}]]*/ "/dashboard/deleteNote";
+
+  form.setAttribute("action", action);
+  form.submit();
+}
+
+function showEvent(eventId) {
+  var form = document.getElementById("eventsForm");
+  form.action = "/getEventDetails/" + eventId;
+  form.submit();
+}
+
+function unshowEvent() {
+  document.getElementById("viewEventOverlay").style.display = "none";
+}
+
+function deleteEvent() {
+  var form = document.getElementById("viewEventOverlayForm");
+  var action = /*[[@{/dashboard/deleteEvent}]]*/ "/dashboard/deleteEvent";
+
+  form.setAttribute("action", action);
+  form.submit();
 }
 
 //register data checker

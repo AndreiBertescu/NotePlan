@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>NotePlan-Login</title>
-<link rel="stylesheet" href="css/stylesheet.css">
+<link rel="stylesheet" href = "css/stylesheet.css">
 
 <!--Bootstrap4-->
 <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -16,17 +16,16 @@
   <div class="overlayMainDiv">
     <p class="smallText" style="font-weight: 100; font-size: 30px;">Login to NotePlan</p>
     <hr class="bigHr">
-    <form action="" method="post" id="registerForm">
+    <form action="login" method="post" id="registerForm">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
       <div class="form-group">
-        <p th:if="${param.error}" class="errorText" id="incorrectPassword">*Invalid username and password.</p>
         <label>E-mail:&nbsp;
-          <input class="formEntry" id="email" style="width: 60%;" type="email" name="username" placeholder="john.doe@example.com" autocomplete="username" required th:field="${user.username}">
+          <input class="formEntry" id="email" style="width: 60%;" type="email" placeholder="john.doe@example.com" th:field="${user.username}"  autocomplete="username" required>
         </label>
       </div>
       <div class="form-group">
         <label>Password:&nbsp;
-          <input class="formEntry" id="password" style="width: 50%;" type="password" required autocomplete="new-password" th:field="${user.password}">
+          <input class="formEntry" id="password" style="width: 50%;" type="password" th:field="${user.password}" required autocomplete="new-password">
         </label>
         <hr class="bigHr">
       </div>
@@ -35,7 +34,7 @@
     <hr style="margin-bottom: 3px;">
     <form action="register" method="get">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-      <button type="submit" class="loginBtn">Or if you don't have an account, Register</button>
+      <button type="submit" class="loginBtn">Or if you din't have an account, Register</button>
     </form>
   </div>
 </div>

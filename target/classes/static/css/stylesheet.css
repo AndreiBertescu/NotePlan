@@ -10,20 +10,14 @@
   padding: 0;
   border-width: 0;
   text-align: center;
-/*    	border: 1px dashed red;*/
 }
 html, body {
   height: 100%;
 }
 #mainContainer, #mainContainer tr {
+  background: white;
   width: 100%;
-  height: calc(100% - 60px);
-}
-.flexContainer {
-  height: 100%;
-  width: 100%;
-  display: inline-block;
-  vertical-align: top;
+  height: calc(100% - 9%);
 }
 .bigText {
   font-size: 30px;
@@ -47,19 +41,41 @@ hr {
   width: 90%;
   background-color: var(--primary-clr);
 }
+.pHeader {
+  font-size: 40px;
+  padding: 1%;
+  font-weight: 100;
+}
+.flexContainer {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  max-height: 90%;
+  overflow: hidden;
+}
+.scrollContainer {
+  width: 100%;
+  max-height: 70%;
+  overflow: auto;
+}
+.addButtons {
+  height: 5%;
+}
 /* --------------------Navbar-------------------- */
 #Navbar {
   z-index: 100;
   width: 100%;
-  height: 60px;
+  height: 9%;
   text-align: center;
   background: #343a40;
+  min-height: 50px;
 }
 #Navbar .button {
   color: white;
   text-transform: uppercase;
-	margin: 0;
-	margin-top: -5px;
+  margin: 0;
+  margin-top: -5px;
 }
 #Navbar #logout {
   border: 1px solid #28a745;
@@ -67,31 +83,24 @@ hr {
   padding: 8px 15px;
   text-decoration: none;
   font-size: 14px;
-  transition-duration: 0.2s;
   color: #28a745;
   cursor: pointer;
-	background: var(--primary-clr);
+  background: var(--primary-clr);
+  transition-duration: 0.2s;
 }
 #Navbar #logout:hover {
-  background: #28a745;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
   color: white;
 }
 #Navbar #logout:active {
-  background: #1f7d35;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
   color: white;
 }
 /* --------------------/Navbar-------------------- */
 /* --------------------Upcoming Events-------------------- */
 #currentEvents {
   width: 30%;
-}
-#currentEvents .flexContainer {
-  max-height: calc(100vh - 130px);
-}
-.scrollContainer {
-  width: 100%;
-  max-height: calc(100vh - 130px);
-  overflow: auto;
+  vertical-align: top;
 }
 .eventDay {
   margin: 3%;
@@ -107,16 +116,23 @@ hr {
   margin-top: 15px;
   border-radius: 2px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  transition-duration: 0.2s;
 }
-.smallHr{
-	margin-top: 0;
-	margin-bottom: 0;
+.upcomingEvent:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+}
+.upcomingEvent:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+}
+.smallHr {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .title {
   display: inline-flex;
   text-align: center;
-	margin-bottom: -15px;
-	margin-top: 10px;
+  margin-bottom: -15px;
+  margin-top: 10px;
 }
 .eventTitle {
   font-weight: bold;
@@ -129,18 +145,15 @@ hr {
   background-color: var(--events-clr);
   cursor: pointer;
   color: white;
-  transition-duration: 0.2s;
   text-decoration: none;
+  transition-duration: 0.2s;
 }
 .eventsButton:hover {
-  background-color: #1a6cc4;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
   text-decoration: none;
 }
 .eventsButton:active {
-  background-color: #16589e;
-}
-.eventsButtonDiv {
-  background: white;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
 }
 #currentEvents .bigHr {
   background-color: var(--events-clr);
@@ -149,6 +162,7 @@ hr {
 /* --------------------Calendar-------------------- */
 #calendar {
   width: 40%;
+  vertical-align: top;
   border-right: 2px solid var(--notes-clr);
   border-left: 2px solid var(--events-clr);
 }
@@ -156,16 +170,14 @@ hr {
 /* --------------------Notes-------------------- */
 #notes {
   width: 30%;
+  vertical-align: top;
 }
 #notesContainer {
-  max-height: 500px;
-  margin-top: 5px;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-}
-#notes .flexContainer {
-  max-height: calc(100% - 70px);
 }
 .note {
   background: var(--notes-clr);
@@ -176,14 +188,13 @@ hr {
   padding-bottom: 40%;
   border-radius: 5px;
   margin-bottom: 10px;
-  transition-duration: 0.2s;
   text-align: left;
   overflow: hidden;
   cursor: pointer;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .note:hover {
-  background-color: #e0b116;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
 }
 .note:active {
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
@@ -195,14 +206,14 @@ hr {
   border-radius: 5px;
   background-color: var(--notes-clr);
   cursor: pointer;
-  color: var(#343a40);
+  color: var(--primary-clr);
   transition-duration: 0.2s;
 }
 #notesButton:hover {
-  background-color: #e0b116;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
 }
 #notesButton:active {
-  background-color: #bf9713;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
 }
 .noteTitle {
   text-align: left;
@@ -222,7 +233,7 @@ hr {
 /* --------------------/Notes-------------------- */
 /* --------------------Overlay-------------------- */
 .overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
@@ -237,6 +248,7 @@ hr {
   background: white;
   border: 2px solid #D8D8D8;
   border-radius: 5px;
+  min-width: 350px;
 }
 .overlayMainDiv .smallText {
   padding: 10px 0;
@@ -249,14 +261,14 @@ hr {
   width: 80%;
 }
 .form-group {
-  margin: 15px;
+  margin: 3%;
   font-size: 18px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .formEntry {
   width: 80%;
   background: white;
-  padding: 10px;
+  padding: 3%;
   border: 0.5px solid lightgray;
   border-radius: 5px;
   text-align: left;
@@ -265,85 +277,105 @@ hr {
 }
 label {
   font-size: 18px;
+  width: 100%;
 }
 .buttonDiv {
   display: flex;
   justify-content: space-between;
+  max-width: 100%;
 }
 .overlayButton {
   padding: 10px 15px;
-  margin: 5px 30px;
+  margin: 5px 3%;
   color: white;
   border-radius: 5px;
   font-size: 15px;
-  transition-duration: 0.2s;
 }
 .submitBtn {
   background: var(--events-clr);
+  transition-duration: 0.2s;
 }
 .cancelBtn {
   background: #dc3545;
+  transition-duration: 0.2s;
 }
 .submitBtn:hover {
-  background: #1a6cc4;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
 }
 .cancelBtn:hover {
-  background: #b82a38;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
 }
 .submitBtn:active {
-  background: #16589e;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
 }
 .cancelBtn:active {
-  background: #991f2b;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
 }
 .noteBtn {
   background: var(--notes-clr);
+  color: var(--primary-clr);
+  transition-duration: 0.2s;
 }
 .noteBtn:hover {
-  background: #e0b116;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
 }
 .noteBtn:active {
-  background: #bf9713;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
 }
 .notLogout {
   background: #28a745;
+  transition-duration: 0.2s;
 }
 .notLogout:hover {
-  background: #28a745;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
 }
 .notLogout:active {
-  background: #1f7d35;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
 }
-#addNewEventOverlay hr {
+#addNewEventOverlay hr, #viewEventOverlay hr {
   background: var(--events-clr);
 }
-#addNewNoteOverlay hr {
+#addNewNoteOverlay hr, #viewNoteOverlay hr {
   background: var(--notes-clr);
+}
+#addNewEventOverlay textarea, #viewEventOverlay textarea {
+  margin: 0;
+  resize: none;
+}
+#addNewNoteOverlay textarea, #viewNoteOverlay textarea {
+  margin: 0;
+  max-height: 32vh;
+  width: 30vw;
+  min-width: 270px;
+}
+#addNewNoteOverlay .overlayMainDiv, #viewNoteOverlay .overlayMainDiv {
+  width: 35vw;
 }
 /* --------------------/Overlay-------------------- */
 /* --------------------Auth-------------------- */
-#auth{
-	background: white;
+#auth {
+  background: white;
 }
-#auth .overlayMainDiv{
-	border: none;
-	width: 30%;
-	min-width: 450px;
+#auth .overlayMainDiv {
+  border: none;
+  width: 30%;
+  min-width: 450px;
 }
-#auth label{
+#auth label {
   font-size: 15px;
-	width: 85%;
+  width: 85%;
 }
-.loginBtn{
-	background: white;
-	text-decoration: underline;
-	border: none;
-	color: blue;
+.loginBtn {
+  background: white;
+  text-decoration: underline;
+  border: none;
+  color: blue;
+  transition-duration: 0.2s;
 }
-.errorText{
-	color: red;
-	font-size: 12px;
-	margin-bottom: 0;
+.errorText {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 0;
 }
 /* --------------------/Auth-------------------- */
 /* width */ ::-webkit-scrollbar {

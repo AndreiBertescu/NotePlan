@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,11 +29,9 @@
     <td class="Btn" style="width:10%;"><form action="register" method="get">
         <button type="submit" class="button" id="logout" style="margin-right: -50px;">Register</button>
       </form></td>
-    <td class="Btn" style="width:10%;">
-	<form action="login" method="get">
+    <td class="Btn" style="width:10%;"><form action="login" method="get">
         <button type="submit" class="button eventsButton">Login </button>
-      </form>
-	  </td>
+      </form></td>
   </tr>
 </table>
 
@@ -127,11 +125,13 @@
       you need to have an account.</p>
     <hr class="bigHr">
     <div class="form-group buttonDiv">
-      <button type="button" class="overlayButton cancelBtn" onClick="unloadLogoutOverlay()">Cancel</button>
+      <form action="login" method="get" style="margin-left: 5px;">
+        <button type="button" class="overlayButton cancelBtn" onClick="unloadLogoutOverlay()">Cancel</button>
+      </form>
       <form action="login" method="get">
         <button type="submit" class="overlayButton submitBtn">Login</button>
       </form>
-      <form action="register" method="get">
+      <form action="register" method="get" style="margin-right: 7px;">
         <button type="submit" class="overlayButton notLogout">register </button>
       </form>
     </div>
@@ -139,6 +139,7 @@
 </div>
 <!--/logoutOverlay-->
 </body>
+
 <!--scripts-->
 <script src = "js/script.js" > </script>
 <script src = "js/calendarScripts.js" > </script>

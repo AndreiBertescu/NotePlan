@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,24 +16,22 @@
   <div class="overlayMainDiv">
     <p class="smallText" style="font-weight: 100; font-size: 30px;">Register to NotePlan</p>
     <hr class="bigHr">
-    <form action="" method="post" id="registerForm" onsubmit="return validate()">
+    <form action="register" method="post" id="registerForm" onsubmit="return validate()">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
       <div class="form-group">
-	  
-        <p th:if="${error}" class="errorText" id="incorrectPassword">*This email is already in use.</p>
         <label>E-mail:&nbsp;
-          <input class="formEntry" id="email" style="width: 70%;" type="email" placeholder="john.doe@example.com" autocomplete="username" required th:field="${user.username}">
+          <input class="formEntry" id="email" style="width: 60%;" type="email" placeholder="john.doe@example.com" th:field="${user.username}"  autocomplete="username" required>
         </label>
       </div>
       <div class="form-group">
         <label>Username:&nbsp;
-          <input class="formEntry" id="userName" style="width: 60%;" type="text" placeholder="John Doe" autocomplete="off" th:field="${user.name}">
+          <input class="formEntry" id="userName" style="width: 60%;" type="text" placeholder="John Doe" th:field="${user.name}" autocomplete="off">
         </label>
       </div>
       <div class="form-group">
         <p class="errorText" id="invalidPassword" style="display: none;">*Passwords is invalid.</p>
         <label>Password:&nbsp;
-          <input class="formEntry" id="password" style="width: 50%;" type="password" required autocomplete="new-password" th:field="${user.password}">
+          <input class="formEntry" id="password" style="width: 50%;" type="password" th:field="${user.password}" required autocomplete="new-password">
         </label>
         <p class="errorText" style="color: black; margin-top: -15px; padding-bottom: 10px;">*Use at least one number and one uppercase letter.<br>
           *At least 6 characters;</p>

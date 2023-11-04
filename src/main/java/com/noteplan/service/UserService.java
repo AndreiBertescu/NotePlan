@@ -28,7 +28,6 @@ public class UserService {
 		auth.setAuthority("ROLE_USER");
 		auth.setUser(user);
 		user.getAuthorities().add(auth);
-
 		return userRepo.save(user);
 	}
 }
