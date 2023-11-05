@@ -1,4 +1,4 @@
-//DO NOT PUT IN PRODUCTION
+//DO NOT PUT IN PRODUCTION - DEBUG PURPOSES ONLY
 //window.onload = function () {
 //  if (window.history.replaceState) {
 //    window.history.replaceState(null, null, window.location.href);
@@ -39,7 +39,7 @@ function unloadLogoutOverlay() {
 
 function showNote(eventId) {
   var form = document.getElementById("notesForm");
-  form.action = "/getNoteDetails/" + eventId;
+  form.action = "/noteplan.com/getNoteDetails/" + eventId;
   form.submit();
 }
 
@@ -49,7 +49,7 @@ function unshowNote() {
 
 function deleteNote() {
   var form = document.getElementById("viewNoteOverlayForm");
-  var action = /*[[@{/dashboard/deleteNote}]]*/ "/dashboard/deleteNote";
+  var action = /*[[@{/noteplan.com/dashboard/deleteNote}]]*/ "/noteplan.com/dashboard/deleteNote";
 
   form.setAttribute("action", action);
   form.submit();
@@ -57,7 +57,7 @@ function deleteNote() {
 
 function showEvent(eventId) {
   var form = document.getElementById("eventsForm");
-  form.action = "/getEventDetails/" + eventId;
+  form.action = "/noteplan.com/getEventDetails/" + eventId;
   form.submit();
 }
 
@@ -67,7 +67,7 @@ function unshowEvent() {
 
 function deleteEvent() {
   var form = document.getElementById("viewEventOverlayForm");
-  var action = /*[[@{/dashboard/deleteEvent}]]*/ "/dashboard/deleteEvent";
+  var action = /*[[@{/noteplan.com/dashboard/deleteEvent}]]*/ "/noteplan.com/dashboard/deleteEvent";
 
   form.setAttribute("action", action);
   form.submit();
@@ -95,3 +95,30 @@ function validate() {
     return true;
   }
 }
+
+//date formater
+var todayy = new Date().toISOString().split('T')[0];
+var closestFutureDateDifference = Number.MAX_SAFE_INTEGER;
+var closestFutureDateElement = null;
+    
+var eventDateElements = document.querySelectorAll('.eventDate');
+var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+eventDateElements.forEach(function(element) {
+    var date = element.textContent.trim();
+    var dateObject = new Date(date);
+    
+    if (date > todayy) {
+	    var dateDifference = Math.abs(new Date(date) - new Date(todayy)) / (1000 * 60 * 60 * 24);
+	    if (dateDifference < closestFutureDateDifference) {
+	        closestFutureDateElement = element;
+	        closestFutureDateDifference = dateDifference;
+	    }
+    }
+
+    var formattedDate = dateObject.getDate() + ' of ' + monthNames[dateObject.getMonth()] + ' ' + dateObject.getFullYear();
+    element.textContent = formattedDate;
+});
+
+if (closestFutureDateElement)
+    document.querySelector('.scrollContainer').scrollTop = closestFutureDateElement.offsetTop;

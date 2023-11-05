@@ -104,6 +104,7 @@ public class DashboardController {
 				lastDate = ev.getDate().substring(0, 10);
 				lastEvent = new EventHelperClass(lastDate);
 			}
+			ev.setDate(ev.getDate().substring(11));
 			lastEvent.addEvent(ev);
 		}
 		if (lastEvent != null)

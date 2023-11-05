@@ -96,7 +96,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /*  box-shadow: 0 0 10px 2px var(--primary-clr);*/
 }
 .calendar .days .today {
   font-size: 1.5rem;
@@ -113,17 +112,6 @@
   height: 6px;
   border-radius: 30px;
   transform: translateX(-50%);
-  background-color: var(--primary-clr);
-}
-.calendar .days .day:hover.event::after {
-  background-color: #fff;
-}
-.calendar .days .active.event::after {
-  background-color: #fff;
-  bottom: 20%;
-}
-.calendar .days .active.event {
-  /*  padding-bottom: 10px;*/
 }
 .calendar .goto-today {
   width: 100%;
