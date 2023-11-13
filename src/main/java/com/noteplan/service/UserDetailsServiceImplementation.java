@@ -12,18 +12,17 @@ import com.noteplan.security.CustomSecurityUser;
 
 @Service
 public class UserDetailsServiceImplementation implements UserDetailsService {
-	
+
 	@Autowired
 	private UserRepository userRepo;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
 		User user = userRepo.findByUsername(username);
-		
-		if(user == null)
+
+		if (user == null)
 			throw new UsernameNotFoundException("Invalid username or password.");
-		
+
 		return new CustomSecurityUser(user);
 	}
 

@@ -28,6 +28,26 @@ public class UserService {
 		auth.setAuthority("ROLE_USER");
 		auth.setUser(user);
 		user.getAuthorities().add(auth);
+
+		user.setTimeFormat(false);
+		user.setTheme(false);
+
+		return userRepo.save(user);
+	}
+
+	public void delete(Long noteId) {
+		userRepo.deleteById(noteId);
+	}
+
+	public User updatePreferences(User currentUser, String timeFormat, String theme) {
+		User user = new User(currentUser);
+
+		user.setTimeFormat(timeFormat.equals("24hr") ? false : true);
+		currentUser.setTimeFormat(timeFormat.equals("24hr") ? false : true);
+
+		user.setTheme(theme.equals("Light") ? false : true);
+		currentUser.setTheme(theme.equals("Light") ? false : true);
+
 		return userRepo.save(user);
 	}
 }

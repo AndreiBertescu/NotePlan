@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>NotePlan</title>
+<!--stylesheet-->
 <link rel="stylesheet" href="css/stylesheet.css">
 
 <!--Bootstrap4-->
@@ -23,7 +24,10 @@
 <!--Navbar-->
 <table id="Navbar">
   <tr>
-    <td class="Btn" style="width:20%; font-size: 25px;"><p class="button"> NotePlan </p></td>
+    <td class="Btn" style="width:20%; font-size: 25px;"><form action="index" method="get">
+        <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit" class="button" style="background: none; outline: none;"> NotePlan </button>
+      </form></td>
     <td class="Btn" style="width:5%;"><p class="button">Preview </p></td>
     <td class="Btn" style="width:55%;"></td>
     <td class="Btn" style="width:10%;"><form action="register" method="get">

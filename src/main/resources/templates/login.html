@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>NotePlan-Login</title>
+<!--stylesheet-->
 <link rel="stylesheet" href = "css/stylesheet.css">
 
 <!--Bootstrap4-->
@@ -34,7 +35,7 @@
     <hr style="margin-bottom: 3px;">
     <form action="register" method="get">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-      <button type="submit" class="loginBtn">Or if you din't have an account, Register</button>
+      <button type="submit" class="loginBtn">Or if you don't have an account, Register</button>
     </form>
   </div>
 </div>

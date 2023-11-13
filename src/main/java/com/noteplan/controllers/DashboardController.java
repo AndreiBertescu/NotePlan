@@ -1,5 +1,7 @@
 package com.noteplan.controllers;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -71,6 +73,8 @@ public class DashboardController {
 
 	@GetMapping("/dashboard")
 	public String dashBoardView(@AuthenticationPrincipal User user, ModelMap model, Model smodel) {
+		model.put("theme", !user.getTheme() ? "Light" : "Dark");
+
 		Event event = new Event();
 		event.setColor("#000000");
 		model.put("event", event);
@@ -104,7 +108,14 @@ public class DashboardController {
 				lastDate = ev.getDate().substring(0, 10);
 				lastEvent = new EventHelperClass(lastDate);
 			}
-			ev.setDate(ev.getDate().substring(11));
+
+			// set time format
+			if (!user.getTimeFormat())
+				ev.setDate(ev.getDate().substring(11));
+			else {
+				ev.setDate(formatTime(ev.getDate().substring(11)));
+			}
+
 			lastEvent.addEvent(ev);
 		}
 		if (lastEvent != null)
@@ -186,5 +197,10 @@ public class DashboardController {
 		smodel.addAttribute("selectedNote", new Note());
 
 		return "redirect:/dashboard";
+	}
+
+	private String formatTime(String militaryTime) {
+		LocalTime time = LocalTime.parse(militaryTime, DateTimeFormatter.ofPattern("HH:mm"));
+		return time.format(DateTimeFormatter.ofPattern("hh:mm a"));
 	}
 }

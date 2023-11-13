@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>NotePlan-Register</title>
+<!--stylesheet-->
 <link rel="stylesheet" href="css/stylesheet.css">
 
 <!--Bootstrap4-->
@@ -33,7 +34,7 @@
         <label>Password:&nbsp;
           <input class="formEntry" id="password" style="width: 50%;" type="password" th:field="${user.password}" required autocomplete="new-password">
         </label>
-        <p class="errorText" style="color: black; margin-top: -15px; padding-bottom: 10px;">*Use at least one number and one uppercase letter.<br>
+        <p class="errorText" id="niceErrorText" >*Use at least one number and one uppercase letter.<br>
           *At least 6 characters;</p>
       </div>
       <div class="form-group">

@@ -78,7 +78,7 @@ hr {
 #Navbar .button {
   color: white;
   text-transform: uppercase;
-  margin: 0;
+  margin: 0 15px;
   margin-top: -5px;
 }
 #Navbar #logout {
@@ -99,6 +99,34 @@ hr {
 #Navbar #logout:active {
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
   color: white;
+}
+.profileBtn {
+  display: flex;
+  align-items: center;
+  background: none;
+  color: white;
+  border: none;
+  margin: 0 15px;
+  transition-duration: 0.2s;
+  outline: none;
+}
+.profileBtn:hover {
+  color: rgba(255, 255, 255, .70);
+  outline: none;
+}
+.profileBtn:active {
+  color: rgba(255, 255, 255, .55);
+  outline: none;
+}
+#profileSpan {
+  height: 5vh;
+  width: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background: #D6D6D6;
+  border-radius: 4vh;
 }
 /* --------------------/Navbar-------------------- */
 /* --------------------Upcoming Events-------------------- */
@@ -145,9 +173,9 @@ hr {
   overflow: hidden;
   margin: 0;
 }
-.eventTime{
-	font-weight: bold;
-	margin-bottom: -5px;
+.eventTime {
+  font-weight: bold;
+  margin-bottom: -5px;
 }
 .eventsButton {
   margin-top: 5px;
@@ -393,7 +421,50 @@ label {
   font-size: 12px;
   margin-bottom: 0;
 }
+#niceErrorText{
+	color: black; 
+	margin-top: -15px; 
+	padding-bottom: 10px;
+}
 /* --------------------/Auth-------------------- */
+/* --------------------Profile-------------------- */
+#profileMainContainer {
+  background: white;
+  width: 100%;
+  height: calc(100% - 9%);
+}
+#profileMainContainer .smallText {
+  color: var(--primary-clr);
+  font-weight: 100;
+  font-size: 35px;
+  padding-top: 15px;
+}
+#profileMainContainer .pHeader {
+  text-align: left;
+  padding-left: 20%;
+  font-size: 20px;
+  font-weight: bold;
+}
+#profileMainContainer .pr {
+  text-align: left;
+  padding-left: 20%;
+  display: flex;
+  max-width: 700px;
+}
+#profileMainContainer label, #profileMainContainer input[type="radio"], input[type="checkbox"] {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: inherit;
+}
+#updatePreferences {
+  display: flex;
+  flex-direction: column;
+}
+#updatePreferences .submitBtn {
+  width: 160px;
+  margin-left: 20%;
+}
+/* --------------------/Profile-------------------- */
 /* width */ ::-webkit-scrollbar {
   width: 10px;
 }

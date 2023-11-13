@@ -1,0 +1,74 @@
+:root {
+  --primary-clr: #343a40;
+  --background-clr: #212529;
+  --darkNotes-clr: #725500;
+}
+/*everything*/
+#mainContainer, #mainContainer tr {
+  background: var(--background-clr);
+  color: white;
+  width: 100%;
+  height: calc(100% - 9%);
+}
+/*semantic calendar*/
+.calendar .days .day {
+  color: white;
+  border: 1px solid var(--primary-clr);
+}
+.calendar .days .day:nth-child(7n + 1) {
+  border-left: 2px solid var(--primary-clr);
+}
+.calendar .days .day:nth-child(7n) {
+  border-right: 2px solid var(--primary-clr);
+}
+.calendar .days .day:nth-child(-n + 7) {
+  border-top: 2px solid var(--primary-clr);
+}
+.calendar .days .day:nth-child(n + 29) {
+  border-bottom: 2px solid var(--primary-clr);
+}
+.calendar .goto-today .goto, .calendar .goto-today .goto button, .calendar .goto-today button {
+  border: 1px solid ivory;
+  color: white;
+}
+.date-input, .calendar .goto-today .goto input {
+  background: var(--background-clr);
+  color: white;
+}
+/*notes color*/
+.note, #notesButton, #notes .bigHr, .noteBtn, #addNewNoteOverlay hr, #viewNoteOverlay hr {
+  background: var(--darkNotes-clr);
+  color: white;
+}
+#calendar {
+  border-right: 2px solid var(--darkNotes-clr);
+}
+#notesButton {
+  border: 1px solid var(--darkNotes-clr);
+}
+/*overlays*/
+.overlayMainDiv, .formEntry {
+  background: var(--background-clr);
+  border: 2px solid var(--primary-clr);
+  color: white;
+}
+.overlayMainDiv .smallText {
+  color: white;
+}
+/*login and register*/
+#auth {
+  background: var(--background-clr);
+}
+#auth .loginBtn {
+  background: var(--background-clr);
+  padding-bottom: 10px;
+  color: rgb(51, 125, 255);
+}
+#niceErrorText {
+  color: white;
+}
+/*profile page*/
+#profileMainContainer, #profileMainContainer .smallText {
+  background: var(--background-clr);
+  color: white;
+}

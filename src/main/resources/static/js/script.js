@@ -37,9 +37,17 @@ function unloadLogoutOverlay() {
   document.getElementById("logoutOverlay").style.display = "none";
 }
 
+function loadDeleteOverlay() {
+  document.getElementById("deleteOverlay").style.display = "flex";
+}
+
+function unloadDeleteOverlay() {
+  document.getElementById("deleteOverlay").style.display = "none";
+}
+
 function showNote(eventId) {
   var form = document.getElementById("notesForm");
-  form.action = "/noteplan.com/getNoteDetails/" + eventId;
+  form.action = "/noteplan.ro/getNoteDetails/" + eventId;
   form.submit();
 }
 
@@ -49,7 +57,7 @@ function unshowNote() {
 
 function deleteNote() {
   var form = document.getElementById("viewNoteOverlayForm");
-  var action = /*[[@{/noteplan.com/dashboard/deleteNote}]]*/ "/noteplan.com/dashboard/deleteNote";
+  var action = /*[[@{/noteplan.ro/dashboard/deleteNote}]]*/ "/noteplan.ro/dashboard/deleteNote";
 
   form.setAttribute("action", action);
   form.submit();
@@ -57,7 +65,7 @@ function deleteNote() {
 
 function showEvent(eventId) {
   var form = document.getElementById("eventsForm");
-  form.action = "/noteplan.com/getEventDetails/" + eventId;
+  form.action = "/noteplan.ro/getEventDetails/" + eventId;
   form.submit();
 }
 
@@ -67,7 +75,7 @@ function unshowEvent() {
 
 function deleteEvent() {
   var form = document.getElementById("viewEventOverlayForm");
-  var action = /*[[@{/noteplan.com/dashboard/deleteEvent}]]*/ "/noteplan.com/dashboard/deleteEvent";
+  var action = /*[[@{/noteplan.ro/dashboard/deleteEvent}]]*/ "/noteplan.ro/dashboard/deleteEvent";
 
   form.setAttribute("action", action);
   form.submit();

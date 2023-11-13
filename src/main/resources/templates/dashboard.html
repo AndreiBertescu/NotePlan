@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>NotePlan</title>
+
+<!--stylesheet-->
 <link rel="stylesheet" href="css/stylesheet.css">
 
 <!--Bootstrap4-->
@@ -29,16 +31,26 @@
   integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
   crossorigin="anonymous"
   referrerpolicy="no-referrer"/>
+
+<!--dark mode stylesheet-->
+<link rel="stylesheet" href="css/darkModeStylesheet.css" th:disabled="${theme == 'Light'}">
 </head>
 
 <body>
 <!--Navbar-->
 <table id="Navbar">
   <tr>
-    <td class="Btn" style="width:20%; font-size: 25px;"><p class="button"> NotePlan </p></td>
+    <td class="Btn" style="width:20%; font-size: 25px;"><form action="dashboard" method="get">
+        <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit" class="button" style="background: none; outline: none;"> NotePlan </button>
+      </form></td>
     <td class="Btn" style="width:5%;"><p class="button">Dashboard </p></td>
-    <td class="Btn" style="width:65%;"></td>
-    <td class="Btn" style="width:10%;"><a class="button" id="logout" onClick="loadLogoutOverlay()" target="iframe1"> Logout </a></td>
+    <td class="Btn" style="width:53%;"></td>
+    <td class="Btn" style="width:9%;"><a class="button" id="logout" onClick="loadLogoutOverlay()"> Logout </a></td>
+    <td class="Btn" style="width:13%;"><form action="profile" method="get">
+        <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit" class="profileBtn"> Andrei Bertescu &nbsp;&nbsp;<span id="profileSpan">AB</span></button>
+      </form></td>
   </tr>
 </table>
 
@@ -112,8 +124,8 @@
           <div class="scrollContainer">
             <div id="notesContainer">
               <div class="note" th:each="note: ${notes}" th:onClick="|showNote(${note.id})|">
-                <p class="noteTitle" th:text="${note.title}"></p>
-                <p class="noteText" th:text="${note.text}"></p>
+                <p class="noteTitle" th:text="${note.title}">A title</p>
+                <p class="noteText" th:text="${note.text}">Some text</p>
               </div>
             </div>
           </div>

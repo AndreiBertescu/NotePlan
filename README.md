@@ -13,6 +13,14 @@ NotePlan is an app where you can centralize all your events and notes. The app i
 - Add the checklist functionality for the notes.
 - Make the website compatible with smaller screen displays.
 - Develop a mobile app version of NotePlan.
+- Fix a bug withe the saving of the description texts
+
+# Version 1.2:
+- Added a profile page where you can view your email, name, and preferences.
+- Added the ability to delete your account.
+- Added preferences options: time format and theme.
+- The time format allows you to choose between 'military' time and am/pm time.
+- There are two available themes: light and dark.
 
 # Version 1.1:
 - Added a proper URL name
