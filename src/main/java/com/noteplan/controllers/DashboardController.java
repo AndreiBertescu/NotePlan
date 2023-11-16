@@ -73,6 +73,8 @@ public class DashboardController {
 
 	@GetMapping("/dashboard")
 	public String dashBoardView(@AuthenticationPrincipal User user, ModelMap model, Model smodel) {
+		model.put("username", user.getName());
+		model.put("initials", getInitials(user.getName()));
 		model.put("theme", !user.getTheme() ? "Light" : "Dark");
 
 		Event event = new Event();
@@ -136,7 +138,7 @@ public class DashboardController {
 		return "redirect:/dashboard";
 	}
 
-	@PostMapping("/getEventDetails/{eventId}")
+	@PostMapping("/dashboard/getEventDetails/{eventId}")
 	public String getEventDetails(@AuthenticationPrincipal User user, @PathVariable Long eventId, Model smodel) {
 		Event event = eventService.getEventById(eventId);
 
@@ -171,7 +173,7 @@ public class DashboardController {
 		return "redirect:/dashboard";
 	}
 
-	@PostMapping("/getNoteDetails/{eventId}")
+	@PostMapping("/dashboard/getNoteDetails/{eventId}")
 	public String getNoteDetails(@AuthenticationPrincipal User user, @PathVariable Long eventId, Model smodel) {
 		Note note = noteService.getNoteById(eventId);
 
@@ -202,5 +204,11 @@ public class DashboardController {
 	private String formatTime(String militaryTime) {
 		LocalTime time = LocalTime.parse(militaryTime, DateTimeFormatter.ofPattern("HH:mm"));
 		return time.format(DateTimeFormatter.ofPattern("hh:mm a"));
+	}
+
+	public static String getInitials(String name) {
+		if (name.split(" ").length >= 2)
+			return name.split(" ")[0].charAt(0) + "" + name.split(" ")[1].charAt(0);
+		return name.substring(0, 2);
 	}
 }

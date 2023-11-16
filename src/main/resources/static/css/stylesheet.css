@@ -104,17 +104,22 @@ hr {
   display: flex;
   align-items: center;
   background: none;
-  color: white;
   border: none;
-  margin: 0 15px;
-  transition-duration: 0.2s;
   outline: none;
 }
-.profileBtn:hover {
+.profileBtn button{
+  background: var(--primary-clr);
+  color: white;
+  margin: 0 15px;
+  outline: none;
+  border: none;
+  transition-duration: 0.2s;
+}
+.profileBtn button:hover {
   color: rgba(255, 255, 255, .70);
   outline: none;
 }
-.profileBtn:active {
+.profileBtn button:active {
   color: rgba(255, 255, 255, .55);
   outline: none;
 }
@@ -127,6 +132,7 @@ hr {
   color: black;
   background: #D6D6D6;
   border-radius: 4vh;
+  text-transform: uppercase;
 }
 /* --------------------/Navbar-------------------- */
 /* --------------------Upcoming Events-------------------- */
