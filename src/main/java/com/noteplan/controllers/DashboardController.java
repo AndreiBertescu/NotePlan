@@ -99,6 +99,21 @@ public class DashboardController {
 			});
 		}
 
+		// reformat the events description
+		for (Event ev : sortedEvents)
+			if (ev.getDescription() != "" && ev.getDescription() != null) {
+				String s = ev.getDescription();
+
+				for (int i = 0; i < s.length(); i++)
+					if (s.charAt(i) == '\n') {
+						s = s.substring(0, i) + "<br>" + s.substring(i, s.length());
+						i += 4;
+					}
+
+				ev.setDescription(s);
+			}
+
+		// reformat the events
 		String lastDate = "";
 		List<EventHelperClass> events = new ArrayList<>();
 		EventHelperClass lastEvent = null;
@@ -127,6 +142,21 @@ public class DashboardController {
 
 		// load all notes
 		Set<Note> notes = noteRepo.findAllByUser_id(user.getId());
+
+		// reformat the notes description
+		for (Note nt : notes)
+			if (nt.getText() != "" && nt.getText() != null) {
+				String s = nt.getText();
+
+				for (int i = 0; i < s.length(); i++)
+					if (s.charAt(i) == '\n') {
+						s = s.substring(0, i) + "<br>" + s.substring(i, s.length());
+						i += 4;
+					}
+
+				nt.setText(s);
+			}
+
 		model.put("notes", notes);
 
 		return "dashboard";

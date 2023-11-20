@@ -47,7 +47,7 @@ function unloadDeleteOverlay() {
 
 function showNote(eventId) {
   var form = document.getElementById("notesForm");
-  form.action = "/noteplan.ro/getNoteDetails/" + eventId;
+  form.action = window.location.pathname + "/getNoteDetails/" + eventId;
   form.submit();
 }
 
@@ -57,7 +57,7 @@ function unshowNote() {
 
 function deleteNote() {
   var form = document.getElementById("viewNoteOverlayForm");
-  var action = /*[[@{/noteplan.ro/dashboard/deleteNote}]]*/ "/noteplan.ro/dashboard/deleteNote";
+  var action = /*[[@{/noteplan.ro/dashboard/deleteNote}]]*/ window.location.pathname + "/deleteNote";
 
   form.setAttribute("action", action);
   form.submit();
@@ -65,7 +65,7 @@ function deleteNote() {
 
 function showEvent(eventId) {
   var form = document.getElementById("eventsForm");
-  form.action = "/noteplan.ro/getEventDetails/" + eventId;
+  form.action = window.location.pathname + "/getEventDetails/" + eventId;
   form.submit();
 }
 
@@ -75,7 +75,7 @@ function unshowEvent() {
 
 function deleteEvent() {
   var form = document.getElementById("viewEventOverlayForm");
-  var action = /*[[@{/noteplan.ro/dashboard/deleteEvent}]]*/ "/noteplan.ro/dashboard/deleteEvent";
+  var action = /*[[@{/noteplan.ro/dashboard/deleteEvent}]]*/ window.location.pathname + "/deleteEvent";
 
   form.setAttribute("action", action);
   form.submit();
@@ -130,3 +130,17 @@ eventDateElements.forEach(function(element) {
 
 if (closestFutureDateElement)
     document.querySelector('.scrollContainer').scrollTop = closestFutureDateElement.offsetTop;
+    
+//show password methods
+function togglePassword(){
+	const type = document.getElementById("password").getAttribute("type") === "password" ? "text" : "password";
+    document.getElementById("password").setAttribute("type", type);
+    
+    document.getElementById("passwordEye").classList.toggle("bi-eye");
+}
+function togglePasswordConfirm(){
+	const type = document.getElementById("passwordConfirm").getAttribute("type") === "password" ? "text" : "password";
+    document.getElementById("passwordConfirm").setAttribute("type", type);
+    
+    document.getElementById("passwordConfirmEye").classList.toggle("bi-eye");
+}

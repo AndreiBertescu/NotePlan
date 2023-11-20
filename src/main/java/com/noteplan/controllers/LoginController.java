@@ -24,9 +24,11 @@ public class LoginController {
 
 	@GetMapping("/login")
 	public String login(ModelMap model, Authentication authentication, HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response, String error) {
 		this.logoutHandler.logout(request, response, authentication);
+
 		model.put("user", new User());
+		model.put("error", (error == null) ? "" : "Invalid email or password.");
 		return "login";
 	}
 
@@ -35,6 +37,7 @@ public class LoginController {
 			HttpServletResponse response) {
 		this.logoutHandler.logout(request, response, authentication);
 
+		model.put("error", "");
 		model.put("user", new User());
 		return "register";
 	}
@@ -45,7 +48,7 @@ public class LoginController {
 			userService.save(user);
 			return "redirect:/login";
 		} catch (DataIntegrityViolationException e) {
-			model.put("error", e);
+			model.put("error", e.getMessage());
 			return "register";
 		}
 	}

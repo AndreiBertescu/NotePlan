@@ -7,7 +7,7 @@
 NotePlan is an app where you can centralize all your events and notes. The app itself is built using Spring Boot and Spring Security. All data is stored on a MySQL server, and communication between the database and the Java applet is facilitated by Hibernate. I have designed all the various web pages for the app, except for the semantic calendar, which was inspired by a YouTube video. [Video link](https://www.youtube.com/watch?v=6EVgmpm4z5U&t=1939s).
 
 # Notes:
-- To access the website locally use the URL: http://localhost:8080/
+- To access the website on the development profile use the URL: http://localhost/noteplan.ro/
 - The project is also deployed for a limitied ammount of time at this link: [NotePlan](https://noteplan-production.up.railway.app/)
 
 # Roadmap:
@@ -15,6 +15,13 @@ NotePlan is an app where you can centralize all your events and notes. The app i
 - Make the website compatible with smaller screen displays.
 - Develop a mobile app version of NotePlan.
 - Fix a bug withe the saving of the description texts
+
+# Version 1.3:
+- Added two working profiles: production and development.
+- Added remember me functionality.
+- Added error mesages for reused email on the register page and invalid email or password for the login page
+- Added view password button to the various password inputs.
+- Fixed a bug with the descriptions not being shown with line breaks.
 
 # Version 1.2:
 - Added a profile page where you can view your email, name, and preferences.

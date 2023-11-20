@@ -72,7 +72,7 @@
                   <p class="eventTitle" th:text="${event.title}">Title 1</p>
                   <p class="eventTime" th:text="|-${event.date}-|">20:17</p>
                 </div>
-                <p class="eventDescription" th:text="${event.description}">A description</p>
+                <p class="eventDescription" th:utext="${event.description}">A description</p>
                 <hr class="smallHr" th:style="|background-color: ${event.color};|">
               </div>
             </div>
@@ -124,7 +124,7 @@
             <div id="notesContainer">
               <div class="note" th:each="note: ${notes}" th:onClick="|showNote(${note.id})|">
                 <p class="noteTitle" th:text="${note.title}">A title</p>
-                <p class="noteText" th:text="${note.text}">Some text</p>
+                <p class="noteText" th:utext="${note.text}">Some text</p>
               </div>
             </div>
           </div>

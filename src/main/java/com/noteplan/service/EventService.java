@@ -18,7 +18,6 @@ public class EventService {
 		String date = event.getDate();
 		date = date.substring(0, 10) + " " + date.substring(11);
 		event.setDate(date);
-
 		return eventRepo.save(event);
 	}
 

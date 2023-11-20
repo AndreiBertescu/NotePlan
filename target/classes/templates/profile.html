@@ -19,15 +19,14 @@
 <table id="Navbar">
   <tr>
     <td class="Btn" style="width:20%; font-size: 25px;"><form action="dashboard" method="get">
-        <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <button type="submit" class="button" style="background: none; outline: none;"> NotePlan </button>
       </form></td>
     <td class="Btn" style="width:5%;"><p class="button">Profile </p></td>
     <td class="Btn" style="width:53%;"></td>
     <td class="Btn" style="width:9%;"><a class="button" id="logout" onClick="loadLogoutOverlay()"> Logout </a></td>
-    <td class="Btn" style="width:13%;"><form action="profile" method="get">
-        <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-        <button type="submit" class="profileBtn"> Andrei Bertescu &nbsp;&nbsp;<span id="profileSpan">AB</span></button>
+    <td class="Btn" style="width:13%;"><form action="profile" method="get" class="profileBtn">
+        <button type="submit" th:text="|${user.name}&nbsp;&nbsp;|">Username&nbsp;&nbsp;</button>
+        <span id="profileSpan" th:text="${initials}">XY</span>
       </form></td>
   </tr>
 </table>

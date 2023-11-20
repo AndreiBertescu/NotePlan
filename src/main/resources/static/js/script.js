@@ -130,3 +130,17 @@ eventDateElements.forEach(function(element) {
 
 if (closestFutureDateElement)
     document.querySelector('.scrollContainer').scrollTop = closestFutureDateElement.offsetTop;
+    
+//show password methods
+function togglePassword(){
+	const type = document.getElementById("password").getAttribute("type") === "password" ? "text" : "password";
+    document.getElementById("password").setAttribute("type", type);
+    
+    document.getElementById("passwordEye").classList.toggle("bi-eye");
+}
+function togglePasswordConfirm(){
+	const type = document.getElementById("passwordConfirm").getAttribute("type") === "password" ? "text" : "password";
+    document.getElementById("passwordConfirm").setAttribute("type", type);
+    
+    document.getElementById("passwordConfirmEye").classList.toggle("bi-eye");
+}
