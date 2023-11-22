@@ -14,7 +14,6 @@ NotePlan is an app where you can centralize all your events and notes. The app i
 - Add the checklist functionality for the notes.
 - Make the website compatible with smaller screen displays.
 - Develop a mobile app version of NotePlan.
-- Fix a bug withe the saving of the description texts
 
 # Version 1.3:
 - Added two working profiles: production and development.

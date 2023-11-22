@@ -52,6 +52,12 @@ function showNote(eventId) {
 }
 
 function unshowNote() {
+  var form = document.getElementById("viewNoteOverlayForm");
+  var action = /*[[@{/noteplan.ro/dashboard/deleteSmodel}]]*/ window.location.pathname + "/deleteSmodel";
+
+  form.setAttribute("action", action);
+  form.submit();
+  
   document.getElementById("viewNoteOverlay").style.display = "none";
 }
 
@@ -70,6 +76,12 @@ function showEvent(eventId) {
 }
 
 function unshowEvent() {
+  var form = document.getElementById("viewEventOverlayForm");
+  var action = /*[[@{/noteplan.ro/dashboard/deleteSmodel}]]*/ window.location.pathname + "/deleteSmodel";
+
+  form.setAttribute("action", action);
+  form.submit();
+  
   document.getElementById("viewEventOverlay").style.display = "none";
 }
 

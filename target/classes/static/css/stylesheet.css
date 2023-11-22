@@ -131,6 +131,7 @@ hr {
   justify-content: center;
   color: black;
   background: #D6D6D6;
+  border: 2px solid black;
   border-radius: 4vh;
   text-transform: uppercase;
 }

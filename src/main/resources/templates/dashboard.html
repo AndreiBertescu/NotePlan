@@ -58,7 +58,7 @@
   <tr> 
     <!--events-->
     <td id="currentEvents"><div class="flexContainer">
-        <p class="pHeader">Upcoming events</p>
+        <p class="pHeader">Events</p>
         <hr class="bigHr">
         <form id="eventsForm" th:action="@{/dashboard}" method="post">
           <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>

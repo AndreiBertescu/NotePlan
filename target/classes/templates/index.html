@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,8 +29,8 @@
       </form></td>
     <td class="Btn" style="width:5%;"><p class="button">Preview </p></td>
     <td class="Btn" style="width:55%;"></td>
-    <td class="Btn" style="width:10%;"><form action="register" method="get">
-        <button type="submit" class="button" id="logout" style="margin-right: -50px;">Register</button>
+    <td class="Btn" style="width:10%; margin-right: 2%;"><form action="register" method="get">
+        <button type="submit" class="button" id="logout" style="margin-right: -10px;">Register</button>
       </form></td>
     <td class="Btn" style="width:10%;"><form action="login" method="get">
         <button type="submit" class="button eventsButton">Login </button>
@@ -44,7 +44,7 @@
     <!--events-->
     <td id="currentEvents"><div class="flexContainer">
         <div class="scrollContainer">
-          <p style="font-size: 40px; padding:10px; font-weight: 100;">Upcoming events</p>
+          <p style="font-size: 40px; padding:10px; font-weight: 100;">Events</p>
           <div class="eventDay">
             <hr class="bigHr">
             <p class="eventDate">2023-11-08</p>

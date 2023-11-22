@@ -29,6 +29,8 @@ import com.noteplan.repositories.NoteRepository;
 import com.noteplan.service.EventService;
 import com.noteplan.service.NoteService;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Controller
 @SessionAttributes(names = { "selectedEvent", "selectedNote" })
 public class DashboardController {
@@ -72,7 +74,7 @@ public class DashboardController {
 	}
 
 	@GetMapping("/dashboard")
-	public String dashBoardView(@AuthenticationPrincipal User user, ModelMap model, Model smodel) {
+	public String dashBoardView(@AuthenticationPrincipal User user, ModelMap model) {
 		model.put("username", user.getName());
 		model.put("initials", getInitials(user.getName()));
 		model.put("theme", !user.getTheme() ? "Light" : "Dark");
@@ -229,6 +231,14 @@ public class DashboardController {
 		smodel.addAttribute("selectedNote", new Note());
 
 		return "redirect:/dashboard";
+	}
+
+	@PostMapping("/dashboard/deleteSmodel")
+	public void deleteSmodel(Model smodel, HttpServletResponse response) {
+		smodel.addAttribute("selectedNote", new Note());
+		smodel.addAttribute("selectedEvent", new Event());
+
+		response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 	}
 
 	private String formatTime(String militaryTime) {
