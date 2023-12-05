@@ -65,7 +65,7 @@ public class LoginController {
 	}
 
 	@PostMapping("/register")
-	public String registerPost(User user, ModelMap model) {
+	public String registerPost(User user, ModelMap model, HttpServletRequest request) {
 		try {
 			userService.checkValidity(user);
 			userService.save(user);
@@ -77,7 +77,8 @@ public class LoginController {
 			model.put("email", user.getUsername());
 			model.put("token", confirmationToken.getConfirmationToken());
 			try {
-				emailService.sendEmail(user.getUsername(), confirmationToken.getConfirmationToken());
+				emailService.sendEmail(user.getUsername(), confirmationToken.getConfirmationToken(),
+						request.getRequestURL().substring(0, request.getRequestURL().lastIndexOf("/") + 1));
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
@@ -127,10 +128,11 @@ public class LoginController {
 
 	@PostMapping("/resendEmail")
 	public String resendEmail(@RequestParam("email") String email, @RequestParam("token") String confirmationToken,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes, HttpServletRequest request) {
 
 		try {
-			emailService.sendEmail(email, confirmationToken);
+			emailService.sendEmail(email, confirmationToken,
+					request.getRequestURL().substring(0, request.getRequestURL().lastIndexOf("/") + 1));
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}

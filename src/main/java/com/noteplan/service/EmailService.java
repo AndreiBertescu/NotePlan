@@ -22,22 +22,21 @@ public class EmailService {
 	}
 
 	@Async
-	public void sendEmail(String email, String confirmationToken) throws MessagingException {
+	public void sendEmail(String email, String confirmationToken, String url) throws MessagingException {
+		url += "confirm-account?token=" + confirmationToken;
 		String mailContent = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "  <title>Account Verification</title>\n"
 				+ "</head>\n" + "<body>\n"
 				+ "  <div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;\">\n"
 				+ "    <h2>Welcome to NotePlan!</h2>\n"
 				+ "    <p>Thank you for signing up. To verify your account, please click the button below:</p>\n"
-				+ "    <a href=\"http://localhost/noteplan.ro/confirm-account?token=" + confirmationToken
+				+ "    <a href=\"" + url
 				+ "\" style=\"display: inline-block; padding: 12px 24px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 4px;\">\n"
 				+ "      Verify Account\n" + "    </a>\n"
 				+ "    <p><strong>If you didn't register on NotePlan, please ignore this email.</strong></p>\n"
-				+ "    <p>If the button above doesn't work, you can also <strong><a href=\"http://localhost/noteplan.ro/confirm-account?token="
-				+ confirmationToken
+				+ "    <p>If the button above doesn't work, you can also <strong><a href=\"" + url
 				+ "\">click here</a></strong> or copy and paste the following link into your browser:</p>\n"
-				+ "    <p><strong>http://localhost/noteplan.ro/confirm-account?token=" + confirmationToken
-				+ "</strong></p>\n" + "    <p>Thank you,<br/>The NotePlan Team</p>\n" + "  </div>\n" + "</body>\n"
-				+ "</html>";
+				+ "    <p><strong>" + url + "</strong></p>\n" + "    <p>Thank you,<br/>The NotePlan Team</p>\n"
+				+ "  </div>\n" + "</body>\n" + "</html>";
 
 		MimeMessage mailMessage = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mailMessage, true);
