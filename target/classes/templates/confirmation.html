@@ -18,18 +18,17 @@
   <div class="overlayMainDiv">
     <p class="pHeader" style="font-weight: 100; font-size: 30px;">Please verify your email</p>
     <hr class="bigHr">
-	
-	<p class="pr" style="margin-top: 5%; font-size: 20px;" th:utext="|You're almost there!<br>A verification email has been sent to:<br><strong>${email}</strong>|">A verification email has been sent.</p>
-	<p class="pr" style="margin-bottom: 10%; font-size: 15px;"><br>Just click on the link in that email to complete your signup. If you don't see it, you may need to <strong>check your spam folder.</strong></p>
-	
+    <p class="pr" style="margin-top: 5%; font-size: 20px;" th:utext="|You're almost there!<br>A verification email has been sent to:<br><strong>${email}</strong>|">A verification email has been sent.</p>
+    <p class="pr" style="margin-bottom: 10%; font-size: 15px;"><br>
+      Just click on the link in that email to complete your signup. If you don't see it, you may need to <strong>check your spam folder.</strong></p>
     <form th:action="resendEmail" method="post" style="margin-top: 1lh;">
       <input type="hidden" id="email" name="email" th:value="${email}">
       <input type="hidden" id="token" name="token" th:value="${token}">
-	  <label>
-		Or, if you didn't receive anything, no problem.
-        <hr style="margin-bottom: 3px;">
-        <button type="submit" class="overlayButton submitBtn" style="margin-top: 15px;">Resend verification email</button>
-	  </label>
+      <label>
+      Or, if you didn't receive anything, no problem.
+      <hr style="margin-bottom: 3px;">
+      <button type="submit" class="overlayButton submitBtn" style="margin-top: 15px;">Resend verification email</button>
+      </label>
     </form>
   </div>
 </div>

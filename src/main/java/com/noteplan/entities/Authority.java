@@ -9,13 +9,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Authority implements GrantedAuthority{
-	
+public class Authority implements GrantedAuthority {
+
 	private static final long serialVersionUID = 2012020929299864445L;
-	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
+
 	@ManyToOne
 	private User user;
 
@@ -23,7 +25,7 @@ public class Authority implements GrantedAuthority{
 	public String getAuthority() {
 		return this.authority;
 	}
-	
+
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}

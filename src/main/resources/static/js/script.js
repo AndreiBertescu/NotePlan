@@ -15,6 +15,18 @@ function unloadAddNewEventOverlay() {
 
 function loadAddNewNoteOverlay() {
   document.getElementById("addNewNoteOverlay").style.display = "flex";
+
+  var isChecklist = document.getElementById("isChecklist").checked;
+
+  document.getElementById("notChecklist").style.display = isChecklist ? "none" : "flex";
+  document.getElementById("notChecklistInput").required = !isChecklist;
+
+  document.getElementById("yesChecklist").style.display = isChecklist ? "flex" : "none";
+  var elements = document.querySelectorAll(".yesChecklistInput");
+  console.log(elements);
+  elements.forEach(function (element) {
+    element.required = isChecklist;
+  });
 }
 
 function unloadAddNewNoteOverlay() {
@@ -51,13 +63,50 @@ function showNote(eventId) {
   form.submit();
 }
 
+var id = 0;
+var prevCall = 0;
+
+function addNewCheckItem(index) {
+  var checklistContainer = document.getElementById("checklistScrollContainer" + index);
+
+  if (prevCall != 1 && index == 1) {
+    id = 1;
+    prevCall = 1;
+  } else if (prevCall != 2 && index == 2) {
+    id = document.querySelectorAll('#checklistScrollContainer' + index + ' .checkitem').length;
+    prevCall = 2;
+  }
+
+  var newCheckItem = document.createElement('div');
+  newCheckItem.classList.add('checkitem');
+
+  if (index == 1)
+    newCheckItem.innerHTML =
+    " <input type=\"checkbox\" name=\"checkbox" + id + "\" th:checked=\"${isChecklist}\"> "
+    + " <input type=\"text\" class=\"formEntry yesChecklistInput\" name=\"checkitem" + id + "\" maxlength=\"50\" placeholder=\"New item\" required> "
+    + " <button type=\"button\" class=\"overlayButton cancelBtn\" onClick=\"deleteCheckitem()\">Delete</button> ";
+  else
+    newCheckItem.innerHTML =
+    " <input type=\"checkbox\" name=\"checkbox" + id + "\" th:checked=\"${isChecklist}\"> "
+    + " <input type=\"text\" class=\"formEntry\" name=\"checkitem" + id + "\" maxlength=\"50\" placeholder=\"New item\" required> "
+    + " <button type=\"button\" class=\"overlayButton cancelBtn\" onClick=\"deleteCheckitem()\">Delete</button> ";
+
+  checklistContainer.appendChild(newCheckItem);
+
+  id++;
+}
+
+function deleteCheckitem() {
+  event.target.closest('.checkitem').remove();
+}
+
 function unshowNote() {
   var form = document.getElementById("viewNoteOverlayForm");
   var action = /*[[@{/noteplan.ro/dashboard/deleteSmodel}]]*/ window.location.pathname + "/deleteSmodel";
 
   form.setAttribute("action", action);
   form.submit();
-  
+
   document.getElementById("viewNoteOverlay").style.display = "none";
 }
 
@@ -81,7 +130,7 @@ function unshowEvent() {
 
   form.setAttribute("action", action);
   form.submit();
-  
+
   document.getElementById("viewEventOverlay").style.display = "none";
 }
 
@@ -120,39 +169,44 @@ function validate() {
 var todayy = new Date().toISOString().split('T')[0];
 var closestFutureDateDifference = Number.MAX_SAFE_INTEGER;
 var closestFutureDateElement = null;
-    
+
 var eventDateElements = document.querySelectorAll('.eventDate');
 var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-eventDateElements.forEach(function(element) {
-    var date = element.textContent.trim();
-    var dateObject = new Date(date);
-    
-    if (date > todayy) {
-	    var dateDifference = Math.abs(new Date(date) - new Date(todayy)) / (1000 * 60 * 60 * 24);
-	    if (dateDifference < closestFutureDateDifference) {
-	        closestFutureDateElement = element;
-	        closestFutureDateDifference = dateDifference;
-	    }
-    }
+eventDateElements.forEach(function (element) {
+  var date = element.textContent.trim();
+  var dateObject = new Date(date);
 
-    var formattedDate = dateObject.getDate() + ' of ' + monthNames[dateObject.getMonth()] + ' ' + dateObject.getFullYear();
-    element.textContent = formattedDate;
+  if (date > todayy) {
+    var dateDifference = Math.abs(new Date(date) - new Date(todayy)) / (1000 * 60 * 60 * 24);
+    if (dateDifference < closestFutureDateDifference) {
+      closestFutureDateElement = element;
+      closestFutureDateDifference = dateDifference;
+    }
+  }
+
+  var formattedDate = dateObject.getDate() + ' of ' + monthNames[dateObject.getMonth()] + ' ' + dateObject.getFullYear();
+  element.textContent = formattedDate;
 });
 
 if (closestFutureDateElement)
-    document.querySelector('.scrollContainer').scrollTop = closestFutureDateElement.offsetTop;
-    
+  document.querySelector('.scrollContainer').scrollTop = closestFutureDateElement.offsetTop;
+
 //show password methods
-function togglePassword(){
-	const type = document.getElementById("password").getAttribute("type") === "password" ? "text" : "password";
-    document.getElementById("password").setAttribute("type", type);
-    
-    document.getElementById("passwordEye").classList.toggle("bi-eye");
+function togglePassword() {
+  const type = document.getElementById("password").getAttribute("type") === "password" ? "text" : "password";
+  document.getElementById("password").setAttribute("type", type);
+
+  document.getElementById("passwordEye").classList.toggle("bi-eye");
 }
-function togglePasswordConfirm(){
-	const type = document.getElementById("passwordConfirm").getAttribute("type") === "password" ? "text" : "password";
-    document.getElementById("passwordConfirm").setAttribute("type", type);
-    
-    document.getElementById("passwordConfirmEye").classList.toggle("bi-eye");
+
+function togglePasswordConfirm() {
+  const type = document.getElementById("passwordConfirm").getAttribute("type") === "password" ? "text" : "password";
+  document.getElementById("passwordConfirm").setAttribute("type", type);
+
+  document.getElementById("passwordConfirmEye").classList.toggle("bi-eye");
+}
+
+function checkboxHelper(){
+	event.preventDefault();
 }

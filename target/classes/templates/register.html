@@ -35,8 +35,7 @@
         <p class="errorText" id="invalidPassword" style="display: none;">*Passwords is invalid.</p>
         <label>Password:&nbsp;
           <input class="formEntry" id="password" style="width: 50%;" type="password" th:field="${user.password}" required autocomplete="new-password">
-          <i class="bi bi-eye-slash eye" id="passwordEye" onClick="togglePassword()"></i>
-        </label>
+          <i class="bi bi-eye-slash eye" id="passwordEye" onClick="togglePassword()"></i> </label>
         <p class="errorText" id="niceErrorText" >*Use at least one number and one uppercase letter.<br>
           *At least 6 characters;</p>
       </div>
@@ -44,8 +43,7 @@
         <p class="errorText" id="incorrectPassword" style="padding-left: 85px; display: none;">*Passwords do not match.</p>
         <label>Confirm password:&nbsp;
           <input class="formEntry" id="passwordConfirm" style="width: 50%;" type="password" required autocomplete="new-password">
-          <i class="bi bi-eye-slash eye" id="passwordConfirmEye" onClick="togglePasswordConfirm()"></i>
-        </label>
+          <i class="bi bi-eye-slash eye" id="passwordConfirmEye" onClick="togglePasswordConfirm()"></i> </label>
         <hr class="bigHr">
       </div>
       <button type="submit" class="overlayButton submitBtn">Register</button>

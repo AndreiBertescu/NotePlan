@@ -124,7 +124,11 @@
             <div id="notesContainer">
               <div class="note" th:each="note: ${notes}" th:onClick="|showNote(${note.id})|">
                 <p class="noteTitle" th:text="${note.title}">A title</p>
-                <p class="noteText" th:utext="${note.text}">Some text</p>
+                <p class="noteText" th:if="${note.isChecklist == false}" th:utext="${note.text}">Some text</p>
+                <div class="noteCheckitem" th:if="${note.isChecklist != false}" th:each="checkitem : ${note.checklistList}">
+				  <input type="checkbox" onClick="checkboxHelper()" th:checked="${checkitem.isChecked}">
+				  <p th:if="${note.isChecklist != false}" class="noteTextCheckitem" th:utext="${checkitem.text}">Some text</p>
+				</div>
               </div>
             </div>
           </div>
@@ -146,7 +150,7 @@
   <div class="overlayMainDiv">
     <p class="smallText">Add a new event</p>
     <hr class="bigHr">
-    <form th:action="@{/dashboard/saveEvent}" method="post">
+    <form th:action="@{/dashboard/saveEvent}" method="post" autocomplete="off">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
       <div class="form-group">
         <input class="formEntry" name="title" type="text" maxlength="100" placeholder="Add title" th:field="${event.title}" required>
@@ -188,15 +192,31 @@
   <div class="overlayMainDiv">
     <p class="smallText">Add a new note</p>
     <hr class="bigHr">
-    <form th:action="@{/dashboard/saveNote}" method="post">
+    <form id="newNoteOverlayForm" th:action="@{/dashboard/saveNote}" method="post" autocomplete="off">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
       <div class="form-group">
         <input class="formEntry" name="title" type="text" maxlength="100" placeholder="New note" th:field="${note.title}" required>
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin: -2%;">
+        <label>
+          <input id="isChecklist" type="checkbox" name="isChecklist" value="isChecklist" th:checked="${isChecklist}" onClick="loadAddNewNoteOverlay();">
+          &nbsp; Checklist </label>
+      </div>
+      <hr>
+      <div id="notChecklist" class="form-group">
         <label>Description
-          <textarea class="formEntry" name="description" rows="8" maxlength="5000" th:field="${note.text}" required></textarea>
+          <textarea class="formEntry" id="notChecklistInput" name="description" rows="8" maxlength="5000" th:field="${note.text}" required></textarea>
         </label>
+      </div>
+      <div id="yesChecklist" class="form-group">
+        <button type="button" class="newCheckitemBtn overlayButton noteBtn" onClick="addNewCheckItem('1')">Add new item</button>
+        <div class="checklistScrollContainer" id="checklistScrollContainer1">
+          <div class="checkitem">
+            <input type="checkbox" name="checkbox0">
+            <input type="text" class="formEntry yesChecklistInput" name="checkitem0" maxlength="50" placeholder="New item">
+            <button type="button" class="overlayButton cancelBtn" onClick="deleteCheckitem()">Delete</button>
+          </div>
+        </div>
       </div>
       <hr class="bigHr">
       <div class="form-group buttonDiv">
@@ -226,9 +246,9 @@
 <!--/logoutOverlay--> 
 
 <!--viewEventOverlay-->
-<div class="overlay" id="viewEventOverlay" th:style="${selectedEvent.title == null} ? 'display: none;' : 'display: flex;'">
+<div class="overlay" id="viewEventOverlay" style="display: none;" th:style="${selectedEvent.title == null} ? 'display: none;' : 'display: flex;'">
   <div class="overlayMainDiv">
-    <form th:action="@{/dashboard/updateEvent}" id="viewEventOverlayForm" method="post">
+    <form th:action="@{/dashboard/updateEvent}" id="viewEventOverlayForm" method="post" autocomplete="off">
       <p class="smallText">Update an event</p>
       <hr class="bigHr">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
@@ -269,19 +289,30 @@
 <!--/viewEventOverlay--> 
 
 <!--viewNoteOverlay-->
-<div class="overlay" id="viewNoteOverlay" th:style="${selectedNote.title == null} ? 'display: none;' : 'display: flex;'">
+<div id="viewNoteOverlay" class="overlay" th:style="${selectedNote.title == null} ? 'display: none;' : 'display: flex;'">
   <div class="overlayMainDiv">
-    <form th:action="@{/dashboard/updateNote}" id="viewNoteOverlayForm" method="post">
+    <form th:action="@{/dashboard/updateNote}" id="viewNoteOverlayForm" method="post" autocomplete="off">
       <p class="smallText">Edit a note</p>
       <hr class="bigHr">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
       <div class="form-group">
         <input class="formEntry" name="title" type="text" maxlength="100" placeholder="New note" th:field="${selectedNote.title}" required>
       </div>
-      <div class="form-group">
+      <hr>
+      <div class="form-group" th:if="${selectedNote.isChecklist == false}">
         <label>Description
-          <textarea class="formEntry" name="description" rows="8" maxlength="5000" th:field="${selectedNote.text}" required></textarea>
+          <textarea class="formEntry" name="description" rows="8" maxlength="5000" th:field="${selectedNote.text}" th:required="${selectedNote.isChecklist == false}"></textarea>
         </label>
+      </div>
+      <div id="yesChecklistUpdate" class="form-group" th:if="${selectedNote.isChecklist == true}">
+        <button type="button" class="newCheckitemBtn overlayButton noteBtn" onClick="addNewCheckItem('2')">Add new item</button>
+        <div class="checklistScrollContainer" id="checklistScrollContainer2">
+          <div class="checkitem" th:each="checkitem, i: ${selectedNote.checklist}">
+            <input type="checkbox" th:name="'checkbox' + ${i.index}" th:checked="${checkitem.isChecked}">
+            <input type="text" class="formEntry" th:name="'checkitem' + ${i.index}" maxlength="50" placeholder="New item" th:value="${checkitem.text}"  th:required="${selectedNote.isChecklist == true}">
+            <button type="button" class="overlayButton cancelBtn" onClick="deleteCheckitem()">Delete</button>
+          </div>
+        </div>
       </div>
       <hr class="bigHr">
       <div class="form-group buttonDiv">

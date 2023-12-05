@@ -5,7 +5,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.noteplan.entities.Checkitem;
 import com.noteplan.entities.Event;
 import com.noteplan.entities.EventHelperClass;
 import com.noteplan.entities.Note;
@@ -78,6 +82,7 @@ public class DashboardController {
 		model.put("username", user.getName());
 		model.put("initials", getInitials(user.getName()));
 		model.put("theme", !user.getTheme() ? "Light" : "Dark");
+		model.put("isChecklist", "false");
 
 		Event event = new Event();
 		event.setColor("#000000");
@@ -85,6 +90,7 @@ public class DashboardController {
 
 		Note note = new Note();
 		note.setTitle("New note");
+		note.setChecklist(true);
 		model.put("note", note);
 
 		// load all events and sort by date
@@ -146,7 +152,12 @@ public class DashboardController {
 		Set<Note> notes = noteRepo.findAllByUser_id(user.getId());
 
 		// reformat the notes description
-		for (Note nt : notes)
+		for (Note nt : notes) {
+			List<Checkitem> ls = new ArrayList<>(nt.getChecklist());
+			if (ls.size() >= 8)
+				ls = ls.subList(0, 8);
+			nt.setChecklistList(ls);
+
 			if (nt.getText() != "" && nt.getText() != null) {
 				String s = nt.getText();
 
@@ -158,6 +169,7 @@ public class DashboardController {
 
 				nt.setText(s);
 			}
+		}
 
 		model.put("notes", notes);
 
@@ -167,6 +179,7 @@ public class DashboardController {
 	@PostMapping("/dashboard/saveEvent")
 	public String newEventForm(@AuthenticationPrincipal User user, Event event) {
 		eventService.save(user, event);
+
 		return "redirect:/dashboard";
 	}
 
@@ -199,8 +212,21 @@ public class DashboardController {
 	}
 
 	@PostMapping("/dashboard/saveNote")
-	public String newNoteForm(@AuthenticationPrincipal User user, Note note) {
-		noteService.save(user, note);
+	public String newNoteForm(@AuthenticationPrincipal User user, @RequestParam Map<String, String> params,
+			String isChecklist, Note note) {
+		note.setChecklist(isChecklist != null && isChecklist.equals("isChecklist"));
+		LinkedHashSet<Checkitem> checklist = new LinkedHashSet<>();
+
+		for (Map.Entry<String, String> entry : params.entrySet())
+			if (entry.getKey().startsWith("checkitem")) {
+				String itemName = entry.getValue();
+				String checkboxKey = "checkbox" + entry.getKey().substring(9);
+				boolean isChecked = "on".equals(params.getOrDefault(checkboxKey, "off"));
+
+				checklist.add(new Checkitem(itemName, isChecked));
+			}
+
+		noteService.save(user, note, checklist);
 
 		return "redirect:/dashboard";
 	}
@@ -216,8 +242,20 @@ public class DashboardController {
 	}
 
 	@PostMapping("/dashboard/updateNote")
-	public String updateNoteForm(@AuthenticationPrincipal User user, Note note, Model smodel) {
-		noteService.update((Note) smodel.getAttribute("selectedNote"), note);
+	public String updateNoteForm(@AuthenticationPrincipal User user, Note note,
+			@RequestParam Map<String, String> params, Model smodel) {
+		LinkedHashSet<Checkitem> checklist = new LinkedHashSet<>();
+
+		for (Map.Entry<String, String> entry : params.entrySet())
+			if (entry.getKey().startsWith("checkitem")) {
+				String itemName = entry.getValue();
+				String checkboxKey = "checkbox" + entry.getKey().substring(9);
+				boolean isChecked = "on".equals(params.getOrDefault(checkboxKey, "off"));
+
+				checklist.add(new Checkitem(itemName, isChecked));
+			}
+
+		noteService.update((Note) smodel.getAttribute("selectedNote"), note, checklist);
 
 		smodel.addAttribute("selectedNote", new Note());
 

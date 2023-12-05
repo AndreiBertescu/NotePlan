@@ -11,7 +11,6 @@ NotePlan is an app where you can centralize all your events and notes. The app i
 - The project is also deployed for a limitied ammount of time at this link: [NotePlan](https://noteplan-production.up.railway.app/)
 
 # Roadmap:
-- Add the checklist functionality for the notes.
 - Make the website compatible with smaller screen displays.
 - Develop a mobile app version of NotePlan.
 

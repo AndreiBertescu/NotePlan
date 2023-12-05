@@ -1,11 +1,21 @@
 package com.noteplan.entities;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Note {
@@ -21,7 +31,29 @@ public class Note {
 	private String title;
 	@Column(length = 5000)
 	private String text;
-	private boolean checklist;
+	private boolean isChecklist;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "note", orphanRemoval = true)
+	@OrderBy("id")
+	private Set<Checkitem> checklist = new LinkedHashSet<>();
+
+	@Transient
+	private List<Checkitem> checklistList = new ArrayList<>();
+
+	public Note() {
+		title = null;
+		text = null;
+		isChecklist = false;
+		checklist = new LinkedHashSet<>();
+	}
+
+	public Set<Checkitem> getChecklist() {
+		return checklist;
+	}
+
+	public void setChecklist(LinkedHashSet<Checkitem> checklist) {
+		this.checklist = checklist;
+	}
 
 	public User getUser() {
 		return user;
@@ -56,16 +88,24 @@ public class Note {
 	}
 
 	public boolean isChecklist() {
-		return checklist;
+		return isChecklist;
 	}
 
-	public void setChecklist(boolean checklist) {
-		this.checklist = checklist;
+	public void setChecklist(boolean isChecklist) {
+		this.isChecklist = isChecklist;
+	}
+
+	public List<Checkitem> getChecklistList() {
+		return checklistList;
+	}
+
+	public void setChecklistList(List<Checkitem> checklistList) {
+		this.checklistList = checklistList;
 	}
 
 	@Override
 	public String toString() {
-		return "Note [id=" + id + ", user=" + user + ", title=" + title + ", text=" + text + ", checklist=" + checklist
-				+ "]";
+		return "Note [id=" + id + ", user=" + user + ", title=" + title + ", text=" + text + ", checklist="
+				+ isChecklist + "]";
 	}
 }
