@@ -9,6 +9,8 @@ NotePlan is an app where you can centralize all your events and notes. The app i
 # Notes:
 - To access the website on the development profile use the URL: http://localhost/noteplan.ro/
 - The project is also deployed for a limitied ammount of time at this link: [NotePlan](https://noteplan-production.up.railway.app/)
+- To run the project locally, a database needs to be created according to the specifications in the "application-dev.properties" file. Additionally, the variables ${EMAIL} and ${EMAIL_PASSWORD} in the "application.properties" file need to be replaced with actual values.
+- To deploy the project on Railway, a MySQL service needs to be created. Additionally, within the project service, the environment variables from the "application.properties" file need to be added.
 
 # Roadmap:
 - Make the website compatible with smaller screen displays.
