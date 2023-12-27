@@ -1,8 +1,5 @@
 # NotePlan
-
-![Image](https://github.com/AndreiBertescu/NotePlan/assets/126001291/b532aee9-1a74-48ac-9c0a-934355d98981)
-
----
+![image](https://github.com/AndreiBertescu/NotePlan/assets/126001291/b532aee9-1a74-48ac-9c0a-934355d98981)
 
 NotePlan is an app where you can centralize all your events and notes. The app itself is built using Spring Boot and Spring Security. All data is stored on a MySQL server, and communication between the database and the Java applet is facilitated by Hibernate. I have designed all the various web pages for the app, except for the semantic calendar, which was inspired by a YouTube video. [Video link](https://www.youtube.com/watch?v=6EVgmpm4z5U&t=1939s).
 
@@ -47,3 +44,22 @@ NotePlan is an app where you can centralize all your events and notes. The app i
 - The project was added on GitHub.
 - The account system was fully completed: you can now register using only an email address and password. An email verification system was added to ensure there is only one account per email address.
 - The HTML dashboard page, the main page of the project, is mostly finished. Small modifications can still be made, though.
+
+# Images:
+- Main dashboard page
+![image](https://github.com/AndreiBertescu/NotePlan/assets/126001291/13c381ef-0e38-4ecc-830b-8c79e23e0c81)<br>
+
+- Profile page
+![image](https://github.com/AndreiBertescu/NotePlan/assets/126001291/1c285a17-9405-4685-a596-1d48802476b3)<br>
+
+- Edit event and edit note overlays
+<p align="center">
+  <img src="https://github.com/AndreiBertescu/NotePlan/assets/126001291/0ae7f7f1-8471-4548-b105-78eae28db51c" height="400" alt="Image 1">
+  <img src="https://github.com/AndreiBertescu/NotePlan/assets/126001291/bc40c94a-c51b-499f-a02b-a9dcb7bc0e23" height="400" alt="Image 2">
+</p><br>
+
+- Register and login pages
+<p align="center">
+  <img src="https://github.com/AndreiBertescu/NotePlan/assets/126001291/94bf61ef-cb5f-4483-9e72-230bc78fba96" height="400" alt="Image 3">
+  <img src="https://github.com/AndreiBertescu/NotePlan/assets/126001291/04e7c755-29f5-490a-9b24-e79959998269" height="400" alt="Image 4">
+</p>
