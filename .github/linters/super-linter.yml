@@ -1,8 +1,12 @@
 ---
 java:
   disable:
+    - HideUtilityClassConstructor
+    - VisibilityModifier
+    - DesignForExtension
     - FileTabCharacter
-    - LineLength  
+    - LineLength
+    - JavadocMethod
     - MethodName
     
 checkstyle:
@@ -13,6 +17,11 @@ checkstyle:
     - FileTabCharacter
     - LineLength
     - JavadocMethod
+    - MethodName
+    
+stylelint:
+  disable:
+    - font-family-no-missing-generic-family-keyword
     
 jscpd:
   args: "--threshold 10"

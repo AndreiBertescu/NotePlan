@@ -186,7 +186,7 @@ hr {
   padding: 10px 0;
   color: var(--primary-clr);
   font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  font-family: "Roboto", "Arial", sans-serif;
 }
 
 .overlay .big-hr {
@@ -197,7 +197,7 @@ hr {
 .form-group {
   margin: 3%;
   font-size: 18px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  font-family: "Roboto", "Arial", sans-serif;
 }
 
 .form-entry {
@@ -386,7 +386,7 @@ label {
 .upcoming-event {
   margin-top: 15px;
   border-radius: 2px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  font-family: "Roboto", "Arial", sans-serif;
   transition-duration: 0.2s;
   cursor: pointer;
 }
@@ -486,7 +486,7 @@ label {
   text-align: left;
   overflow: hidden;
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  font-family: "Roboto", "Arial", sans-serif;
   word-wrap: break-word;
   word-break: break-word;
 }

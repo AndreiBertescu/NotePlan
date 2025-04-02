@@ -15,6 +15,6 @@ jobs:
         uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: main
-          LINTER_RULES_PATH: .github/linters
-          JSCPD_ARGS: "--threshold 10"
+          LINTER_RULES_PATH: /.github/linters
+          JSCPD_CONFIG_FILE "jscpd-linter.jscpd.json"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
