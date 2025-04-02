@@ -15,6 +15,6 @@ jobs:
         uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: main
-          LINTER_RULES_PATH: /.github/linters
+          JAVA_FILE_NAME: checkstyle.xml
           JSCPD_CONFIG_FILE: "jscpd-linter.jscpd.json"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
