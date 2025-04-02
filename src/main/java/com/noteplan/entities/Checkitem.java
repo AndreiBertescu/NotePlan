@@ -9,53 +9,80 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Checkitem {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	
+    private static final int STRING_LENGTH = 100;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@ManyToOne
-	private Note note;
+    @ManyToOne
+    private Note note;
 
-	@Column(length = 500)
-	private String text;
-	private boolean isChecked;
+    @Column(length = STRING_LENGTH)
+    private String text;
+    private boolean isChecked;
 
-	public Checkitem() {
-		this.text = "";
-		this.isChecked = false;
-	}
+    /**
+     * Checkitem blank constructor
+     */
+    public Checkitem() {
+        this.text = "";
+        this.isChecked = false;
+    }
 
-	public Checkitem(String text, boolean isChecked) {
-		this.text = text;
-		this.isChecked = isChecked;
-	}
+    /**
+     * Checkitem constructor from text and isChecked boolean
+     */
+    public Checkitem(final String text, boolean isChecked) {
+        this.text = text;
+        this.isChecked = isChecked;
+    }
 
-	public String getText() {
-		return text;
-	}
+    /**
+     * checkitem text getter
+     */
+    public String getText() {
+        return text;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    /**
+     * checkitem text setter
+     */
+    public void setText(final String text) {
+        this.text = text;
+    }
 
-	public boolean isChecked() {
-		return isChecked;
-	}
+    /**
+     * checkitem isChecked getter
+     */
+    public boolean isChecked() {
+        return isChecked;
+    }
 
-	public void setChecked(boolean isChecked) {
-		this.isChecked = isChecked;
-	}
+    /**
+     * checkitem isChecked setter
+     */
+    public void setChecked(final boolean isChecked) {
+        this.isChecked = isChecked;
+    }
 
-	public Note getNote() {
-		return note;
-	}
+    /**
+     * checkitem note getter
+     */
+    public Note getNote() {
+        return note;
+    }
 
-	public void setNote(Note note) {
-		this.note = note;
-	}
+    /**
+     * checkitem note setter
+     */
+    public void setNote(final Note note) {
+        this.note = note;
+    }
 
-	@Override
-	public String toString() {
-		return "Checkitem [text=" + text + ", isChecked=" + isChecked + "]";
-	}
+    @Override
+    public String toString() {
+        return "Checkitem [text=" + text + ", isChecked=" + isChecked + "]";
+    }
 }

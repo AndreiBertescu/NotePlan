@@ -19,34 +19,51 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @EnableAsync
 public class SecurityConfig {
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+    /**
+     * UserDetailsService interface
+     */
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-	@Bean
-	PasswordEncoder getPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    /**
+     * returns a password hash encoder
+     */
+    @Bean
+    PasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-	@Bean
-	DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-		authProvider.setUserDetailsService(userDetailsService);
-		authProvider.setPasswordEncoder(getPasswordEncoder());
+    /**
+     * Creates and configures a DaoAuthenticationProvider bean used for authentication in Spring Security.
+     * 
+     * This provider uses the UserDetailsService for user lookup and the PasswordEncoder for password 
+     * encoding/validation. It is typically used for authenticating users with a database-backed user store.
+     * 
+     * returns the configured DaoAuthenticationProvider instance
+     */
+    @Bean
+    DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(getPasswordEncoder());
 
-		return authProvider;
-	}
+        return authProvider;
+    }
 
-	@Bean
-	SecurityFilterChain configure(HttpSecurity http) throws Exception {
-		return http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-				.authorizeHttpRequests(auth -> {
-					auth.requestMatchers("/", "/home", "/js/**", "/css/**").permitAll();
-					auth.requestMatchers("/", "/index", "/register", "/login", "/confirmation", "/verificationStatus",
-							"/confirm-account", "/resendEmail").permitAll();
-					auth.anyRequest().hasRole("USER");
-				}).formLogin(form -> form.loginPage("/login").permitAll().defaultSuccessUrl("/dashboard", true))
-				.logout((logout) -> logout.deleteCookies("remove").invalidateHttpSession(false)
-						.clearAuthentication(true).logoutSuccessUrl("/"))
-				.rememberMe(Customizer.withDefaults()).build();
-	}
+    /**
+     * configures the security settings for every authority
+     */
+    @Bean
+    SecurityFilterChain configure(final HttpSecurity http) throws Exception {
+        return http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers("/", "/home", "/js/**", "/css/**").permitAll();
+                    auth.requestMatchers("/", "/index", "/register", "/login", "/confirmation", "/verificationStatus",
+                            "/confirm-account", "/resendEmail").permitAll();
+                    auth.anyRequest().hasRole("USER");
+                }).formLogin(form -> form.loginPage("/login").permitAll().defaultSuccessUrl("/dashboard", true))
+                .logout((logout) -> logout.deleteCookies("remove").invalidateHttpSession(false)
+                        .clearAuthentication(true).logoutSuccessUrl("/"))
+                .rememberMe(Customizer.withDefaults()).build();
+    }
 }

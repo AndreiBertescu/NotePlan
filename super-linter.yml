@@ -1,0 +1,8 @@
+# Java Linter Configuration
+java:
+
+  # List of checks to disable
+  disable:
+    - FileTabCharacter
+    - LineLength  
+    - MethodName

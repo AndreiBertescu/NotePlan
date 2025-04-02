@@ -19,138 +19,224 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User implements UserDetails {
 
-	private static final long serialVersionUID = 3578466250205857028L;
+    private static final long serialVersionUID = 3578466250205857028L;
+    private static final int STRING_LENGTH = 100;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Column(length = 100)
-	private String password;
-	@Column(length = 100)
-	private String username;
-	@Column(length = 50)
-	private String name;
-	private boolean timeFormat = false;
-	private boolean theme = false;
+    /**
+     * id of user
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    /**
+     * password of user
+     */
+    @Column(length = STRING_LENGTH)
+    private String password;
+    
+    /**
+     * email of user
+     */
+    @Column(length = STRING_LENGTH)
+    private String username;
+    
+    /**
+     * name of user
+     */
+    @Column(length = STRING_LENGTH)
+    private String name;
+    
+    /**
+     * 12hr or 24hr format
+     */
+    private boolean timeFormat = false;
+    
+    /**
+     * dark or light theme
+     */
+    private boolean theme = false;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
-	private Set<Authority> authorities = new HashSet<>();
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<Event> events = new HashSet<>();
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<Note> notes = new HashSet<>();
+    /**
+     * stores all the authorities of a given user
+     */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    private Set<Authority> authorities = new HashSet<>();
+    
+    /**
+     * stores all the events of a given user
+     */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Event> events = new HashSet<>();
+    
+    /**
+     * stores all the notes of a given user
+     */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Note> notes = new HashSet<>();
 
-	public User() {
-	}
+    /**
+     * user blank constructor
+     */
+    public User() {
+    }
 
-	public User(User user) {
-		this.setId(user.getId());
-		this.setName(user.getName());
-		this.setUsername(user.getUsername());
-		this.setPassword(user.getPassword());
-		this.setAuthorities(user.getAuthorities());
-		this.setTimeFormat(user.getTimeFormat());
-		this.setTheme(user.getTheme());
-	}
+    /**
+     * user copy constructor
+     */
+    public User(final User user) {
+        this.setId(user.getId());
+        this.setName(user.getName());
+        this.setUsername(user.getUsername());
+        this.setPassword(user.getPassword());
+        this.setAuthorities(user.getAuthorities());
+        this.setTimeFormat(user.getTimeFormat());
+        this.setTheme(user.getTheme());
+    }
 
-	public Set<Event> getEvents() {
-		return events;
-	}
+    /**
+     * events getter
+     */
+    public Set<Event> getEvents() {
+        return events;
+    }
 
-	public void setEvents(Set<Event> events) {
-		this.events = events;
-	}
+    /**
+     * events setter
+     */
+    public void setEvents(final Set<Event> events) {
+        this.events = events;
+    }
 
-	public Set<Note> getNotes() {
-		return notes;
-	}
+    /**
+     * notes getter
+     */
+    public Set<Note> getNotes() {
+        return notes;
+    }
 
-	public void setNotes(Set<Note> notes) {
-		this.notes = notes;
-	}
+    /**
+     * notes setter
+     */
+    public void setNotes(final Set<Note> notes) {
+        this.notes = notes;
+    }
 
-	public long getId() {
-		return id;
-	}
+    /**
+     * id getter
+     */
+    public long getId() {
+        return id;
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    /**
+     * id setter
+     */
+    public void setId(final long id) {
+        this.id = id;
+    }
 
-	public boolean getTimeFormat() {
-		return timeFormat;
-	}
+    /**
+     * timeFormat getter
+     */
+    public boolean getTimeFormat() {
+        return timeFormat;
+    }
 
-	public void setTimeFormat(boolean timeFormat) {
-		this.timeFormat = timeFormat;
-	}
+    /**
+     * timeFormat setter
+     */
+    public void setTimeFormat(final boolean timeFormat) {
+        this.timeFormat = timeFormat;
+    }
 
-	public boolean getTheme() {
-		return theme;
-	}
+    /**
+     * theme getter
+     */
+    public boolean getTheme() {
+        return theme;
+    }
 
-	public void setTheme(boolean theme) {
-		this.theme = theme;
-	}
+    /**
+     * theme setter
+     */
+    public void setTheme(final boolean theme) {
+        this.theme = theme;
+    }
 
-	@Override
-	public String getPassword() {
-		return password;
-	}
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    /**
+     * password setter
+     */
+    public void setPassword(final String password) {
+        this.password = password;
+    }
 
-	@Override
-	public String getUsername() {
-		return username;
-	}
+    @Override
+    public String getUsername() {
+        return username;
+    }
 
-	public void setUsername(String name) {
-		this.username = name;
-	}
+    /**
+     * username setter
+     */
+    public void setUsername(final String name) {
+        this.username = name;
+    }
 
-	@Override
-	public Set<Authority> getAuthorities() {
-		return authorities;
-	}
+    @Override
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
 
-	public void setAuthorities(Set<Authority> authorities) {
-		this.authorities = authorities;
-	}
+    /**
+     * authorities setter
+     */
+    public void setAuthorities(final Set<Authority> authorities) {
+        this.authorities = authorities;
+    }
 
-	public String getName() {
-		return name;
-	}
+    /**
+     * name getter
+     */
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * name setter
+     */
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", password=" + password + ", username=" + username + ", name=" + name
-				+ ", authorities=" + authorities + "]";
-	}
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", password=" + password + ", username=" + username + ", name=" + name
+                + ", authorities=" + authorities + "]";
+    }
 
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

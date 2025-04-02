@@ -15,42 +15,42 @@
 
 <body>
 <div class="overlay" id="auth">
-  <div class="overlayMainDiv">
-    <p class="smallText" style="font-weight: 100; font-size: 30px;">Register to NotePlan</p>
-    <hr class="bigHr">
-    <form action="register" method="post" id="registerForm" onsubmit="return validate()">
+  <div class="overlay-main-div">
+    <p class="small-text" style="font-weight: 100; font-size: 30px;">Register to NotePlan</p>
+    <hr class="big-hr">
+    <form action="register" method="post" id="register-form" onsubmit="return validate()">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
       <div class="form-group">
-        <p class="errorText" style="margin-top: 15px;" th:text="${error}"></p>
+        <p class="error-text" style="margin-top: 15px;" th:text="${error}"></p>
         <label>E-mail:&nbsp;
-          <input class="formEntry" id="email" style="width: 60%;" type="email" placeholder="john.doe@example.com" th:field="${user.username}"  autocomplete="username" required>
+          <input class="form-entry" id="email" style="width: 60%;" type="email" placeholder="john.doe@example.com" th:field="${user.username}"  autocomplete="username" required>
         </label>
       </div>
       <div class="form-group">
         <label>Username:&nbsp;
-          <input class="formEntry" id="userName" style="width: 60%;" type="text" placeholder="John Doe" th:field="${user.name}" autocomplete="off">
+          <input class="form-entry" id="user-name" style="width: 60%;" type="text" placeholder="John Doe" th:field="${user.name}" autocomplete="off">
         </label>
       </div>
       <div class="form-group">
-        <p class="errorText" id="invalidPassword" style="display: none;">*Passwords is invalid.</p>
+        <p class="error-text" id="invalid-password" style="display: none;">*Passwords is invalid.</p>
         <label>Password:&nbsp;
-          <input class="formEntry" id="password" style="width: 50%;" type="password" th:field="${user.password}" required autocomplete="new-password">
-          <i class="bi bi-eye-slash eye" id="passwordEye" onClick="togglePassword()"></i> </label>
-        <p class="errorText" id="niceErrorText" >*Use at least one number and one uppercase letter.<br>
+          <input class="form-entry" id="password" style="width: 50%;" type="password" th:field="${user.password}" required autocomplete="new-password">
+          <i class="bi bi-eye-slash eye" id="password-eye" onClick="togglePassword()"></i> </label>
+        <p class="error-text" id="nice-error-text" >*Use at least one number and one uppercase letter.<br>
           *At least 6 characters;</p>
       </div>
       <div class="form-group">
-        <p class="errorText" id="incorrectPassword" style="padding-left: 85px; display: none;">*Passwords do not match.</p>
+        <p class="error-text" id="incorrect-password" style="padding-left: 85px; display: none;">*Passwords do not match.</p>
         <label>Confirm password:&nbsp;
-          <input class="formEntry" id="passwordConfirm" style="width: 50%;" type="password" required autocomplete="new-password">
-          <i class="bi bi-eye-slash eye" id="passwordConfirmEye" onClick="togglePasswordConfirm()"></i> </label>
-        <hr class="bigHr">
+          <input class="form-entry" id="password-confirm" style="width: 50%;" type="password" required autocomplete="new-password">
+          <i class="bi bi-eye-slash eye" id="password-confirm-eye" onClick="togglePasswordConfirm()"></i> </label>
+        <hr class="big-hr">
       </div>
-      <button type="submit" class="overlayButton submitBtn">Register</button>
+      <button type="submit" class="overlay-button submit-btn">Register</button>
     </form>
     <hr style="margin-bottom: 3px;">
     <form action="login" method="get">
-      <button type="submit" class="loginBtn">Or if you have an account, Login</button>
+      <button type="submit" class="login-btn">Or if you have an account, Login</button>
     </form>
   </div>
 </div>

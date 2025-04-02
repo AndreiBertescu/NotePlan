@@ -11,50 +11,77 @@ import com.noteplan.repositories.UserRepository;
 @Service
 public class UserService {
 
-	@Autowired
-	UserRepository userRepo;
+    /**
+     * UserRepository interface
+     */
+    @Autowired
+    UserRepository userRepo;
 
-	@Autowired
-	PasswordEncoder passwordEncoder;
+    /**
+     * PasswordEncoder interface
+     */
+    @Autowired
+    PasswordEncoder passwordEncoder;
+    
+    /**
+     * checks if email is already in use
+     */
+    public void checkValidity(final User user) {
+        if (findByUsername(user.getUsername()) != null) {
+            throw new DataIntegrityViolationException(
+            		"*Email address is already in use."
+            );
+        }
+    }
 
-	public void checkValidity(User user) {
-		if (findByUsername(user.getUsername()) != null)
-			throw new DataIntegrityViolationException("*Email address is already in use.");
-	}
+    /**
+     * saves finds user by username
+     */
+    public User findByUsername(final String username) {
+        return userRepo.findByUsername(username);
+    }
 
-	public User findByUsername(String username) {
-		return userRepo.findByUsername(username);
-	}
+    /**
+     * saves the user in the db
+     */
+    public User save(final User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-	public User save(User user) {
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setTimeFormat(false);
+        user.setTheme(false);
 
-		user.setTimeFormat(false);
-		user.setTheme(false);
+        return userRepo.save(user);
+    }
 
-		return userRepo.save(user);
-	}
+    /**
+     * saves the user with the already encoded password
+     */
+    public User saveWithEncodedPassword(final User user) {
+        user.setTimeFormat(false);
+        user.setTheme(false);
 
-	public User saveWithEncodedPassword(User user) {
-		user.setTimeFormat(false);
-		user.setTheme(false);
+        return userRepo.save(user);
+    }
 
-		return userRepo.save(user);
-	}
+    /**
+     * deletes note from db
+     */
+    public void delete(final Long noteId) {
+        userRepo.deleteById(noteId);
+    }
 
-	public void delete(Long noteId) {
-		userRepo.deleteById(noteId);
-	}
+    /**
+     * updates preferences in db
+     */
+    public User updatePreferences(final User currentUser, final String timeFormat, final String theme) {
+        User user = new User(currentUser);
 
-	public User updatePreferences(User currentUser, String timeFormat, String theme) {
-		User user = new User(currentUser);
+        user.setTimeFormat(!timeFormat.equals("24hr"));
+        currentUser.setTimeFormat(!timeFormat.equals("24hr"));
 
-		user.setTimeFormat(timeFormat.equals("24hr") ? false : true);
-		currentUser.setTimeFormat(timeFormat.equals("24hr") ? false : true);
+        user.setTheme(!theme.equals("Light"));
+        currentUser.setTheme(!theme.equals("Light"));
 
-		user.setTheme(theme.equals("Light") ? false : true);
-		currentUser.setTheme(theme.equals("Light") ? false : true);
-
-		return userRepo.save(user);
-	}
+        return userRepo.save(user);
+    }
 }

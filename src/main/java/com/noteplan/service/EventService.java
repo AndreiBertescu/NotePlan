@@ -10,31 +10,46 @@ import com.noteplan.repositories.EventRepository;
 @Service
 public class EventService {
 
-	@Autowired
-	EventRepository eventRepo;
+    /**
+     * EventRepository interfacce
+     */
+    @Autowired
+    EventRepository eventRepo;
 
-	public Event save(User user, Event event) {
-		event.setUser(user);
-		String date = event.getDate();
-		date = date.substring(0, 10) + " " + date.substring(11);
-		event.setDate(date);
-		return eventRepo.save(event);
-	}
+    /**
+     * saves an event in the db
+     */
+    public Event save(final User user, final Event event) {
+        event.setUser(user);
+        String date = event.getDate();
+        date = date.substring(0, 10) + " " + date.substring(11);
+        event.setDate(date);
+        return eventRepo.save(event);
+    }
 
-	public Event getEventById(Long eventId) {
-		return eventRepo.findById(eventId).orElse(new Event());
-	}
+    /**
+     * finds an event by its id
+     */
+    public Event getEventById(final Long eventId) {
+        return eventRepo.findById(eventId).orElse(new Event());
+    }
 
-	public void delete(Long eventId) {
-		eventRepo.deleteById(eventId);
-	}
+    /**
+     * deletes an event
+     */
+    public void delete(final Long eventId) {
+        eventRepo.deleteById(eventId);
+    }
 
-	public void update(Event fullEvent, Event event) {
-		fullEvent.setTitle(event.getTitle());
-		fullEvent.setDate(event.getDate());
-		fullEvent.setColor(event.getColor());
-		fullEvent.setDescription(event.getDescription());
+    /**
+     * updates an event
+     */
+    public void update(final Event fullEvent, final Event event) {
+        fullEvent.setTitle(event.getTitle());
+        fullEvent.setDate(event.getDate());
+        fullEvent.setColor(event.getColor());
+        fullEvent.setDescription(event.getDescription());
 
-		eventRepo.save(fullEvent);
-	}
+        eventRepo.save(fullEvent);
+    }
 }

@@ -224,10 +224,10 @@ function gotoDate() {
 
 //function to get events from local storage
 function getEvents() {
-  var eventDateElements = document.querySelectorAll('.eventDay');
+  var eventDateElements = document.querySelectorAll('.event-day');
 	  
   eventDateElements.forEach(function(eventDay) {
-	var element = eventDay.querySelector('.eventDate');
+	var element = eventDay.querySelector('.event-date');
 	  
     var date = element.textContent.trim();
 	var parts = date.split(' of ');
@@ -235,7 +235,7 @@ function getEvents() {
     var day = parseInt(parts[0], 10);
     var month = months.indexOf(parts[1].split(' ')[0]) + 1;
     var year = parseInt(parts[1].split(' ')[1], 10);
-    var color = eventDay.querySelector('.smallHr').style.backgroundColor;
+    var color = eventDay.querySelector('.small-hr').style.backgroundColor;
 
 	eventsArr.push({
 	  day: day,
@@ -264,7 +264,7 @@ function convertTime(time) {
 function jump(day, month, year){
 	var foundElement = null;
 	var todayy = new Date(year, month, day);
-	var eventDateElements = document.querySelectorAll('.eventDate');
+	var eventDateElements = document.querySelectorAll('.event-date');
 	
 	eventDateElements.forEach(function(element) {
 	    var date = element.textContent.trim();
@@ -281,5 +281,5 @@ function jump(day, month, year){
 	});
 	
 	if (foundElement)
-	    document.querySelector('.scrollContainer').scrollTop = foundElement.offsetTop - 121;
+	    document.querySelector('.scroll-container').scrollTop = foundElement.offsetTop - 121;
 }

@@ -18,31 +18,31 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class ProfileController {
 
-	@Autowired
-	UserService userService;
-	SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+    @Autowired
+    UserService userService;
+    SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 
-	@GetMapping("/profile")
-	public String profileView(@AuthenticationPrincipal User user, ModelMap model) {
-		model.put("initials", DashboardController.getInitials(user.getName()));
+    @GetMapping("/profile")
+    public String profileView(@AuthenticationPrincipal User user, ModelMap model) {
+        model.put("initials", DashboardController.getInitials(user.getName()));
 
-		model.put("user", user);
-		model.put("timeFormat", !user.getTimeFormat() ? "24hr" : "12hr");
-		model.put("theme", !user.getTheme() ? "Light" : "Dark");
-		return "profile";
-	}
+        model.put("user", user);
+        model.put("timeFormat", !user.getTimeFormat() ? "24hr" : "12hr");
+        model.put("theme", !user.getTheme() ? "Light" : "Dark");
+        return "profile";
+    }
 
-	@PostMapping("/deleteAccount")
-	public String deleteAccount(@AuthenticationPrincipal User user, Authentication authentication,
-			HttpServletRequest request, HttpServletResponse response) {
-		this.logoutHandler.logout(request, response, authentication);
-		userService.delete(user.getId());
-		return "index";
-	}
+    @PostMapping("/deleteAccount")
+    public String deleteAccount(@AuthenticationPrincipal User user, Authentication authentication,
+            HttpServletRequest request, HttpServletResponse response) {
+        this.logoutHandler.logout(request, response, authentication);
+        userService.delete(user.getId());
+        return "index";
+    }
 
-	@PostMapping("/updatePreferences")
-	public String updatePreferences(@AuthenticationPrincipal User user, String timeFormat, String theme) {
-		userService.updatePreferences(user, timeFormat, theme);
-		return "redirect:/profile";
-	}
+    @PostMapping("/updatePreferences")
+    public String updatePreferences(@AuthenticationPrincipal User user, String timeFormat, String theme) {
+        userService.updatePreferences(user, timeFormat, theme);
+        return "redirect:/profile";
+    }
 }

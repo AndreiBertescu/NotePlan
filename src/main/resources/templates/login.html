@@ -15,33 +15,33 @@
 
 <body>
 <div class="overlay" id="auth">
-  <div class="overlayMainDiv">
-    <p class="smallText" style="font-weight: 100; font-size: 30px;">Login to NotePlan</p>
-    <hr class="bigHr">
-    <form action="login" method="post" id="registerForm">
+  <div class="overlay-main-div">
+    <p class="small-text" style="font-weight: 100; font-size: 30px;">Login to NotePlan</p>
+    <hr class="big-hr">
+    <form action="login" method="post" id="register-form">
       <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
       <div class="form-group">
-        <p class="errorText" style="margin-top: 15px;" th:text="${error}"></p>
+        <p class="error-text" style="margin-top: 15px;" th:text="${error}"></p>
         <label>E-mail:&nbsp;
-          <input class="formEntry" id="email" style="width: 60%;" type="email" placeholder="john.doe@example.com" th:field="${user.username}"  autocomplete="username" required>
+          <input class="form-entry" id="email" style="width: 60%;" type="email" placeholder="john.doe@example.com" th:field="${user.username}"  autocomplete="username" required>
         </label>
       </div>
       <div class="form-group">
         <label>Password:&nbsp;
-          <input class="formEntry" id="password" style="width: 50%;" type="password" th:field="${user.password}" required autocomplete="new-password">
-          <i class="bi bi-eye-slash eye" id="passwordEye" onClick="togglePassword()"></i> </label>
+          <input class="form-entry" id="password" style="width: 50%;" type="password" th:field="${user.password}" required autocomplete="new-password">
+          <i class="bi bi-eye-slash eye" id="password-eye" onClick="togglePassword()"></i> </label>
       </div>
       <div class="form-group"style=" margin-top: -3%;">
         <label>Remember me?&nbsp;
-          <input class="formEntry" style="width: 25px; margin-bottom: 10px;" type="checkbox" name="remember-me">
+          <input class="form-entry" style="width: 25px; margin-bottom: 10px;" type="checkbox" name="remember-me">
         </label>
-        <hr class="bigHr">
+        <hr class="big-hr">
       </div>
-      <button type="submit" class="overlayButton submitBtn">Login</button>
+      <button type="submit" class="overlay-button submit-btn">Login</button>
     </form>
     <hr style="margin-bottom: 3px;">
     <form action="register" method="get">
-      <button type="submit" class="loginBtn">Or if you don't have an account, Register</button>
+      <button type="submit" class="login-btn">Or if you don't have an account, Register</button>
     </form>
   </div>
 </div>

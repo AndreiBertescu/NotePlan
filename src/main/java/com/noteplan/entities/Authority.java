@@ -11,30 +11,49 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Authority implements GrantedAuthority {
 
-	private static final long serialVersionUID = 2012020929299864445L;
+    private static final long serialVersionUID = 2012020929299864445L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String authority;
+    /**
+     * id of authority
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@ManyToOne
-	private User user;
+    /**
+     * authority - gives access to certain parts of the domain
+     */
+    private String authority;
 
-	@Override
-	public String getAuthority() {
-		return this.authority;
-	}
+    /**
+     * parent user of authority
+     */
+    @ManyToOne
+    private User user;
 
-	public void setAuthority(String authority) {
-		this.authority = authority;
-	}
+    @Override
+    public String getAuthority() {
+        return this.authority;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    /**
+     * authority setter
+     */
+    public void setAuthority(final String authority) {
+        this.authority = authority;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    /**
+     * user getter
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * user setter
+     */
+    public void setUser(final User user) {
+        this.user = user;
+    }
 }

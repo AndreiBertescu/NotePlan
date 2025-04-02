@@ -15,17 +15,17 @@
 
 <body>
 <div class="overlay" id="auth">
-  <div class="overlayMainDiv">
+  <div class="overlay-main-div">
     <div th:style="${succsesfulValidation} ? 'display: inherit;' : 'display: none;'">
       <p class="pr" style="font-size: 20px;">Congratulations, your account has been verified. you can close this tab.</p>
       <form action="login" method="get" style="font-size: 17px;">
-        <button type="submit" class="loginBtn">Or click here to Login</button>
+        <button type="submit" class="login-btn">Or click here to Login</button>
       </form>
     </div>
     <div th:style="${succsesfulValidation} ? 'display: none;' : 'display: inherit;'">
       <p class="pr" style="font-size: 20px;">The link is invalid or broken!</p>
       <form action="register" method="get" style="font-size: 17px;">
-        <button type="submit" class="loginBtn">Click here to Register</button>
+        <button type="submit" class="login-btn">Click here to Register</button>
       </form>
     </div>
   </div>

@@ -10,11 +10,14 @@ import com.noteplan.entities.Note;
 
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Long> {
-	@Override
-	Optional<Note> findById(Long id);
+    @Override
+    Optional<Note> findById(Long id);
 
-	Set<Note> findAllByUser_id(Long id);
+    /**
+     * finds all the notes of a given user
+     */
+    Set<Note> findAllByUser_id(Long id);
 
-	@Override
-	void deleteById(Long eventId);
+    @Override
+    void deleteById(Long eventId);
 }

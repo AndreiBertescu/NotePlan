@@ -8,8 +8,11 @@ import com.noteplan.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	User findByUsername(String username);
+    /**
+     * finds a user in db by its username
+     */
+    User findByUsername(String username);
 
-	@Override
-	void deleteById(Long eventId);
+    @Override
+    void deleteById(Long eventId);
 }

@@ -16,49 +16,85 @@ import jakarta.persistence.TemporalType;
 @Entity
 public class ConfirmationToken {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+    /**
+     * ConfirmationToken id
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-	private String confirmationToken;
+    /**
+     * confirmationToken value
+     */
+    private String confirmationToken;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdDate;
+    /**
+     * date when the confirmationToken was created
+     */
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
 
-	@OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-	@JoinColumn(nullable = false, name = "user_id")
-	private User user;
+    /**
+     * user who owns/created the confirmationToken
+     */
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "user_id")
+    private User user;
 
-	public ConfirmationToken() {
-	}
+    /**
+     * ConfirmationToken blank constructor - it is used to give authority
+     */
+    public ConfirmationToken() {
+    }
 
-	public ConfirmationToken(User user) {
-		this.user = user;
-		createdDate = new Date();
-		confirmationToken = UUID.randomUUID().toString();
-	}
+    /**
+     * ConfirmationToken constructor from user
+     */
+    public ConfirmationToken(final User user) {
+        this.user = user;
+        createdDate = new Date();
+        confirmationToken = UUID.randomUUID().toString();
+    }
 
-	public String getConfirmationToken() {
-		return confirmationToken;
-	}
+    /**
+     * confirmationToken getter
+     */
+    public String getConfirmationToken() {
+        return confirmationToken;
+    }
 
-	public void setConfirmationToken(String confirmationToken) {
-		this.confirmationToken = confirmationToken;
-	}
+    /**
+     * confirmationToken setter
+     */
+    public void setConfirmationToken(final String confirmationToken) {
+        this.confirmationToken = confirmationToken;
+    }
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
+    /**
+     * createdDate getter
+     */
+    public Date getCreatedDate() {
+        return createdDate;
+    }
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
+    /**
+     * createdDate setter
+     */
+    public void setCreatedDate(final Date createdDate) {
+        this.createdDate = createdDate;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    /**
+     * user getter
+     */
+    public User getUser() {
+        return user;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    /**
+     * user setter
+     */
+    public void setUser(final User user) {
+        this.user = user;
+    }
 }

@@ -10,35 +10,45 @@ import com.noteplan.entities.User;
 
 public class CustomSecurityUser extends User implements UserDetails {
 
-	private static final long serialVersionUID = 1364622556423260049L;
-	Set<Authority> authorities = new HashSet<>();
+    private static final long serialVersionUID = 1364622556423260049L;
+    
+    /**
+     * stores all the authorities for this user
+     */
+    Set<Authority> authorities = new HashSet<>();
 
-	public CustomSecurityUser() {
-	}
+    /**
+     * blank constructor
+     */
+    public CustomSecurityUser() {
+    }
 
-	public CustomSecurityUser(User user) {
-		super();
-		this.setId(user.getId());
-		this.setName(user.getName());
-		this.setUsername(user.getUsername());
-		this.setPassword(user.getPassword());
-		this.setAuthorities(user.getAuthorities());
-		this.setTimeFormat(user.getTimeFormat());
-		this.setTheme(user.getTheme());
-	}
+    /**
+     * constructor extending the user class
+     */
+    public CustomSecurityUser(final User user) {
+        super();
+        this.setId(user.getId());
+        this.setName(user.getName());
+        this.setUsername(user.getUsername());
+        this.setPassword(user.getPassword());
+        this.setAuthorities(user.getAuthorities());
+        this.setTimeFormat(user.getTimeFormat());
+        this.setTheme(user.getTheme());
+    }
 
-	@Override
-	public Set<Authority> getAuthorities() {
-		return super.getAuthorities();
-	}
+    @Override
+    public Set<Authority> getAuthorities() {
+        return super.getAuthorities();
+    }
 
-	@Override
-	public String getPassword() {
-		return super.getPassword();
-	}
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
 
-	@Override
-	public String getUsername() {
-		return super.getUsername();
-	}
+    @Override
+    public String getUsername() {
+        return super.getUsername();
+    }
 }

@@ -11,13 +11,19 @@ import com.noteplan.entities.Event;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-	Event findByDate(String date);
+    /**
+     * finds all the notes on a given date
+     */
+    Event findByDate(String date);
 
-	@Override
-	Optional<Event> findById(Long id);
+    @Override
+    Optional<Event> findById(Long id);
 
-	Set<Event> findAllByUser_id(Long id);
+    /**
+     * finds all the events of a given user
+     */
+    Set<Event> findAllByUser_id(Long id);
 
-	@Override
-	void deleteById(Long eventId);
+    @Override
+    void deleteById(Long eventId);
 }

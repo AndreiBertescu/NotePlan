@@ -1,74 +1,101 @@
 :root {
   --primary-clr: #343a40;
   --background-clr: #212529;
-  --darkNotes-clr: #725500;
+  --dark-notes-clr: #725500;
 }
-/*everything*/
-#mainContainer, #mainContainer tr {
+
+/* everything */
+#main-container, #main-container tr {
   background: var(--background-clr);
   color: white;
   width: 100%;
   height: calc(100% - 9%);
 }
-/*semantic calendar*/
+
+/* semantic calendar */
 .calendar .days .day {
   color: white;
   border: 1px solid var(--primary-clr);
 }
+
 .calendar .days .day:nth-child(7n + 1) {
   border-left: 2px solid var(--primary-clr);
 }
+
 .calendar .days .day:nth-child(7n) {
   border-right: 2px solid var(--primary-clr);
 }
+
 .calendar .days .day:nth-child(-n + 7) {
   border-top: 2px solid var(--primary-clr);
 }
+
 .calendar .days .day:nth-child(n + 29) {
   border-bottom: 2px solid var(--primary-clr);
 }
-.calendar .goto-today .goto, .calendar .goto-today .goto button, .calendar .goto-today button {
+
+.calendar .goto-today .goto,
+.calendar .goto-today button,
+.calendar .goto-today .goto button {
   border: 1px solid ivory;
   color: white;
 }
-.date-input, .calendar .goto-today .goto input {
+
+.date-input,
+.calendar .goto-today .goto input {
   background: var(--background-clr);
   color: white;
 }
-/*notes color*/
-.note, #notesButton, #notes .bigHr, .noteBtn, #addNewNoteOverlay hr, #viewNoteOverlay hr {
-  background: var(--darkNotes-clr);
+
+/* notes color */
+.note,
+.noteBtn,
+#notesButton,
+#notes .bigHr,
+#add-new-note-overlay hr,
+#view-note-overlay hr {
+  background: var(--dark-notes-clr);
   color: white;
 }
+
 #calendar {
-  border-right: 2px solid var(--darkNotes-clr);
+  border-right: 2px solid var(--dark-notes-clr);
 }
-#notesButton {
-  border: 1px solid var(--darkNotes-clr);
+
+#notes-button {
+  border: 1px solid var(--dark-notes-clr);
 }
-/*overlays*/
-.overlayMainDiv, .formEntry {
+
+/* overlays */
+.overlay-main-div,
+.form-entry {
   background: var(--background-clr);
   border: 2px solid var(--primary-clr);
   color: white;
 }
-.overlayMainDiv .smallText {
+
+.overlay-main-div .small-text {
   color: white;
 }
-/*login and register*/
+
+/* login and register */
 #auth {
   background: var(--background-clr);
 }
-#auth .loginBtn {
+
+#auth .login-btn {
   background: var(--background-clr);
   padding-bottom: 10px;
   color: rgb(51, 125, 255);
 }
-#niceErrorText {
+
+#nice-error-text {
   color: white;
 }
-/*profile page*/
-#profileMainContainer, #profileMainContainer .smallText {
+
+/* profile page */
+#profile-main-container,
+#profile-main-container .small-text {
   background: var(--background-clr);
   color: white;
 }

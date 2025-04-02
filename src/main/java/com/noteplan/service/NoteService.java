@@ -13,36 +13,53 @@ import com.noteplan.repositories.NoteRepository;
 @Service
 public class NoteService {
 
-	@Autowired
-	NoteRepository noteRepo;
+    /**
+     * NoteRepository interface
+     */
+    @Autowired
+    NoteRepository noteRepo;
 
-	public Note save(User user, Note note, LinkedHashSet<Checkitem> checklist) {
-		note.setUser(user);
+    /**
+     * saves the new note to the db
+     */
+    public Note save(final User user, final Note note, final LinkedHashSet<Checkitem> checklist) {
+        note.setUser(user);
 
-		for (Checkitem checkitem : checklist)
-			checkitem.setNote(note);
-		note.setChecklist(checklist);
+        for (Checkitem checkitem : checklist) {
+            checkitem.setNote(note);
+        }
+        note.setChecklist(checklist);
 
-		return noteRepo.save(note);
-	}
+        return noteRepo.save(note);
+    }
 
-	public Note update(Note fullNote, Note note, LinkedHashSet<Checkitem> checklist) {
-		fullNote.setTitle(note.getTitle());
-		fullNote.setText(note.getText());
+    /**
+     * updates an existing note from the db
+     */
+    public Note update(final Note fullNote, final Note note, final LinkedHashSet<Checkitem> checklist) {
+        fullNote.setTitle(note.getTitle());
+        fullNote.setText(note.getText());
 
-		fullNote.setChecklist(new LinkedHashSet<>());
-		for (Checkitem checkitem : checklist)
-			checkitem.setNote(fullNote);
-		fullNote.setChecklist(checklist);
+        fullNote.setChecklist(new LinkedHashSet<>());
+        for (Checkitem checkitem : checklist) {
+            checkitem.setNote(fullNote);
+        }
+        fullNote.setChecklist(checklist);
 
-		return noteRepo.save(fullNote);
-	}
+        return noteRepo.save(fullNote);
+    }
 
-	public Note getNoteById(Long noteId) {
-		return noteRepo.findById(noteId).orElse(new Note());
-	}
+    /**
+     * finds a note by its id
+     */
+    public Note getNoteById(final Long noteId) {
+        return noteRepo.findById(noteId).orElse(new Note());
+    }
 
-	public void delete(Long noteId) {
-		noteRepo.deleteById(noteId);
-	}
+    /**
+     * deletes a note by its id
+     */
+    public void delete(final Long noteId) {
+        noteRepo.deleteById(noteId);
+    }
 }

@@ -5,27 +5,34 @@
   --notes-clr: #ffd557;
   --events-clr: #007bff;
 }
+
 * {
   margin: 0;
   padding: 0;
   border-width: 0;
   text-align: center;
 }
+
 html, body {
   height: 100vh;
 }
-#mainContainer, #mainContainer tr {
+
+#main-container,
+#main-container tr {
   background: white;
   width: 100%;
   height: calc(100% - 9%);
 }
-.bigText {
+
+.big-text {
   font-size: 30px;
 }
-.smallText {
+
+.small-text {
   font-size: 25px;
   color: #979797;
 }
+
 hr {
   margin: 5px 0;
   margin-left: 15%;
@@ -34,19 +41,22 @@ hr {
   color: gray;
   background: gray;
 }
-.bigHr {
+
+.big-hr {
   margin: 4px 0;
   margin-left: 5%;
   height: 2px;
   width: 90%;
   background-color: var(--primary-clr);
 }
-.pHeader {
+
+.p-header {
   font-size: 40px;
   padding: 1%;
   font-weight: 100;
 }
-.flexContainer {
+
+.flex-container {
   height: 100%;
   width: 100%;
   display: inline-block;
@@ -54,7 +64,8 @@ hr {
   max-height: 82vh;
   overflow: hidden;
 }
-.scrollContainer {
+
+.scroll-container {
   width: 100%;
   max-height: 70vh;
   overflow: auto;
@@ -63,11 +74,13 @@ hr {
   word-wrap: break-word;
   word-break: break-word;
 }
-.addButtons {
+
+.add-buttons {
   height: 5%;
 }
+
 /* --------------------Navbar-------------------- */
-#Navbar {
+#navbar {
   z-index: 100;
   width: 100%;
   height: 9%;
@@ -75,13 +88,15 @@ hr {
   background: #343a40;
   min-height: 50px;
 }
-#Navbar .button {
+
+#navbar .button {
   color: white;
   text-transform: uppercase;
   margin: 0 15px;
   margin-top: -5px;
 }
-#Navbar #logout {
+
+#navbar #logout {
   border: 1px solid #28a745;
   border-radius: 5px;
   padding: 8px 15px;
@@ -92,22 +107,26 @@ hr {
   background: var(--primary-clr);
   transition-duration: 0.2s;
 }
-#Navbar #logout:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+
+#navbar #logout:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
   color: white;
 }
-#Navbar #logout:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+
+#navbar #logout:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
   color: white;
 }
-.profileBtn {
+
+.profile-btn {
   display: flex;
   align-items: center;
   background: none;
   border: none;
   outline: none;
 }
-.profileBtn button {
+
+.profile-btn button {
   background: var(--primary-clr);
   color: white;
   margin: 0 15px;
@@ -115,15 +134,18 @@ hr {
   border: none;
   transition-duration: 0.2s;
 }
-.profileBtn button:hover {
-  color: rgba(255, 255, 255, .70);
+
+.profile-btn button:hover {
+  color: rgba(255, 255, 255, 70%);
   outline: none;
 }
-.profileBtn button:active {
-  color: rgba(255, 255, 255, .55);
+
+.profile-btn button:active {
+  color: rgba(255, 255, 255, 55%);
   outline: none;
 }
-#profileSpan {
+
+#profile-span {
   height: 5vh;
   width: 5vh;
   display: flex;
@@ -131,28 +153,31 @@ hr {
   justify-content: center;
   color: black;
   background: #D6D6D6;
-  border: 2px solid black;
   border-radius: 4vh;
   text-transform: uppercase;
 }
 /* --------------------/Navbar-------------------- */
+
 /* --------------------Upcoming Events-------------------- */
-#currentEvents {
+#current-events {
   width: 30vw;
   max-width: 30vw;
   vertical-align: top;
 }
-.eventDay {
+
+.event-day {
   margin: 3%;
   padding: 0 5%;
   padding-bottom: 5%;
   border-radius: 2px;
 }
-.eventDate {
+
+.event-date {
   margin-top: 10px;
   font-size: 20px;
 }
-.upcomingEvent {
+
+.upcoming-event {
   margin-top: 15px;
   border-radius: 2px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -160,31 +185,38 @@ hr {
   border-radius: 5px;
   cursor: pointer;
 }
-.upcomingEvent:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+
+.upcoming-event:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
 }
-.upcomingEvent:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+
+.upcoming-event:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
 }
-.smallHr {
+
+.small-hr {
   margin-top: 0;
   margin-bottom: 0;
 }
+
 .title {
   text-align: center;
   margin-top: 10px;
 }
-.eventTitle {
+
+.event-title {
   font-weight: bold;
   max-height: 1.5rem;
   overflow: hidden;
   margin: 0;
 }
-.eventTime {
+
+.event-time {
   font-weight: bold;
   margin-bottom: -5px;
 }
-.eventsButton {
+
+.events-button {
   margin-top: 5px;
   padding: 5px 10px;
   border: 1px solid var(--events-clr);
@@ -195,17 +227,21 @@ hr {
   text-decoration: none;
   transition-duration: 0.2s;
 }
-.eventsButton:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+
+.events-button:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
   text-decoration: none;
 }
-.eventsButton:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+
+.events-button:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
 }
-#currentEvents .bigHr {
+
+#current-events .big-hr {
   background-color: var(--events-clr);
 }
 /* --------------------/Upcoming Events-------------------- */
+
 /* --------------------Calendar-------------------- */
 #calendar {
   width: 40%;
@@ -214,19 +250,22 @@ hr {
   border-left: 2px solid var(--events-clr);
 }
 /* --------------------/Calendar-------------------- */
+
 /* --------------------Notes-------------------- */
 #notes {
   width: 30vw;
   max-width: 30vw;
   vertical-align: top;
 }
-#notesContainer {
+
+#notes-container {
   height: 100%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
 .note {
   background: var(--notes-clr);
   color: black;
@@ -244,13 +283,16 @@ hr {
   word-wrap: break-word;
   word-break: break-word;
 }
+
 .note:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
 }
+
 .note:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
 }
-#notesButton {
+
+#notes-button {
   margin-top: 5px;
   padding: 5px 10px;
   border: 1px solid var(--notes-clr);
@@ -260,13 +302,16 @@ hr {
   color: var(--primary-clr);
   transition-duration: 0.2s;
 }
-#notesButton:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+
+#notes-button:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
 }
-#notesButton:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+
+#notes-button:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
 }
-.noteTitle {
+
+.note-title {
   text-align: left;
   font-size: 20px;
   padding: 7px 5px;
@@ -274,59 +319,69 @@ hr {
   white-space: nowrap;
   overflow: hidden;
 }
-.noteText {
+
+.note-text {
   padding: 7px;
   text-align: left;
   font-size: 15px;
 }
-.noteCheckitem{
+
+.note-checkitem {
 	display: flex;
 	padding-left: 7px;
 }
-.noteTextCheckitem{
+
+.note-text-checkitem {
   text-align: left;
   font-size: 15px;
   margin: 0 0 5px 7px;
 }
-#notes .bigHr {
+
+#notes .big-hr {
   background-color: var(--notes-clr);
 }
 /* --------------------/Notes-------------------- */
+
 /* --------------------Overlay-------------------- */
 .overlay {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 50%);
   z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.overlayMainDiv {
+
+.overlay-main-div {
   z-index: 100;
   background: white;
-  border: 2px solid #D8D8D8;
+  border: 2px solid #d8d8d8;
   border-radius: 5px;
   min-width: 350px;
 }
-.overlayMainDiv .smallText {
+
+.overlay-main-div .small-text {
   padding: 10px 0;
   color: var(--primary-clr);
   font-weight: 500;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-.overlay .bigHr {
+
+.overlay .big-hr {
   margin-left: 10%;
   width: 80%;
 }
+
 .form-group {
   margin: 3%;
   font-size: 18px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-.formEntry {
+
+.form-entry {
   width: 80%;
   background: white;
   padding: 3%;
@@ -336,91 +391,118 @@ hr {
   font-size: 15px;
   margin-bottom: 10px;
 }
+
 label {
   font-size: 18px;
   width: 100%;
 }
-.buttonDiv {
+
+.button-div {
   display: flex;
   justify-content: space-between;
   max-width: 100%;
 }
-.overlayButton {
+
+.overlay-button {
   padding: 10px 15px;
   margin: 5px 3%;
   color: white;
   border-radius: 5px;
   font-size: 15px;
 }
-.submitBtn {
+
+.submit-btn {
   background: var(--events-clr);
   transition-duration: 0.2s;
 }
-.cancelBtn {
+
+.cancel-btn {
   background: #dc3545;
   transition-duration: 0.2s;
 }
-.submitBtn:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+
+.submit-btn:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
 }
-.cancelBtn:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+
+.cancel-btn:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
 }
-.submitBtn:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+
+.submit-btn:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
 }
-.cancelBtn:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+
+.cancel-btn:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
 }
-.noteBtn {
+
+.note-btn {
   background: var(--notes-clr);
   color: var(--primary-clr);
   transition-duration: 0.2s;
 }
-.noteBtn:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+
+.note-btn:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
 }
-.noteBtn:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+
+.note-btn:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
 }
-.notLogout {
+
+.not-logout {
   background: #28a745;
   transition-duration: 0.2s;
 }
-.notLogout:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+
+.not-logout:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
 }
-.notLogout:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+
+.not-logout:active {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
 }
-#addNewEventOverlay hr, #viewEventOverlay hr {
+
+#add-new-event-overlay hr, #view-event-overlay hr {
   background: var(--events-clr);
 }
-#addNewNoteOverlay hr, #viewNoteOverlay hr {
+
+#add-new-event-overlay hr, #view-note-overlay hr {
   background: var(--notes-clr);
 }
-#addNewEventOverlay textarea, #viewEventOverlay textarea {
+
+#add-new-event-overlay textarea,
+#view-event-overlay textarea {
   margin: 0;
   resize: none;
 }
-#addNewNoteOverlay textarea, #viewNoteOverlay textarea {
+
+#add-new-note-overlay textarea,
+#view-note-overlay textarea {
   margin: 0;
   max-height: 32vh;
   width: 30vw;
   min-width: 270px;
 }
-#addNewNoteOverlay .overlayMainDiv, #viewNoteOverlay .overlayMainDiv {
+
+#add-new-note-overlay .overlay-main-div,
+#view-note-overlay .overlay-main-div {
   width: 35vw;
 }
-#yesChecklist, #yesChecklistUpdate {
+
+#yes-checklist,
+#yes-checklist-update {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.newCheckitemBtn {
+
+.new-checkitem-btn {
   width: 50%;
 }
-.checklistScrollContainer {
+
+.checklist-scroll-container {
   min-width: 90%;
   max-width: 90%;
   max-height: 30vh;
@@ -432,7 +514,8 @@ label {
   display: flex;
   flex-direction: column;
 }
-.checklistScrollContainer .checkitem {
+
+.checklist-scroll-container .checkitem {
   display: flex;
   font-weight: normal;
   align-items: baseline;
@@ -440,7 +523,8 @@ label {
   word-break: break-all;
   width: 100%;
 }
-.checkitem .formEntry {
+
+.checkitem .form-entry {
   min-height: 2.3em;
   max-height: 2.3em;
   width: 70%;
@@ -448,7 +532,8 @@ label {
   overflow: hidden;
   margin-left: 3%;
 }
-.checkitem .cancelBtn {
+
+.checkitem .cancel-btn {
   padding: 0 10px;
   margin: 5px 3%;
   width: 20%;
@@ -456,36 +541,43 @@ label {
   height: 2em;
 }
 /* --------------------/Overlay-------------------- */
+
 /* --------------------Auth-------------------- */
 #auth {
   background: white;
 }
-#auth .overlayMainDiv {
+
+#auth .overlay-main-div {
   border: none;
   width: 30%;
   min-width: 450px;
 }
+
 #auth label {
   font-size: 15px;
   width: 85%;
 }
-.loginBtn {
+
+.login-btn {
   background: white;
   text-decoration: underline;
   border: none;
   color: blue;
   transition-duration: 0.2s;
 }
-.errorText {
+
+.error-text {
   color: red;
   font-size: 12px;
   margin-bottom: 0;
   margin-top: -15px;
 }
-#niceErrorText {
+
+#nice-error-text {
   color: black;
   margin-top: -15px;
 }
+
 .eye {
   margin-left: -35px;
   cursor: pointer;
@@ -493,60 +585,75 @@ label {
   padding: 5px;
   border-radius: 3px;
 }
+
 .eye:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .10);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
 }
+
 .eye:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .25);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
 }
 /* --------------------/Auth-------------------- */
+
 /* --------------------Profile-------------------- */
-#profileMainContainer {
+#profile-main-container {
   background: white;
   width: 100%;
   height: calc(100% - 9%);
 }
-#profileMainContainer .smallText {
+
+#profile-main-container .small-text {
   color: var(--primary-clr);
   font-weight: 100;
   font-size: 35px;
   padding-top: 15px;
 }
-#profileMainContainer .pHeader {
+
+#profile-main-container .p-header {
   text-align: left;
   padding-left: 20%;
   font-size: 20px;
   font-weight: bold;
 }
-#profileMainContainer .pr {
+
+#profile-main-container .pr {
   text-align: left;
   padding-left: 20%;
   display: flex;
   max-width: 700px;
 }
-#profileMainContainer label, #profileMainContainer input[type="radio"], input[type="checkbox"] {
+
+#profile-main-container label,
+#profile-main-container input[type="radio"],
+#profile-main-container input[type="checkbox"] {
   text-align: left;
   margin-bottom: 5px;
   font-size: inherit;
 }
-#updatePreferences {
+
+#update-preferences {
   display: flex;
   flex-direction: column;
 }
-#updatePreferences .submitBtn {
+
+#update-preferences .submit-btn {
   width: 160px;
   margin-left: 20%;
 }
+
 /* --------------------/Profile-------------------- */
 /* width */ ::-webkit-scrollbar {
   width: 10px;
 }
+
 /* Track */ ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
+
 /* Handle */ ::-webkit-scrollbar-thumb {
   background: #888;
 }
+
 /* Handle on hover */ ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }

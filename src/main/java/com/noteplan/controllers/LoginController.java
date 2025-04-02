@@ -28,117 +28,117 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class LoginController {
 
-	@Autowired
-	UserService userService;
+    @Autowired
+    UserService userService;
 
-	@Autowired
-	ConfirmationTokenRepository confirmationTokenRepository;
+    @Autowired
+    ConfirmationTokenRepository confirmationTokenRepository;
 
-	@Autowired
-	EmailService emailService;
+    @Autowired
+    EmailService emailService;
 
-	SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+    SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 
-	@GetMapping("/login")
-	public String login(ModelMap model, Authentication authentication, HttpServletRequest request,
-			HttpServletResponse response, String error) {
-		this.logoutHandler.logout(request, response, authentication);
+    @GetMapping("/login")
+    public String login(ModelMap model, Authentication authentication, HttpServletRequest request,
+            HttpServletResponse response, String error) {
+        this.logoutHandler.logout(request, response, authentication);
 
-		model.put("user", new User());
-		model.put("error", (error == null) ? "" : "Invalid email or password.");
-		return "login";
-	}
+        model.put("user", new User());
+        model.put("error", (error == null) ? "" : "Invalid email or password.");
+        return "login";
+    }
 
-	@PostMapping("/login")
-	public String loginPost(User user) {
-		return "redirect:/dashboard";
-	}
+    @PostMapping("/login")
+    public String loginPost(User user) {
+        return "redirect:/dashboard";
+    }
 
-	@GetMapping("/register")
-	public String register(ModelMap model, Authentication authentication, HttpServletRequest request,
-			HttpServletResponse response) {
-		this.logoutHandler.logout(request, response, authentication);
+    @GetMapping("/register")
+    public String register(ModelMap model, Authentication authentication, HttpServletRequest request,
+            HttpServletResponse response) {
+        this.logoutHandler.logout(request, response, authentication);
 
-		model.put("error", "");
-		model.put("user", new User());
-		return "register";
-	}
+        model.put("error", "");
+        model.put("user", new User());
+        return "register";
+    }
 
-	@PostMapping("/register")
-	public String registerPost(User user, ModelMap model, HttpServletRequest request) {
-		try {
-			userService.checkValidity(user);
-			userService.save(user);
+    @PostMapping("/register")
+    public String registerPost(User user, ModelMap model, HttpServletRequest request) {
+        try {
+            userService.checkValidity(user);
+            userService.save(user);
 
-			// send verification email
-			ConfirmationToken confirmationToken = new ConfirmationToken(user);
-			confirmationTokenRepository.save(confirmationToken);
+            // send verification email
+            ConfirmationToken confirmationToken = new ConfirmationToken(user);
+            confirmationTokenRepository.save(confirmationToken);
 
-			model.put("email", user.getUsername());
-			model.put("token", confirmationToken.getConfirmationToken());
-			try {
-				emailService.sendEmail(user.getUsername(), confirmationToken.getConfirmationToken(),
-						request.getRequestURL().substring(0, request.getRequestURL().lastIndexOf("/") + 1));
-			} catch (MessagingException e) {
-				e.printStackTrace();
-			}
+            model.put("email", user.getUsername());
+            model.put("token", confirmationToken.getConfirmationToken());
+            try {
+                emailService.sendEmail(user.getUsername(), confirmationToken.getConfirmationToken(),
+                        request.getRequestURL().substring(0, request.getRequestURL().lastIndexOf("/") + 1));
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
 
-			return "confirmation";
-		} catch (DataIntegrityViolationException e) {
-			model.put("error", e.getMessage());
-			return "register";
-		}
-	}
+            return "confirmation";
+        } catch (DataIntegrityViolationException e) {
+            model.put("error", e.getMessage());
+            return "register";
+        }
+    }
 
-	@RequestMapping(value = "/confirm-account", method = { RequestMethod.GET, RequestMethod.POST })
-	public String confirmUserAccount(ModelMap model, @RequestParam("token") String confirmationToken) {
-		ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+    @RequestMapping(value = "/confirm-account", method = { RequestMethod.GET, RequestMethod.POST })
+    public String confirmUserAccount(ModelMap model, @RequestParam("token") String confirmationToken) {
+        ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 
-		if (token != null) {
-			User user = userService.findByUsername(token.getUser().getUsername());
+        if (token != null) {
+            User user = userService.findByUsername(token.getUser().getUsername());
 
-			// grant authorization
-			Authority auth = new Authority();
-			auth.setAuthority("ROLE_USER");
-			auth.setUser(user);
-			user.getAuthorities().add(auth);
-			userService.saveWithEncodedPassword(user);
+            // grant authorization
+            Authority auth = new Authority();
+            auth.setAuthority("ROLE_USER");
+            auth.setUser(user);
+            user.getAuthorities().add(auth);
+            userService.saveWithEncodedPassword(user);
 
-			model.put("succsesfulValidation", true);
-		} else
-			model.put("succsesfulValidation", false);
+            model.put("succsesfulValidation", true);
+        } else
+            model.put("succsesfulValidation", false);
 
-		return "verificationStatus";
-	}
+        return "verificationStatus";
+    }
 
-	@GetMapping("/verificationStatus")
-	public String verificationStatus() {
-		return "verificationStatus";
-	}
+    @GetMapping("/verificationStatus")
+    public String verificationStatus() {
+        return "verificationStatus";
+    }
 
-	@GetMapping("/confirmation")
-	public String confirmation(ModelMap model, @ModelAttribute("email") String email,
-			@ModelAttribute("token") String confirmationToken) {
+    @GetMapping("/confirmation")
+    public String confirmation(ModelMap model, @ModelAttribute("email") String email,
+            @ModelAttribute("token") String confirmationToken) {
 
-		model.put("email", email);
-		model.put("token", confirmationToken);
+        model.put("email", email);
+        model.put("token", confirmationToken);
 
-		return "confirmation";
-	}
+        return "confirmation";
+    }
 
-	@PostMapping("/resendEmail")
-	public String resendEmail(@RequestParam("email") String email, @RequestParam("token") String confirmationToken,
-			RedirectAttributes redirectAttributes, HttpServletRequest request) {
+    @PostMapping("/resendEmail")
+    public String resendEmail(@RequestParam("email") String email, @RequestParam("token") String confirmationToken,
+            RedirectAttributes redirectAttributes, HttpServletRequest request) {
 
-		try {
-			emailService.sendEmail(email, confirmationToken,
-					request.getRequestURL().substring(0, request.getRequestURL().lastIndexOf("/") + 1));
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
+        try {
+            emailService.sendEmail(email, confirmationToken,
+                    request.getRequestURL().substring(0, request.getRequestURL().lastIndexOf("/") + 1));
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
 
-		redirectAttributes.addFlashAttribute("email", email);
-		redirectAttributes.addFlashAttribute("token", confirmationToken);
-		return "redirect:/confirmation";
-	}
+        redirectAttributes.addFlashAttribute("email", email);
+        redirectAttributes.addFlashAttribute("token", confirmationToken);
+        return "redirect:/confirmation";
+    }
 }

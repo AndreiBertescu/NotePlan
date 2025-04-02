@@ -10,73 +10,134 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Event {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    private static final int COLOR_LENGTH = 7;
+    private static final int STRING_LENGTH = 100;
+    private static final int NOTE_LENGTH = 1000;
 
-	@ManyToOne
-	private User user;
+    /**
+     * id of event
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(length = 50)
-	private String date;
-	@Column(length = 100)
-	private String title;
-	@Column(length = 1000)
-	private String description;
-	@Column(length = 7)
-	private String color;
+    /**
+     * parent user
+     */
+    @ManyToOne
+    private User user;
 
-	public User getUser() {
-		return user;
-	}
+    /**
+     * date of event
+     */
+    @Column(length = STRING_LENGTH)
+    private String date;
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    /**
+     * title of event
+     */
+    @Column(length = STRING_LENGTH)
+    private String title;
 
-	public long getId() {
-		return id;
-	}
+    /**
+     * description of event
+     */
+    @Column(length = NOTE_LENGTH)
+    private String description;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    /**
+     * color of event
+     */
+    @Column(length = COLOR_LENGTH)
+    private String color;
 
-	public String getDate() {
-		return date;
-	}
+    /**
+     * event parent user getter
+     */
+    public User getUser() {
+        return user;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    /**
+     * event parent user setter
+     */
+    public void setUser(final User user) {
+        this.user = user;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    /**
+     * event id getter
+     */
+    public long getId() {
+        return id;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    /**
+     * event id setter
+     */
+    public void setId(final long id) {
+        this.id = id;
+    }
 
-	public String getColor() {
-		return color;
-	}
+    /**
+     * event date getter
+     */
+    public String getDate() {
+        return date;
+    }
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+    /**
+     * event date setter
+     */
+    public void setDate(final String date) {
+        this.date = date;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    /**
+     * event description getter
+     */
+    public String getDescription() {
+        return description;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    /**
+     * event description setter
+     */
+    public void setDescription(final String description) {
+        this.description = description;
+    }
 
-	@Override
-	public String toString() {
-		return "Event [id=" + id + ", date=" + date + ", title=" + title + ", description=" + description + ", color="
-				+ color + "]";
-	}
+    /**
+     * event color getter
+     */
+    public String getColor() {
+        return color;
+    }
+
+    /**
+     * event color setter
+     */
+    public void setColor(final String color) {
+        this.color = color;
+    }
+
+    /**
+     * event title getter
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * event title setter
+     */
+    public void setTitle(final String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Event [id=" + id + ", date=" + date + ", title=" + title + ", description=" + description + ", color="
+                + color + "]";
+    }
 }

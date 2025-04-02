@@ -16,29 +16,29 @@
 </head>
 
 <body>
-<table id="Navbar">
+<table id="navbar">
   <tr>
-    <td class="Btn" style="width:20%; font-size: 25px;"><form action="dashboard" method="get">
+    <td style="width:20%; font-size: 25px;"><form action="dashboard" method="get">
         <button type="submit" class="button" style="background: none; outline: none;"> NotePlan </button>
       </form></td>
-    <td class="Btn" style="width:5%;"><p class="button">Profile </p></td>
-    <td class="Btn" style="width:53%;"></td>
-    <td class="Btn" style="width:9%;"><a class="button" id="logout" onClick="loadLogoutOverlay()"> Logout </a></td>
-    <td class="Btn" style="width:13%;"><form action="profile" method="get" class="profileBtn">
+    <td style="width:5%;"><p class="button">Profile </p></td>
+    <td style="width:53%;"></td>
+    <td style="width:9%;"><a class="button" id="logout" onClick="loadLogoutOverlay()"> Logout </a></td>
+    <td style="width:13%;"><form action="profile" method="get" class="profile-btn">
         <button type="submit" th:text="|${user.name}&nbsp;&nbsp;|">Username&nbsp;&nbsp;</button>
-        <span id="profileSpan" th:text="${initials}">XY</span>
+        <span id="profile-span" th:text="${initials}">XY</span>
       </form></td>
   </tr>
 </table>
-<div id="profileMainContainer">
-  <p class="smallText" th:text="${user.name}">Name</p>
-  <hr class="bigHr">
-  <p class="pHeader">Account details</p>
+<div id="profile-main-container">
+  <p class="small-text" th:text="${user.name}">Name</p>
+  <hr class="big-hr">
+  <p class="p-header">Account details</p>
   <p class="pr" th:text="|Name:&nbsp; ${user.name}|">Name</p>
   <p class="pr" th:text="|Email:&nbsp; ${user.username}|">Email</p>
   <hr style="margin-bottom: 15px; margin-top: 20px;">
-  <p class="pHeader">Preferences</p>
-  <form action="updatePreferences" method="post" id="updatePreferences">
+  <p class="p-header">Preferences</p>
+  <form action="updatePreferences" method="post" id="update-preferences">
     <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
     <p class="pr">
       <label for="timeFormat">Time format:</label>
@@ -49,27 +49,27 @@
     </p>
     <p class="pr">
       <label for="theme">Theme:</label>
-      <input type="radio" id="Light" name="theme" value="Light" th:checked="${theme == 'Light'}">
+      <input type="radio" id="light" name="theme" value="Light" th:checked="${theme == 'Light'}">
       <label for="light">&nbsp; Light</label>
-      <input type="radio" id="Dark" name="theme" value="Dark" th:checked="${theme == 'Dark'}">
+      <input type="radio" id="dark" name="theme" value="Dark" th:checked="${theme == 'Dark'}">
       <label for="dark">&nbsp; Dark</label>
     </p>
-    <button type="submit" class="overlayButton submitBtn">Update preferences</button>
+    <button type="submit" class="overlay-button submit-btn">Update preferences</button>
   </form>
   <hr style="margin-bottom: 15px; margin-top: 20px;">
-  <button type="button" class="overlayButton cancelBtn" onClick="loadDeleteOverlay()">Delete Account</button>
+  <button type="button" class="overlay-button cancel-btn" onClick="loadDeleteOverlay()">Delete Account</button>
 </div>
 <!--logoutOverlay-->
-<div class="overlay" id="logoutOverlay" style="display: none;">
-  <div class="overlayMainDiv">
-    <p class="smallText" style="font-weight: 100;">Are you sure<br>
+<div class="overlay" id="logout-overlay" style="display: none;">
+  <div class="overlay-main-div">
+    <p class="small-text" style="font-weight: 100;">Are you sure<br>
       you want to log out?</p>
-    <hr class="bigHr">
+    <hr class="big-hr">
     <div class="form-group">
       <form action="logout" method="post">
         <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-        <button type="submit" class="overlayButton cancelBtn">Logout</button>
-        <button type="button" class="overlayButton notLogout" onClick="unloadLogoutOverlay()">Cancel</button>
+        <button type="submit" class="overlay-button cancel-btn">Logout</button>
+        <button type="button" class="overlay-button not-logout" onClick="unloadLogoutOverlay()">Cancel</button>
       </form>
     </div>
   </div>
@@ -77,17 +77,17 @@
 <!--/logoutOverlay--> 
 
 <!--deleteOverlay-->
-<div class="overlay" id="deleteOverlay" style="display: none;">
-  <div class="overlayMainDiv">
-    <p class="smallText" style="font-weight: 100; width: 450px;">Are you sure<br>
+<div class="overlay" id="delete-overlay" style="display: none;">
+  <div class="overlay-main-div">
+    <p class="small-text" style="font-weight: 100; width: 450px;">Are you sure<br>
       you want to delete your account?<br>
       This action cannot be undone</p>
-    <hr class="bigHr">
+    <hr class="big-hr">
     <div class="form-group">
       <form action="deleteAccount" method="post">
         <input type="hidden" name="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-        <button type="submit" class="overlayButton cancelBtn">Delete</button>
-        <button type="button" class="overlayButton notLogout" onClick="unloadDeleteOverlay()">Cancel</button>
+        <button type="submit" class="overlay-button cancel-btn">Delete</button>
+        <button type="button" class="overlay-button not-logout" onClick="unloadDeleteOverlay()">Cancel</button>
       </form>
     </div>
   </div>
