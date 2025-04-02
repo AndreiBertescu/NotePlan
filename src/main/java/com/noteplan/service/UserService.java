@@ -25,7 +25,7 @@ public class UserService {
     
     /**
      * checks if email is already in use.
-     * 
+     *
      * @param user.
      */
     public void checkValidity(final User user) {
@@ -38,9 +38,9 @@ public class UserService {
 
     /**
      * saves finds user by username.
-     * 
+     *
      * @param username.
-     * 
+     *
      * @return User.
      */
     public User findByUsername(final String username) {
@@ -49,9 +49,9 @@ public class UserService {
 
     /**
      * saves the user in the db.
-     * 
+     *
      * @param user.
-     * 
+     *
      * @return User.
      */
     public User save(final User user) {
@@ -65,9 +65,9 @@ public class UserService {
 
     /**
      * saves the user with the already encoded password.
-     * 
+     *
      * @param user.
-     * 
+     *
      * @return User.
      */
     public User saveWithEncodedPassword(final User user) {
@@ -79,7 +79,7 @@ public class UserService {
 
     /**
      * deletes note from db.
-     * 
+     *
      * @param noteId.
      */
     public void delete(final Long noteId) {
@@ -88,11 +88,11 @@ public class UserService {
 
     /**
      * updates preferences in db.
-     * 
+     *
      * @param currentUser.
      * @param timeFormat.
      * @param theme.
-     * 
+     *
      * @return User.
      */
     public User updatePreferences(final User currentUser, final String timeFormat, final String theme) {

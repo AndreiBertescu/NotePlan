@@ -27,7 +27,7 @@ public class SecurityConfig {
 
     /**
      * returns a password hash encoder.
-     * 
+     *
      * @return PasswordEncoder.
      */
     @Bean
@@ -37,10 +37,10 @@ public class SecurityConfig {
 
     /**
      * Creates and configures a DaoAuthenticationProvider bean used for authentication in Spring Security.
-     * 
+     *
      * This provider uses the UserDetailsService for user lookup and the PasswordEncoder for password 
      * encoding/validation. It is typically used for authenticating users with a database-backed user store.
-     * 
+     *
      * @return DaoAuthenticationProvider.
      */
     @Bean
@@ -54,9 +54,9 @@ public class SecurityConfig {
 
     /**
      * configures the security settings for every authority.
-     * 
+     *
      * @param http.
-     * 
+     *
      * @return SecurityFilterChain.
      */
     @Bean

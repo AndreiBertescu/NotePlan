@@ -15,9 +15,9 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
 
     /**
      * finds all the notes of a given user.
-     * 
+     *
      * @param id.
-     * 
+     *
      * @return Set.
      */
     Set<Note> findAllByUser_id(Long id);

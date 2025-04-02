@@ -53,16 +53,16 @@ public class LoginController {
 
     /**
      * loads the login web page.
-     * 
+     *
      * @param model.
      * @param authentication.
      * @param response.
      * @param error.
-     * 
+     *
      * @return String.
      */
     @GetMapping("/login")
-    public String login(ModelMap model, Authentication authentication, HttpServletRequest request, HttpServletResponse response, String error) {
+    public String login(final ModelMap model, final Authentication authentication, final HttpServletRequest request, final HttpServletResponse response, final String error) {
         this.logoutHandler.logout(request, response, authentication);
 
         model.put("user", new User());
@@ -72,28 +72,28 @@ public class LoginController {
 
     /**
      * redirects to the dashboard after login button has been pressed.
-     * 
+     *
      * @param user.
-     * 
+     *
      * @return String.
      */
     @PostMapping("/login")
-    public String loginPost(User user) {
+    public String loginPost(final User user) {
         return "redirect:/dashboard";
     }
 
     /**
      * handles the register request.
-     * 
+     *
      * @param model.
      * @param authentication.
      * @param request.
      * @param response.
-     * 
+     *
      * @return String.
      */
     @GetMapping("/register")
-    public String register(ModelMap model, Authentication authentication, HttpServletRequest request, HttpServletResponse response) {
+    public String register(final ModelMap model, final Authentication authentication, final HttpServletRequest request, final HttpServletResponse response) {
         this.logoutHandler.logout(request, response, authentication);
 
         model.put("error", "");
@@ -103,15 +103,15 @@ public class LoginController {
 
     /**
      * loads the register web page.
-     * 
+     *
      * @param user.
      * @param model.
      * @param request.
-     * 
+     *
      * @return String.
      */
     @PostMapping("/register")
-    public String registerPost(User user, ModelMap model, HttpServletRequest request) {
+    public String registerPost(final User user, final ModelMap model, final HttpServletRequest request) {
         try {
             userService.checkValidity(user);
             userService.save(user);
@@ -138,14 +138,14 @@ public class LoginController {
 
     /**
      * grants the required authority to the user when they press the confirmation link.
-     * 
+     *
      * @param model.
      * @param confirmationToken.
-     * 
+     *
      * @return String.
      */
     @RequestMapping(value = "/confirm-account", method = { RequestMethod.GET, RequestMethod.POST })
-    public String confirmUserAccount(ModelMap model, @RequestParam("token") String confirmationToken) {
+    public String confirmUserAccount(final ModelMap model, @RequestParam("token") final String confirmationToken) {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 
         if (token != null) {
@@ -167,7 +167,7 @@ public class LoginController {
 
     /**
      * checks verification status.
-     * 
+     *
      * @return String.
      */
     @GetMapping("/verificationStatus")
@@ -177,15 +177,15 @@ public class LoginController {
 
     /**
      * gets the email and confirmationToken to load to the web page.
-     * 
+     *
      * @param model.
      * @param email.
      * @param confirmationToken.
-     * 
+     *
      * @return String.
      */
     @GetMapping("/confirmation")
-    public String confirmation(ModelMap model, @ModelAttribute("email") String email, @ModelAttribute("token") String confirmationToken) {
+    public String confirmation(final ModelMap model, @ModelAttribute("email") final String email, @ModelAttribute("token") final String confirmationToken) {
 
         model.put("email", email);
         model.put("token", confirmationToken);
@@ -195,16 +195,16 @@ public class LoginController {
 
     /**
      * loads the resendEmail web page.
-     * 
+     *
      * @param email.
      * @param confirmationToken.
      * @param redirectAttributes.
      * @param request.
-     * 
+     *
      * @return String.
      */
     @PostMapping("/resendEmail")
-    public String resendEmail(@RequestParam("email") String email, @RequestParam("token") String confirmationToken, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+    public String resendEmail(@RequestParam("email") final String email, @RequestParam("token") final String confirmationToken, final RedirectAttributes redirectAttributes, final HttpServletRequest request) {
 
         try {
             emailService.sendEmail(email, confirmationToken,

@@ -54,7 +54,7 @@ public class Checkitem {
 
     /**
      * checkitem text getter.
-     * 
+     *
      * @return String.
      */
     public String getText() {
@@ -63,7 +63,7 @@ public class Checkitem {
 
     /**
      * checkitem text setter.
-     * 
+     *
      * @param text.
      */
     public void setText(final String newText) {
@@ -72,7 +72,7 @@ public class Checkitem {
 
     /**
      * checkitem isChecked getter.
-     * 
+     *
      * @return boolean.
      */
     public boolean isChecked() {
@@ -81,7 +81,7 @@ public class Checkitem {
 
     /**
      * checkitem isChecked setter.
-     * 
+     *
      * @param isChecked.
      */
     public void setChecked(final boolean newIsChecked) {
@@ -90,7 +90,7 @@ public class Checkitem {
 
     /**
      * checkitem note getter.
-     * 
+     *
      * @return Note.
      */
     public Note getNote() {
@@ -99,7 +99,7 @@ public class Checkitem {
 
     /**
      * checkitem note setter.
-     * 
+     *
      * @param note.
      */
     public void setNote(final Note newNote) {

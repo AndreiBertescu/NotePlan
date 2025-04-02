@@ -25,9 +25,9 @@ public class EmailService {
 
     /**
      * constructs an instance of EmailService with the specified JavaMailSender.
-     * 
+     *
      * @param javaMailSender.
-     * 
+     *
      * @return EmailService.
      */
     public EmailService(final JavaMailSender newJavaMailSender) {
@@ -36,7 +36,7 @@ public class EmailService {
 
     /**
      * sends a confirmation email.
-     * 
+     *
      * @param email.
      * @param confirmationToken.
      * @param url.

@@ -21,9 +21,9 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
 
     /**
      * loads user by its username.
-     * 
+     *
      * @param username.
-     * 
+     *
      * @return UserDetails.
      */
     @Override

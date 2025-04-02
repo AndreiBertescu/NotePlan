@@ -18,10 +18,10 @@ public class EventService {
 
     /**
      * saves an event in the db.
-     * 
+     *
      * @param user.
      * @param event.
-     * 
+     *
      * @return Event.
      */
     public Event save(final User user, final Event event) {
@@ -34,9 +34,9 @@ public class EventService {
 
     /**
      * finds an event by its id.
-     * 
+     *
      * @param eventId.
-     * 
+     *
      * @return Event.
      */
     public Event getEventById(final Long eventId) {
@@ -45,7 +45,7 @@ public class EventService {
 
     /**
      * deletes an event.
-     * 
+     *
      * @param eventId.
      */
     public void delete(final Long eventId) {
@@ -54,7 +54,7 @@ public class EventService {
 
     /**
      * updates an event.
-     * 
+     *
      * @param fullEvent.
      * @param event.
      */

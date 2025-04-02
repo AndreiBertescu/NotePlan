@@ -38,7 +38,7 @@ public class Authority implements GrantedAuthority {
 
     /**
      * authority setter.
-     * 
+     *
      * @param newAuthority.
      */
     public void setAuthority(final String newAuthority) {
@@ -47,7 +47,7 @@ public class Authority implements GrantedAuthority {
 
     /**
      * user getter.
-     * 
+     *
      * @return User.
      */
     public User getUser() {
@@ -56,7 +56,7 @@ public class Authority implements GrantedAuthority {
 
     /**
      * user setter.
-     * 
+     *
      * @param newUser.
      */
     public void setUser(final User newUser) {

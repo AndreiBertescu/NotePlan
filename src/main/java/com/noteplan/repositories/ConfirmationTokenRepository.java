@@ -8,9 +8,9 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
 
     /**
      * retrieves a confirmation token from a database.
-     * 
+     *
      * @param confirmationToken.
-     * 
+     *
      * @return ConfirmationToken.
      */
     ConfirmationToken findByConfirmationToken(String confirmationToken);

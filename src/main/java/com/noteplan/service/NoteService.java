@@ -21,11 +21,11 @@ public class NoteService {
 
     /**
      * saves the new note to the db.
-     * 
+     *
      * @param user.
      * @param note.
      * @param checklist.
-     * 
+     *
      * @return Note.
      */
     public Note save(final User user, final Note note, final LinkedHashSet<Checkitem> checklist) {
@@ -41,11 +41,11 @@ public class NoteService {
 
     /**
      * updates an existing note from the db.
-     * 
+     *
      * @param fullNote.
      * @param note.
      * @param checklist.
-     * 
+     *
      * @return Note.
      */
     public Note update(final Note fullNote, final Note note, final LinkedHashSet<Checkitem> checklist) {
@@ -63,9 +63,9 @@ public class NoteService {
 
     /**
      * finds a note by its id.
-     * 
+     *
      * @param noteId.
-     * 
+     *
      * @return Note.
      */
     public Note getNoteById(final Long noteId) {
@@ -74,7 +74,7 @@ public class NoteService {
 
     /**
      * deletes a note by its id.
-     * 
+     *
      * @param noteId.
      */
     public void delete(final Long noteId) {

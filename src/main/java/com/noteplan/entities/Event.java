@@ -53,7 +53,7 @@ public class Event {
 
     /**
      * event parent user getter.
-     * 
+     *
      * @return User.
      */
     public User getUser() {
@@ -62,7 +62,7 @@ public class Event {
 
     /**
      * event parent user setter.
-     * 
+     *
      * @param user.
      */
     public void setUser(final User newUser) {
@@ -71,7 +71,7 @@ public class Event {
 
     /**
      * event id getter.
-     * 
+     *
      * @return long.
      */
     public long getId() {
@@ -80,7 +80,7 @@ public class Event {
 
     /**
      * event id setter.
-     * 
+     *
      * @param id.
      */
     public void setId(final long newId) {
@@ -89,7 +89,7 @@ public class Event {
 
     /**
      * event date getter.
-     * 
+     *
      * @return String.
      */
     public String getDate() {
@@ -98,7 +98,7 @@ public class Event {
 
     /**
      * event date setter.
-     * 
+     *
      * @param date.
      */
     public void setDate(final String newDate) {
@@ -107,7 +107,7 @@ public class Event {
 
     /**
      * event description getter.
-     * 
+     *
      * @return String.
      */
     public String getDescription() {
@@ -116,7 +116,7 @@ public class Event {
 
     /**
      * event description setter.
-     * 
+     *
      * @param description.
      */
     public void setDescription(final String newDescription) {
@@ -125,7 +125,7 @@ public class Event {
 
     /**
      * event color getter.
-     * 
+     *
      * @return String.
      */
     public String getColor() {
@@ -134,7 +134,7 @@ public class Event {
 
     /**
      * event color setter.
-     * 
+     *
      * @param color.
      */
     public void setColor(final String newColor) {
@@ -143,7 +143,7 @@ public class Event {
 
     /**
      * event title getter.
-     * 
+     *
      * @return String.
      */
     public String getTitle() {
@@ -152,7 +152,7 @@ public class Event {
 
     /**
      * event title setter.
-     * 
+     *
      * @param title.
      */
     public void setTitle(final String newTitle) {

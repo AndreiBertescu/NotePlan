@@ -31,14 +31,14 @@ public class ProfileController {
 
     /**
      * loads the profile web page.
-     * 
+     *
      * @param user.
      * @param model.
-     * 
+     *
      * @return String.
      */
     @GetMapping("/profile")
-    public String profileView(@AuthenticationPrincipal User user, ModelMap model) {
+    public String profileView(@AuthenticationPrincipal final User user, final ModelMap model) {
         model.put("initials", DashboardController.getInitials(user.getName()));
 
         model.put("user", user);
@@ -49,16 +49,16 @@ public class ProfileController {
 
     /**
      * deletes the user account from the db, including associated data.
-     * 
+     *
      * @param user.
      * @param authentication.
      * @param request.
      * @param response.
-     * 
+     *
      * @return String.
      */
     @PostMapping("/deleteAccount")
-    public String deleteAccount(@AuthenticationPrincipal User user, Authentication authentication, HttpServletRequest request, HttpServletResponse response) {
+    public String deleteAccount(@AuthenticationPrincipal final User user, final Authentication authentication, final HttpServletRequest request, final HttpServletResponse response) {
         this.logoutHandler.logout(request, response, authentication);
         userService.delete(user.getId());
         return "index";
@@ -66,15 +66,15 @@ public class ProfileController {
 
     /**
      * saves the new user preferences to the db.
-     * 
+     *
      * @param user.
      * @param timeFormat.
      * @param theme.
-     * 
+     *
      * @return String.
      */
     @PostMapping("/updatePreferences")
-    public String updatePreferences(@AuthenticationPrincipal User user, String timeFormat, String theme) {
+    public String updatePreferences(@AuthenticationPrincipal final User user, final String timeFormat, final String theme) {
         userService.updatePreferences(user, timeFormat, theme);
         return "redirect:/profile";
     }

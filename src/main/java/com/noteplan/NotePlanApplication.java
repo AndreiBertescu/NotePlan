@@ -8,7 +8,7 @@ public class NotePlanApplication {
 
     /**
      * web app starting point.
-     * 
+     *
      * @param args Command-line arguments passed to the application.
      */
     public static void main(final String[] args) {

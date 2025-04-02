@@ -96,7 +96,7 @@ public class User implements UserDetails {
 
     /**
      * events getter.
-     * 
+     *
      * @return Set.
      */
     public Set<Event> getEvents() {
@@ -105,7 +105,7 @@ public class User implements UserDetails {
 
     /**
      * events setter.
-     * 
+     *
      * @param events.
      */
     public void setEvents(final Set<Event> newEvents) {
@@ -114,7 +114,7 @@ public class User implements UserDetails {
 
     /**
      * notes getter.
-     * 
+     *
      * @return Set.
      */
     public Set<Note> getNotes() {
@@ -123,7 +123,7 @@ public class User implements UserDetails {
 
     /**
      * notes setter.
-     * 
+     *
      * @param notes.
      */
     public void setNotes(final Set<Note> newNotes) {
@@ -132,7 +132,7 @@ public class User implements UserDetails {
 
     /**
      * id getter.
-     * 
+     *
      * @return long.
      */
     public long getId() {
@@ -141,7 +141,7 @@ public class User implements UserDetails {
 
     /**
      * id setter.
-     * 
+     *
      * @param id.
      */
     public void setId(final long newId) {
@@ -150,7 +150,7 @@ public class User implements UserDetails {
 
     /**
      * timeFormat getter.
-     * 
+     *
      * @return boolean.
      */
     public boolean getTimeFormat() {
@@ -159,7 +159,7 @@ public class User implements UserDetails {
 
     /**
      * timeFormat setter.
-     * 
+     *
      * @param timeFormat.
      */
     public void setTimeFormat(final boolean newTimeFormat) {
@@ -168,7 +168,7 @@ public class User implements UserDetails {
 
     /**
      * theme getter.
-     * 
+     *
      * @return boolean.
      */
     public boolean getTheme() {
@@ -177,7 +177,7 @@ public class User implements UserDetails {
 
     /**
      * theme setter.
-     * 
+     *
      * @param theme.
      */
     public void setTheme(final boolean newTheme) {
@@ -191,7 +191,7 @@ public class User implements UserDetails {
 
     /**
      * password setter.
-     * 
+     *
      * @param password.
      */
     public void setPassword(final String newPassword) {
@@ -205,7 +205,7 @@ public class User implements UserDetails {
 
     /**
      * username setter.
-     * 
+     *
      * @param name.
      */
     public void setUsername(final String newUsername) {
@@ -219,7 +219,7 @@ public class User implements UserDetails {
 
     /**
      * authorities setter.
-     * 
+     *
      * @param authorities.
      */
     public void setAuthorities(final Set<Authority> newAuthorities) {
@@ -228,7 +228,7 @@ public class User implements UserDetails {
 
     /**
      * name getter.
-     * 
+     *
      * @return String.
      */
     public String getName() {
@@ -237,7 +237,7 @@ public class User implements UserDetails {
 
     /**
      * name setter.
-     * 
+     *
      * @param name.
      */
     public void setName(final String newName) {

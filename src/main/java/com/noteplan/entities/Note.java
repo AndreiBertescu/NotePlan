@@ -80,7 +80,7 @@ public class Note {
     
     /**
      * user checklist getter.
-     * 
+     *
      * @return Set.
      */
     public Set<Checkitem> getChecklist() {
@@ -90,7 +90,7 @@ public class Note {
     
     /**
      * note checklist setter.
-     * 
+     *
      * @param checklist.
      */
     public void setChecklist(final LinkedHashSet<Checkitem> newChecklist) {
@@ -100,7 +100,7 @@ public class Note {
     
     /**
      * note parent user getter.
-     * 
+     *
      * @return User.
      */
     public User getUser() {
@@ -110,7 +110,7 @@ public class Note {
     
     /**
      * note parent user setter.
-     * 
+     *
      * @param user.
      */
     public void setUser(final User newUser) {
@@ -120,7 +120,7 @@ public class Note {
     
     /**
      * note id getter.
-     * 
+     *
      * @return long.
      */
     public long getId() {
@@ -130,7 +130,7 @@ public class Note {
     
     /**
      * note id setter.
-     * 
+     *
      * @param id.
      */
     public void setId(final long newId) {
@@ -140,7 +140,7 @@ public class Note {
     
     /**
      * note title getter.
-     * 
+     *
      * @return String.
      */
     public String getTitle() {
@@ -150,7 +150,7 @@ public class Note {
     
     /**
      * note title setter.
-     * 
+     *
      * @param title.
      */
     public void setTitle(final String newTitle) {
@@ -160,7 +160,7 @@ public class Note {
     
     /**
      * note text getter.
-     * 
+     *
      * @return String.
      */
     public String getText() {
@@ -170,7 +170,7 @@ public class Note {
     
     /**
      * note text setter.
-     * 
+     *
      * @param text.
      */
     public void setText(final String newText) {
@@ -180,7 +180,7 @@ public class Note {
     
     /**
      * note isChecklist getter.
-     * 
+     *
      * @return boolean.
      */
     public boolean isChecklist() {
@@ -190,7 +190,7 @@ public class Note {
     
     /**
      * note isChecklist setter.
-     * 
+     *
      * @param isChecklist.
      */
     public void setChecklist(final boolean newIsChecklist) {
@@ -200,7 +200,7 @@ public class Note {
     
     /**
      * note list of checklists getter.
-     * 
+     *
      * @return List.
      */
     public List<Checkitem> getChecklistList() {
@@ -209,7 +209,7 @@ public class Note {
     
     /**
      * note list of checklists setter.
-     * 
+     *
      * @param checklistList.
      */
     public void setChecklistList(final List<Checkitem> newChecklistList) {

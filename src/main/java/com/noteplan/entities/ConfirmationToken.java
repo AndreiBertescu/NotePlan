@@ -58,7 +58,7 @@ public class ConfirmationToken {
 
     /**
      * confirmationToken getter.
-     * 
+     *
      * @return String.
      */
     public String getConfirmationToken() {
@@ -67,7 +67,7 @@ public class ConfirmationToken {
 
     /**
      * confirmationToken setter.
-     * 
+     *
      * @param confirmationToken.
      */
     public void setConfirmationToken(final String newConfirmationToken) {
@@ -76,7 +76,7 @@ public class ConfirmationToken {
 
     /**
      * createdDate getter.
-     * 
+     *
      * @return Date.
      */
     public Date getCreatedDate() {
@@ -85,7 +85,7 @@ public class ConfirmationToken {
 
     /**
      * createdDate setter.
-     * 
+     *
      * @param createdDate.
      */
     public void setCreatedDate(final Date newCreatedDate) {
@@ -94,7 +94,7 @@ public class ConfirmationToken {
 
     /**
      * user getter.
-     * 
+     *
      * @return User.
      */
     public User getUser() {
@@ -103,7 +103,7 @@ public class ConfirmationToken {
 
     /**
      * user setter.
-     * 
+     *
      * @param user.
      */
     public void setUser(final User newUser) {

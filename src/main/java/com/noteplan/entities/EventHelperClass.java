@@ -32,7 +32,7 @@ public class EventHelperClass {
 
     /**
      * date getter.
-     * 
+     *
      * @return String.
      */
     public String getDate() {
@@ -41,7 +41,7 @@ public class EventHelperClass {
 
     /**
      * date setter.
-     * 
+     *
      * @param date.
      */
     public void setDate(final String newDate) {
@@ -50,7 +50,7 @@ public class EventHelperClass {
 
     /**
      * events getter.
-     * 
+     *
      * @return List.
      */
     public List<Event> getEvents() {
@@ -59,7 +59,7 @@ public class EventHelperClass {
 
     /**
      * events setter.
-     * 
+     *
      * @param events.
      */
     public void setEvents(final List<Event> newEvents) {
@@ -68,7 +68,7 @@ public class EventHelperClass {
 
     /**
      * add event to events.
-     * 
+     *
      * @param event.
      */
     public void addEvent(final Event newEvent) {

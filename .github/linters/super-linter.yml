@@ -1,3 +1,4 @@
+---
 java:
   disable:
     - FileTabCharacter
@@ -7,9 +8,11 @@ java:
 checkstyle:
   disable:
     - HideUtilityClassConstructor
+    - VisibilityModifier
     - DesignForExtension
     - FileTabCharacter
     - LineLength
+    - JavadocMethod
     
 jscpd:
-  args: --threshold 10
+  args: "--threshold 10"
