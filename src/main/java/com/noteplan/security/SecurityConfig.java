@@ -20,13 +20,15 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 public class SecurityConfig {
 
     /**
-     * UserDetailsService interface
+     * UserDetailsService interface.
      */
     @Autowired
     private UserDetailsService userDetailsService;
 
     /**
-     * returns a password hash encoder
+     * returns a password hash encoder.
+     * 
+     * @return PasswordEncoder.
      */
     @Bean
     PasswordEncoder getPasswordEncoder() {
@@ -39,7 +41,7 @@ public class SecurityConfig {
      * This provider uses the UserDetailsService for user lookup and the PasswordEncoder for password 
      * encoding/validation. It is typically used for authenticating users with a database-backed user store.
      * 
-     * returns the configured DaoAuthenticationProvider instance
+     * @return DaoAuthenticationProvider.
      */
     @Bean
     DaoAuthenticationProvider authenticationProvider() {
@@ -51,7 +53,11 @@ public class SecurityConfig {
     }
 
     /**
-     * configures the security settings for every authority
+     * configures the security settings for every authority.
+     * 
+     * @param http.
+     * 
+     * @return SecurityFilterChain.
      */
     @Bean
     SecurityFilterChain configure(final HttpSecurity http) throws Exception {

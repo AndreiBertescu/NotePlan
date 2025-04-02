@@ -13,18 +13,18 @@ public class CustomSecurityUser extends User implements UserDetails {
     private static final long serialVersionUID = 1364622556423260049L;
     
     /**
-     * stores all the authorities for this user
+     * stores all the authorities for this user.
      */
     Set<Authority> authorities = new HashSet<>();
 
     /**
-     * blank constructor
+     * blank constructor.
      */
     public CustomSecurityUser() {
     }
 
     /**
-     * constructor extending the user class
+     * constructor extending the user class.
      */
     public CustomSecurityUser(final User user) {
         super();

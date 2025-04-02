@@ -1,8 +1,15 @@
-# Java Linter Configuration
 java:
-
-  # List of checks to disable
   disable:
     - FileTabCharacter
     - LineLength  
     - MethodName
+    
+checkstyle:
+  disable:
+    - HideUtilityClassConstructor
+    - DesignForExtension
+    - FileTabCharacter
+    - LineLength
+    
+jscpd:
+  args: --threshold 10

@@ -14,13 +14,17 @@ import com.noteplan.security.CustomSecurityUser;
 public class UserDetailsServiceImplementation implements UserDetailsService {
 
     /**
-     * UserRepository interface
+     * UserRepository interface.
      */
     @Autowired
     private UserRepository userRepo;
 
     /**
-     * loads user by its username
+     * loads user by its username.
+     * 
+     * @param username.
+     * 
+     * @return UserDetails.
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

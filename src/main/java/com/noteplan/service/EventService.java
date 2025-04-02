@@ -11,13 +11,18 @@ import com.noteplan.repositories.EventRepository;
 public class EventService {
 
     /**
-     * EventRepository interfacce
+     * EventRepository interfacce.
      */
     @Autowired
     EventRepository eventRepo;
 
     /**
-     * saves an event in the db
+     * saves an event in the db.
+     * 
+     * @param user.
+     * @param event.
+     * 
+     * @return Event.
      */
     public Event save(final User user, final Event event) {
         event.setUser(user);
@@ -28,21 +33,30 @@ public class EventService {
     }
 
     /**
-     * finds an event by its id
+     * finds an event by its id.
+     * 
+     * @param eventId.
+     * 
+     * @return Event.
      */
     public Event getEventById(final Long eventId) {
         return eventRepo.findById(eventId).orElse(new Event());
     }
 
     /**
-     * deletes an event
+     * deletes an event.
+     * 
+     * @param eventId.
      */
     public void delete(final Long eventId) {
         eventRepo.deleteById(eventId);
     }
 
     /**
-     * updates an event
+     * updates an event.
+     * 
+     * @param fullEvent.
+     * @param event.
      */
     public void update(final Event fullEvent, final Event event) {
         fullEvent.setTitle(event.getTitle());

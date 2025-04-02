@@ -12,7 +12,11 @@ import com.noteplan.entities.Event;
 public interface EventRepository extends JpaRepository<Event, Long> {
 
     /**
-     * finds all the notes on a given date
+     * finds all the notes on a given date.
+     * 
+     * @param date.
+     * 
+     * @return Event.
      */
     Event findByDate(String date);
 
@@ -20,7 +24,11 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     Optional<Event> findById(Long id);
 
     /**
-     * finds all the events of a given user
+     * finds all the events of a given user.
+     * 
+     * @param id.
+     * 
+     * @return Set.
      */
     Set<Event> findAllByUser_id(Long id);
 

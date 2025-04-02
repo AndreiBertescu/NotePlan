@@ -23,66 +23,66 @@ public class User implements UserDetails {
     private static final int STRING_LENGTH = 100;
 
     /**
-     * id of user
+     * id of user.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     /**
-     * password of user
+     * password of user.
      */
     @Column(length = STRING_LENGTH)
     private String password;
     
     /**
-     * email of user
+     * email of user.
      */
     @Column(length = STRING_LENGTH)
     private String username;
     
     /**
-     * name of user
+     * name of user.
      */
     @Column(length = STRING_LENGTH)
     private String name;
     
     /**
-     * 12hr or 24hr format
+     * 12hr or 24hr format.
      */
     private boolean timeFormat = false;
     
     /**
-     * dark or light theme
+     * dark or light theme.
      */
     private boolean theme = false;
 
     /**
-     * stores all the authorities of a given user
+     * stores all the authorities of a given user.
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private Set<Authority> authorities = new HashSet<>();
     
     /**
-     * stores all the events of a given user
+     * stores all the events of a given user.
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Event> events = new HashSet<>();
     
     /**
-     * stores all the notes of a given user
+     * stores all the notes of a given user.
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Note> notes = new HashSet<>();
 
     /**
-     * user blank constructor
+     * user blank constructor.
      */
     public User() {
     }
 
     /**
-     * user copy constructor
+     * user copy constructor.
      */
     public User(final User user) {
         this.setId(user.getId());
@@ -95,73 +95,93 @@ public class User implements UserDetails {
     }
 
     /**
-     * events getter
+     * events getter.
+     * 
+     * @return Set.
      */
     public Set<Event> getEvents() {
         return events;
     }
 
     /**
-     * events setter
+     * events setter.
+     * 
+     * @param events.
      */
-    public void setEvents(final Set<Event> events) {
-        this.events = events;
+    public void setEvents(final Set<Event> newEvents) {
+        this.events = newEvents;
     }
 
     /**
-     * notes getter
+     * notes getter.
+     * 
+     * @return Set.
      */
     public Set<Note> getNotes() {
         return notes;
     }
 
     /**
-     * notes setter
+     * notes setter.
+     * 
+     * @param notes.
      */
-    public void setNotes(final Set<Note> notes) {
-        this.notes = notes;
+    public void setNotes(final Set<Note> newNotes) {
+        this.notes = newNotes;
     }
 
     /**
-     * id getter
+     * id getter.
+     * 
+     * @return long.
      */
     public long getId() {
         return id;
     }
 
     /**
-     * id setter
+     * id setter.
+     * 
+     * @param id.
      */
-    public void setId(final long id) {
-        this.id = id;
+    public void setId(final long newId) {
+        this.id = newId;
     }
 
     /**
-     * timeFormat getter
+     * timeFormat getter.
+     * 
+     * @return boolean.
      */
     public boolean getTimeFormat() {
         return timeFormat;
     }
 
     /**
-     * timeFormat setter
+     * timeFormat setter.
+     * 
+     * @param timeFormat.
      */
-    public void setTimeFormat(final boolean timeFormat) {
-        this.timeFormat = timeFormat;
+    public void setTimeFormat(final boolean newTimeFormat) {
+        this.timeFormat = newTimeFormat;
     }
 
     /**
-     * theme getter
+     * theme getter.
+     * 
+     * @return boolean.
      */
     public boolean getTheme() {
         return theme;
     }
 
     /**
-     * theme setter
+     * theme setter.
+     * 
+     * @param theme.
      */
-    public void setTheme(final boolean theme) {
-        this.theme = theme;
+    public void setTheme(final boolean newTheme) {
+        this.theme = newTheme;
     }
 
     @Override
@@ -170,10 +190,12 @@ public class User implements UserDetails {
     }
 
     /**
-     * password setter
+     * password setter.
+     * 
+     * @param password.
      */
-    public void setPassword(final String password) {
-        this.password = password;
+    public void setPassword(final String newPassword) {
+        this.password = newPassword;
     }
 
     @Override
@@ -182,10 +204,12 @@ public class User implements UserDetails {
     }
 
     /**
-     * username setter
+     * username setter.
+     * 
+     * @param name.
      */
-    public void setUsername(final String name) {
-        this.username = name;
+    public void setUsername(final String newUsername) {
+        this.username = newUsername;
     }
 
     @Override
@@ -194,24 +218,30 @@ public class User implements UserDetails {
     }
 
     /**
-     * authorities setter
+     * authorities setter.
+     * 
+     * @param authorities.
      */
-    public void setAuthorities(final Set<Authority> authorities) {
-        this.authorities = authorities;
+    public void setAuthorities(final Set<Authority> newAuthorities) {
+        this.authorities = newAuthorities;
     }
 
     /**
-     * name getter
+     * name getter.
+     * 
+     * @return String.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * name setter
+     * name setter.
+     * 
+     * @param name.
      */
-    public void setName(final String name) {
-        this.name = name;
+    public void setName(final String newName) {
+        this.name = newName;
     }
 
     @Override

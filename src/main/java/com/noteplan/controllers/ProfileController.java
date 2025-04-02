@@ -18,10 +18,25 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class ProfileController {
 
+    /**
+     * UserService instantiation.
+     */
     @Autowired
     UserService userService;
+    
+    /**
+     * SecurityContextLogoutHandler instantiation.
+     */
     SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 
+    /**
+     * loads the profile web page.
+     * 
+     * @param user.
+     * @param model.
+     * 
+     * @return String.
+     */
     @GetMapping("/profile")
     public String profileView(@AuthenticationPrincipal User user, ModelMap model) {
         model.put("initials", DashboardController.getInitials(user.getName()));
@@ -32,14 +47,32 @@ public class ProfileController {
         return "profile";
     }
 
+    /**
+     * deletes the user account from the db, including associated data.
+     * 
+     * @param user.
+     * @param authentication.
+     * @param request.
+     * @param response.
+     * 
+     * @return String.
+     */
     @PostMapping("/deleteAccount")
-    public String deleteAccount(@AuthenticationPrincipal User user, Authentication authentication,
-            HttpServletRequest request, HttpServletResponse response) {
+    public String deleteAccount(@AuthenticationPrincipal User user, Authentication authentication, HttpServletRequest request, HttpServletResponse response) {
         this.logoutHandler.logout(request, response, authentication);
         userService.delete(user.getId());
         return "index";
     }
 
+    /**
+     * saves the new user preferences to the db.
+     * 
+     * @param user.
+     * @param timeFormat.
+     * @param theme.
+     * 
+     * @return String.
+     */
     @PostMapping("/updatePreferences")
     public String updatePreferences(@AuthenticationPrincipal User user, String timeFormat, String theme) {
         userService.updatePreferences(user, timeFormat, theme);

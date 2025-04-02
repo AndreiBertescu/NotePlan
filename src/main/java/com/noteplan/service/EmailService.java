@@ -13,25 +13,33 @@ import jakarta.mail.internet.MimeMessage;
 public class EmailService {
 
     /**
-     * JavaMailSender interface
+     * JavaMailSender interface.
      */
     private JavaMailSender javaMailSender;
 
     /**
-     * gets mail username from properties
+     * gets mail username from properties.
      */
     @Value("${spring.mail.username}")
     private String host_email;
 
     /**
      * constructs an instance of EmailService with the specified JavaMailSender.
+     * 
+     * @param javaMailSender.
+     * 
+     * @return EmailService.
      */
-    public EmailService(final JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
+    public EmailService(final JavaMailSender newJavaMailSender) {
+        this.javaMailSender = newJavaMailSender;
     }
 
     /**
-     * sends a confirmation email
+     * sends a confirmation email.
+     * 
+     * @param email.
+     * @param confirmationToken.
+     * @param url.
      */
     @Async
     public void sendEmail(final String email, final String confirmationToken, String url) throws MessagingException {

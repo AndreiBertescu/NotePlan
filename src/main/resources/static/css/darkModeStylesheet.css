@@ -5,7 +5,8 @@
 }
 
 /* everything */
-#main-container, #main-container tr {
+#main-container,
+#main-container tr {
   background: var(--background-clr);
   color: white;
   width: 100%;
@@ -49,9 +50,9 @@
 
 /* notes color */
 .note,
-.noteBtn,
-#notesButton,
-#notes .bigHr,
+.note-btn,
+#notes-button,
+#notes .big-hr,
 #add-new-note-overlay hr,
 #view-note-overlay hr {
   background: var(--dark-notes-clr);
@@ -86,7 +87,7 @@
 #auth .login-btn {
   background: var(--background-clr);
   padding-bottom: 10px;
-  color: rgb(51, 125, 255);
+  color: #337dff;
 }
 
 #nice-error-text {

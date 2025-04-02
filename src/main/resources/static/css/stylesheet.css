@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 /* CSS Document */ :root {
   --primary-clr: #343a40;
   --secondary-clr: greenyellow;
@@ -13,7 +14,8 @@
   text-align: center;
 }
 
-html, body {
+html,
+body {
   height: 100vh;
 }
 
@@ -109,12 +111,12 @@ hr {
 }
 
 #navbar #logout:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
+  box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 10%);
   color: white;
 }
 
 #navbar #logout:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
+  box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 25%);
   color: white;
 }
 
@@ -136,12 +138,12 @@ hr {
 }
 
 .profile-btn button:hover {
-  color: rgba(255, 255, 255, 70%);
+  color: rgba(255 255 255 / 70%);
   outline: none;
 }
 
 .profile-btn button:active {
-  color: rgba(255, 255, 255, 55%);
+  color: rgba(255 255 255 / 55%);
   outline: none;
 }
 
@@ -152,195 +154,12 @@ hr {
   align-items: center;
   justify-content: center;
   color: black;
-  background: #D6D6D6;
+  background: #d6d6d6;
   border-radius: 4vh;
   text-transform: uppercase;
 }
+
 /* --------------------/Navbar-------------------- */
-
-/* --------------------Upcoming Events-------------------- */
-#current-events {
-  width: 30vw;
-  max-width: 30vw;
-  vertical-align: top;
-}
-
-.event-day {
-  margin: 3%;
-  padding: 0 5%;
-  padding-bottom: 5%;
-  border-radius: 2px;
-}
-
-.event-date {
-  margin-top: 10px;
-  font-size: 20px;
-}
-
-.upcoming-event {
-  margin-top: 15px;
-  border-radius: 2px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  transition-duration: 0.2s;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.upcoming-event:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
-}
-
-.upcoming-event:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
-}
-
-.small-hr {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.title {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.event-title {
-  font-weight: bold;
-  max-height: 1.5rem;
-  overflow: hidden;
-  margin: 0;
-}
-
-.event-time {
-  font-weight: bold;
-  margin-bottom: -5px;
-}
-
-.events-button {
-  margin-top: 5px;
-  padding: 5px 10px;
-  border: 1px solid var(--events-clr);
-  border-radius: 5px;
-  background-color: var(--events-clr);
-  cursor: pointer;
-  color: white;
-  text-decoration: none;
-  transition-duration: 0.2s;
-}
-
-.events-button:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
-  text-decoration: none;
-}
-
-.events-button:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
-}
-
-#current-events .big-hr {
-  background-color: var(--events-clr);
-}
-/* --------------------/Upcoming Events-------------------- */
-
-/* --------------------Calendar-------------------- */
-#calendar {
-  width: 40%;
-  vertical-align: top;
-  border-right: 2px solid var(--notes-clr);
-  border-left: 2px solid var(--events-clr);
-}
-/* --------------------/Calendar-------------------- */
-
-/* --------------------Notes-------------------- */
-#notes {
-  width: 30vw;
-  max-width: 30vw;
-  vertical-align: top;
-}
-
-#notes-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.note {
-  background: var(--notes-clr);
-  color: black;
-  width: 40%;
-  max-width: 40%;
-  height: 0;
-  padding: 5px;
-  padding-bottom: 40%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  text-align: left;
-  overflow: hidden;
-  cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  word-wrap: break-word;
-  word-break: break-word;
-}
-
-.note:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
-}
-
-.note:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
-}
-
-#notes-button {
-  margin-top: 5px;
-  padding: 5px 10px;
-  border: 1px solid var(--notes-clr);
-  border-radius: 5px;
-  background-color: var(--notes-clr);
-  cursor: pointer;
-  color: var(--primary-clr);
-  transition-duration: 0.2s;
-}
-
-#notes-button:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
-}
-
-#notes-button:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
-}
-
-.note-title {
-  text-align: left;
-  font-size: 20px;
-  padding: 7px 5px;
-  margin-bottom: 0;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.note-text {
-  padding: 7px;
-  text-align: left;
-  font-size: 15px;
-}
-
-.note-checkitem {
-	display: flex;
-	padding-left: 7px;
-}
-
-.note-text-checkitem {
-  text-align: left;
-  font-size: 15px;
-  margin: 0 0 5px 7px;
-}
-
-#notes .big-hr {
-  background-color: var(--notes-clr);
-}
-/* --------------------/Notes-------------------- */
 
 /* --------------------Overlay-------------------- */
 .overlay {
@@ -348,7 +167,7 @@ hr {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 50%);
+  background: rgba(0 0 0 / 50%);
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -422,19 +241,19 @@ label {
 }
 
 .submit-btn:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 10%);
 }
 
 .cancel-btn:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 10%);
 }
 
 .submit-btn:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 25%);
 }
 
 .cancel-btn:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 25%);
 }
 
 .note-btn {
@@ -444,11 +263,11 @@ label {
 }
 
 .note-btn:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 10%);
 }
 
 .note-btn:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 25%);
 }
 
 .not-logout {
@@ -457,18 +276,20 @@ label {
 }
 
 .not-logout:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 10%);
 }
 
 .not-logout:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 25%);
 }
 
-#add-new-event-overlay hr, #view-event-overlay hr {
+#add-new-event-overlay hr,
+#view-event-overlay hr {
   background: var(--events-clr);
 }
 
-#add-new-event-overlay hr, #view-note-overlay hr {
+#add-new-event-overlay hr,
+#view-note-overlay hr {
   background: var(--notes-clr);
 }
 
@@ -540,7 +361,195 @@ label {
   min-width: 5em;
   height: 2em;
 }
+
 /* --------------------/Overlay-------------------- */
+
+/* --------------------Upcoming Events-------------------- */
+#current-events {
+  width: 30vw;
+  max-width: 30vw;
+  vertical-align: top;
+}
+
+.event-day {
+  margin: 3%;
+  padding: 0 5%;
+  padding-bottom: 5%;
+  border-radius: 2px;
+}
+
+.event-date {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.upcoming-event {
+  margin-top: 15px;
+  border-radius: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  transition-duration: 0.2s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upcoming-event:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 10%);
+}
+
+.upcoming-event:active {
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 25%);
+}
+
+.small-hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.title {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.event-title {
+  font-weight: bold;
+  max-height: 1.5rem;
+  overflow: hidden;
+  margin: 0;
+}
+
+.event-time {
+  font-weight: bold;
+  margin-bottom: -5px;
+}
+
+.events-button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  border: 1px solid var(--events-clr);
+  border-radius: 5px;
+  background-color: var(--events-clr);
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition-duration: 0.2s;
+}
+
+.events-button:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 10%);
+  text-decoration: none;
+}
+
+.events-button:active {
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 25%);
+}
+
+#current-events .big-hr {
+  background-color: var(--events-clr);
+}
+
+/* --------------------/Upcoming Events-------------------- */
+
+/* --------------------Calendar-------------------- */
+#calendar {
+  width: 40%;
+  vertical-align: top;
+  border-right: 2px solid var(--notes-clr);
+  border-left: 2px solid var(--events-clr);
+}
+
+/* --------------------/Calendar-------------------- */
+
+/* --------------------Notes-------------------- */
+#notes {
+  width: 30vw;
+  max-width: 30vw;
+  vertical-align: top;
+}
+
+#notes-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.note {
+  background: var(--notes-clr);
+  color: black;
+  width: 40%;
+  max-width: 40%;
+  height: 0;
+  padding: 5px;
+  padding-bottom: 40%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.note:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 10%);
+}
+
+.note:active {
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 25%);
+}
+
+#notes-button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  border: 1px solid var(--notes-clr);
+  border-radius: 5px;
+  background-color: var(--notes-clr);
+  cursor: pointer;
+  color: var(--primary-clr);
+  transition-duration: 0.2s;
+}
+
+#notes-button:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 10%);
+}
+
+#notes-button:active {
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 25%);
+}
+
+.note-title {
+  text-align: left;
+  font-size: 20px;
+  padding: 7px 5px;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.note-text {
+  padding: 7px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.note-checkitem {
+  display: flex;
+  padding-left: 7px;
+}
+
+.note-text-checkitem {
+  text-align: left;
+  font-size: 15px;
+  margin: 0 0 5px 7px;
+}
+
+#notes .big-hr {
+  background-color: var(--notes-clr);
+}
+
+/* --------------------/Notes-------------------- */
 
 /* --------------------Auth-------------------- */
 #auth {
@@ -587,12 +596,13 @@ label {
 }
 
 .eye:hover {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 10%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 10%);
 }
 
 .eye:active {
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 25%);
+  box-shadow: inset 0 0 0 1000px rgba(0 0 0 / 25%);
 }
+
 /* --------------------/Auth-------------------- */
 
 /* --------------------Profile-------------------- */
@@ -642,6 +652,7 @@ label {
 }
 
 /* --------------------/Profile-------------------- */
+
 /* width */ ::-webkit-scrollbar {
   width: 10px;
 }

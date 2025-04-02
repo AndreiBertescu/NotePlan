@@ -14,19 +14,19 @@ public class Authority implements GrantedAuthority {
     private static final long serialVersionUID = 2012020929299864445L;
 
     /**
-     * id of authority
+     * id of authority.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
-     * authority - gives access to certain parts of the domain
+     * authority - gives access to certain parts of the domain.
      */
     private String authority;
 
     /**
-     * parent user of authority
+     * parent user of authority.
      */
     @ManyToOne
     private User user;
@@ -37,23 +37,29 @@ public class Authority implements GrantedAuthority {
     }
 
     /**
-     * authority setter
+     * authority setter.
+     * 
+     * @param newAuthority.
      */
-    public void setAuthority(final String authority) {
-        this.authority = authority;
+    public void setAuthority(final String newAuthority) {
+        this.authority = newAuthority;
     }
 
     /**
-     * user getter
+     * user getter.
+     * 
+     * @return User.
      */
     public User getUser() {
         return user;
     }
 
     /**
-     * user setter
+     * user setter.
+     * 
+     * @param newUser.
      */
-    public void setUser(final User user) {
-        this.user = user;
+    public void setUser(final User newUser) {
+        this.user = newUser;
     }
 }

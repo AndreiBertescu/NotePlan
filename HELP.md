@@ -1,6 +1,6 @@
 # Getting Started
 
-### Reference Documentation
+## Reference Documentation
 For further reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
@@ -12,7 +12,7 @@ For further reference, please consider the following sections:
 * [Thymeleaf](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#web.servlet.spring-mvc.template-engines)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#web)
 
-### Guides
+## Guides
 The following guides illustrate how to use some features concretely:  
 
 * [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)

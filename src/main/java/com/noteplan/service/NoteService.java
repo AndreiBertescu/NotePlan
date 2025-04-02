@@ -14,13 +14,19 @@ import com.noteplan.repositories.NoteRepository;
 public class NoteService {
 
     /**
-     * NoteRepository interface
+     * NoteRepository interface.
      */
     @Autowired
     NoteRepository noteRepo;
 
     /**
-     * saves the new note to the db
+     * saves the new note to the db.
+     * 
+     * @param user.
+     * @param note.
+     * @param checklist.
+     * 
+     * @return Note.
      */
     public Note save(final User user, final Note note, final LinkedHashSet<Checkitem> checklist) {
         note.setUser(user);
@@ -34,7 +40,13 @@ public class NoteService {
     }
 
     /**
-     * updates an existing note from the db
+     * updates an existing note from the db.
+     * 
+     * @param fullNote.
+     * @param note.
+     * @param checklist.
+     * 
+     * @return Note.
      */
     public Note update(final Note fullNote, final Note note, final LinkedHashSet<Checkitem> checklist) {
         fullNote.setTitle(note.getTitle());
@@ -50,14 +62,20 @@ public class NoteService {
     }
 
     /**
-     * finds a note by its id
+     * finds a note by its id.
+     * 
+     * @param noteId.
+     * 
+     * @return Note.
      */
     public Note getNoteById(final Long noteId) {
         return noteRepo.findById(noteId).orElse(new Note());
     }
 
     /**
-     * deletes a note by its id
+     * deletes a note by its id.
+     * 
+     * @param noteId.
      */
     public void delete(final Long noteId) {
         noteRepo.deleteById(noteId);

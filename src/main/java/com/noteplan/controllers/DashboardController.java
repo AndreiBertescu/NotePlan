@@ -39,28 +39,57 @@ import jakarta.servlet.http.HttpServletResponse;
 @SessionAttributes(names = { "selectedEvent", "selectedNote" })
 public class DashboardController {
 
+    /**
+     * EventService instantiation.
+     */
     @Autowired
     EventService eventService;
 
+    /**
+     * NoteService instantiation.
+     */
     @Autowired
     NoteService noteService;
 
+    /**
+     * EventRepository instantiation.
+     */
     @Autowired
     EventRepository eventRepo;
 
+    /**
+     * NoteRepository instantiation.
+     */
     @Autowired
     NoteRepository noteRepo;
 
+    /**
+     * initializes the selectedEvent atribute with an new Event object.
+     * 
+     * @return Event.
+     */
     @ModelAttribute("selectedEvent")
     public Event initializeSelectedEvent() {
         return new Event();
     }
 
+    /**
+     * initializes the selectedNote atribute with an new Note object.
+     * 
+     * @return Note.
+     */
     @ModelAttribute("selectedNote")
     public Note initializeSelectedNote() {
         return new Note();
     }
 
+    /**
+     * redirects to dashboard form the root web page if the user is authenticated.
+     * 
+     * @param authentication.
+     * 
+     * @return String.
+     */
     @GetMapping("/")
     public String rootView(Authentication authentication) {
         if (authentication != null && authentication.isAuthenticated())
@@ -69,6 +98,13 @@ public class DashboardController {
             return "index";
     }
 
+    /**
+     * redirects to dashboard form index web page if the user is authenticated.
+     * 
+     * @param authentication.
+     * 
+     * @return String.
+     */
     @GetMapping("/index")
     public String rootView2(Authentication authentication) {
         if (authentication != null && authentication.isAuthenticated())
@@ -77,6 +113,14 @@ public class DashboardController {
             return "index";
     }
 
+    /**
+     * loads the dashboard web page, all the notes and event from the specific user, and initializes/formats them.
+     * 
+     * @param user.
+     * @param model.
+     * 
+     * @return String.
+     */
     @GetMapping("/dashboard")
     public String dashBoardView(@AuthenticationPrincipal User user, ModelMap model) {
         model.put("username", user.getName());
@@ -108,18 +152,20 @@ public class DashboardController {
         }
 
         // reformat the events description
-        for (Event ev : sortedEvents)
+        for (Event ev : sortedEvents) {
             if (ev.getDescription() != "" && ev.getDescription() != null) {
                 String s = ev.getDescription();
 
-                for (int i = 0; i < s.length(); i++)
+                for (int i = 0; i < s.length(); i++) {
                     if (s.charAt(i) == '\n') {
                         s = s.substring(0, i) + "<br>" + s.substring(i, s.length());
                         i += 4;
                     }
+                }
 
                 ev.setDescription(s);
             }
+        }
 
         // reformat the events
         String lastDate = "";
@@ -127,24 +173,26 @@ public class DashboardController {
         EventHelperClass lastEvent = null;
         for (Event ev : sortedEvents) {
             if (!lastDate.equals(ev.getDate().substring(0, 10))) {
-                if (lastEvent != null)
+                if (lastEvent != null) {
                     events.add(lastEvent);
+                }
 
                 lastDate = ev.getDate().substring(0, 10);
                 lastEvent = new EventHelperClass(lastDate);
             }
 
             // set time format
-            if (!user.getTimeFormat())
+            if (!user.getTimeFormat()) {
                 ev.setDate(ev.getDate().substring(11));
-            else {
+            } else {
                 ev.setDate(formatTime(ev.getDate().substring(11)));
             }
 
             lastEvent.addEvent(ev);
         }
-        if (lastEvent != null)
+        if (lastEvent != null) {
             events.add(lastEvent);
+        }
 
         model.put("events", events);
 
@@ -154,18 +202,20 @@ public class DashboardController {
         // reformat the notes description
         for (Note nt : notes) {
             List<Checkitem> ls = new ArrayList<>(nt.getChecklist());
-            if (ls.size() >= 8)
+            if (ls.size() >= 8) {
                 ls = ls.subList(0, 8);
+            }
             nt.setChecklistList(ls);
 
             if (nt.getText() != "" && nt.getText() != null) {
                 String s = nt.getText();
 
-                for (int i = 0; i < s.length(); i++)
+                for (int i = 0; i < s.length(); i++) {
                     if (s.charAt(i) == '\n') {
                         s = s.substring(0, i) + "<br>" + s.substring(i, s.length());
                         i += 4;
                     }
+                }
 
                 nt.setText(s);
             }
@@ -176,6 +226,14 @@ public class DashboardController {
         return "dashboard";
     }
 
+    /**
+     * saves active event.
+     * 
+     * @param user.
+     * @param event.
+     * 
+     * @return String.
+     */
     @PostMapping("/dashboard/saveEvent")
     public String newEventForm(@AuthenticationPrincipal User user, Event event) {
         eventService.save(user, event);
@@ -183,6 +241,15 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
+    /**
+     * selects new active event.
+     * 
+     * @param user.
+     * @param eventId.
+     * @param smodel.
+     * 
+     * @return String.
+     */
     @PostMapping("/dashboard/getEventDetails/{eventId}")
     public String getEventDetails(@AuthenticationPrincipal User user, @PathVariable Long eventId, Model smodel) {
         Event event = eventService.getEventById(eventId);
@@ -193,6 +260,15 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
+    /**
+     * updates active event.
+     * 
+     * @param user.
+     * @param event.
+     * @param smodel.
+     * 
+     * @return String.
+     */
     @PostMapping("/dashboard/updateEvent")
     public String updateEventForm(@AuthenticationPrincipal User user, Event event, Model smodel) {
         eventService.update((Event) smodel.getAttribute("selectedEvent"), event);
@@ -202,6 +278,14 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
+    /**
+     * deletes active event.
+     * 
+     * @param user.
+     * @param smodel.
+     * 
+     * @return String.
+     */
     @PostMapping("/dashboard/deleteEvent")
     public String deleteEventForm(@AuthenticationPrincipal User user, Model smodel) {
         eventService.delete(((Event) smodel.getAttribute("selectedEvent")).getId());
@@ -211,13 +295,22 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
+    /**
+     * saves active note.
+     * 
+     * @param user.
+     * @param params.
+     * @param isChecklist.
+     * @param note.
+     * 
+     * @return String.
+     */
     @PostMapping("/dashboard/saveNote")
-    public String newNoteForm(@AuthenticationPrincipal User user, @RequestParam Map<String, String> params,
-            String isChecklist, Note note) {
+    public String newNoteForm(@AuthenticationPrincipal User user, @RequestParam Map<String, String> params, String isChecklist, Note note) {
         note.setChecklist(isChecklist != null && isChecklist.equals("isChecklist"));
         LinkedHashSet<Checkitem> checklist = new LinkedHashSet<>();
 
-        for (Map.Entry<String, String> entry : params.entrySet())
+        for (Map.Entry<String, String> entry : params.entrySet()) {
             if (entry.getKey().startsWith("checkitem")) {
                 String itemName = entry.getValue();
                 String checkboxKey = "checkbox" + entry.getKey().substring(9);
@@ -225,12 +318,22 @@ public class DashboardController {
 
                 checklist.add(new Checkitem(itemName, isChecked));
             }
+        }
 
         noteService.save(user, note, checklist);
 
         return "redirect:/dashboard";
     }
 
+    /**
+     * selects new active note.
+     * 
+     * @param user.
+     * @param eventId.
+     * @param smodel.
+     * 
+     * @return String.
+     */
     @PostMapping("/dashboard/getNoteDetails/{eventId}")
     public String getNoteDetails(@AuthenticationPrincipal User user, @PathVariable Long eventId, Model smodel) {
         Note note = noteService.getNoteById(eventId);
@@ -241,12 +344,21 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
+    /**
+     * updates active note.
+     * 
+     * @param user.
+     * @param note.
+     * @param params.
+     * @param smodel.
+     * 
+     * @return String.
+     */
     @PostMapping("/dashboard/updateNote")
-    public String updateNoteForm(@AuthenticationPrincipal User user, Note note,
-            @RequestParam Map<String, String> params, Model smodel) {
+    public String updateNoteForm(@AuthenticationPrincipal User user, Note note, @RequestParam Map<String, String> params, Model smodel) {
         LinkedHashSet<Checkitem> checklist = new LinkedHashSet<>();
 
-        for (Map.Entry<String, String> entry : params.entrySet())
+        for (Map.Entry<String, String> entry : params.entrySet()) {
             if (entry.getKey().startsWith("checkitem")) {
                 String itemName = entry.getValue();
                 String checkboxKey = "checkbox" + entry.getKey().substring(9);
@@ -254,6 +366,7 @@ public class DashboardController {
 
                 checklist.add(new Checkitem(itemName, isChecked));
             }
+        }
 
         noteService.update((Note) smodel.getAttribute("selectedNote"), note, checklist);
 
@@ -262,6 +375,13 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
+    /**
+     * deletes active note.
+     * 
+     * @param smodel.
+     * 
+     * @return String.
+     */
     @PostMapping("/dashboard/deleteNote")
     public String deleteNoteForm(Model smodel) {
         noteService.delete(((Note) smodel.getAttribute("selectedNote")).getId());
@@ -271,6 +391,12 @@ public class DashboardController {
         return "redirect:/dashboard";
     }
 
+    /**
+     * assigns new values to smodel - event and note.
+     * 
+     * @param smodel.
+     * @param response.
+     */
     @PostMapping("/dashboard/deleteSmodel")
     public void deleteSmodel(Model smodel, HttpServletResponse response) {
         smodel.addAttribute("selectedNote", new Note());
@@ -279,14 +405,29 @@ public class DashboardController {
         response.setStatus(HttpServletResponse.SC_NO_CONTENT);
     }
 
+    /**
+     * reformats the time string.
+     * 
+     * @param militaryTime.
+     * 
+     * @return String.
+     */
     private String formatTime(String militaryTime) {
         LocalTime time = LocalTime.parse(militaryTime, DateTimeFormatter.ofPattern("HH:mm"));
         return time.format(DateTimeFormatter.ofPattern("hh:mm a"));
     }
 
+    /**
+     * returns the username initials.
+     * 
+     * @param name.
+     * 
+     * @return String.
+     */
     public static String getInitials(String name) {
-        if (name.split(" ").length >= 2)
+        if (name.split(" ").length >= 2) {
             return name.split(" ")[0].charAt(0) + "" + name.split(" ")[1].charAt(0);
+        }
         return name.substring(0, 2);
     }
 }

@@ -12,19 +12,21 @@ import com.noteplan.repositories.UserRepository;
 public class UserService {
 
     /**
-     * UserRepository interface
+     * UserRepository interface.
      */
     @Autowired
     UserRepository userRepo;
 
     /**
-     * PasswordEncoder interface
+     * PasswordEncoder interface.
      */
     @Autowired
     PasswordEncoder passwordEncoder;
     
     /**
-     * checks if email is already in use
+     * checks if email is already in use.
+     * 
+     * @param user.
      */
     public void checkValidity(final User user) {
         if (findByUsername(user.getUsername()) != null) {
@@ -35,14 +37,22 @@ public class UserService {
     }
 
     /**
-     * saves finds user by username
+     * saves finds user by username.
+     * 
+     * @param username.
+     * 
+     * @return User.
      */
     public User findByUsername(final String username) {
         return userRepo.findByUsername(username);
     }
 
     /**
-     * saves the user in the db
+     * saves the user in the db.
+     * 
+     * @param user.
+     * 
+     * @return User.
      */
     public User save(final User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -54,7 +64,11 @@ public class UserService {
     }
 
     /**
-     * saves the user with the already encoded password
+     * saves the user with the already encoded password.
+     * 
+     * @param user.
+     * 
+     * @return User.
      */
     public User saveWithEncodedPassword(final User user) {
         user.setTimeFormat(false);
@@ -64,14 +78,22 @@ public class UserService {
     }
 
     /**
-     * deletes note from db
+     * deletes note from db.
+     * 
+     * @param noteId.
      */
     public void delete(final Long noteId) {
         userRepo.deleteById(noteId);
     }
 
     /**
-     * updates preferences in db
+     * updates preferences in db.
+     * 
+     * @param currentUser.
+     * @param timeFormat.
+     * @param theme.
+     * 
+     * @return User.
      */
     public User updatePreferences(final User currentUser, final String timeFormat, final String theme) {
         User user = new User(currentUser);

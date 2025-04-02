@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NotePlanApplication {
 
     /**
-     * web app starting point
+     * web app starting point.
+     * 
+     * @param args Command-line arguments passed to the application.
      */
     public static void main(final String[] args) {
         SpringApplication.run(NotePlanApplication.class, args);

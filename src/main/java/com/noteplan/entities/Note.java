@@ -24,51 +24,51 @@ public class Note {
     private static final int NOTE_LENGTH = 1000;
     
     /**
-     * note id
+     * note id.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     /**
-     * note parent user
+     * note parent user.
      */
     @ManyToOne
     private User user;
     
     /**
-     * note title
+     * note title.
      */
     @Column(length = STRING_LENGTH)
     private String title;
     
     /**
-     * note text
+     * note text.
      */
     @Column(length = NOTE_LENGTH)
     private String text;
     
     /**
-     * note isChecklist boolean
+     * note isChecklist boolean.
      */
     private boolean isChecklist;
     
     /**
-     * note checklist
+     * note checklist.
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "note", orphanRemoval = true)
     @OrderBy("id")
     private Set<Checkitem> checklist = new LinkedHashSet<>();
 
     /**
-     * note list of checkitems - used if note is checklist
+     * note list of checkitems - used if note is checklist.
      */
     @Transient
     private List<Checkitem> checklistList = new ArrayList<>();
 
     
     /**
-     * note blank constructor
+     * note blank constructor.
      */
     public Note() {
         title = null;
@@ -79,7 +79,9 @@ public class Note {
 
     
     /**
-     * user checklist getter
+     * user checklist getter.
+     * 
+     * @return Set.
      */
     public Set<Checkitem> getChecklist() {
         return checklist;
@@ -87,15 +89,19 @@ public class Note {
 
     
     /**
-     * note checklist setter
+     * note checklist setter.
+     * 
+     * @param checklist.
      */
-    public void setChecklist(final LinkedHashSet<Checkitem> checklist) {
-        this.checklist = checklist;
+    public void setChecklist(final LinkedHashSet<Checkitem> newChecklist) {
+        this.checklist = newChecklist;
     }
 
     
     /**
-     * note parent user getter
+     * note parent user getter.
+     * 
+     * @return User.
      */
     public User getUser() {
         return user;
@@ -103,15 +109,19 @@ public class Note {
 
     
     /**
-     * note parent user setter
+     * note parent user setter.
+     * 
+     * @param user.
      */
-    public void setUser(final User user) {
-        this.user = user;
+    public void setUser(final User newUser) {
+        this.user = newUser;
     }
 
     
     /**
-     * note id getter
+     * note id getter.
+     * 
+     * @return long.
      */
     public long getId() {
         return id;
@@ -119,15 +129,19 @@ public class Note {
 
     
     /**
-     * note id setter
+     * note id setter.
+     * 
+     * @param id.
      */
-    public void setId(final long id) {
-        this.id = id;
+    public void setId(final long newId) {
+        this.id = newId;
     }
 
     
     /**
-     * note title getter
+     * note title getter.
+     * 
+     * @return String.
      */
     public String getTitle() {
         return title;
@@ -135,15 +149,19 @@ public class Note {
 
     
     /**
-     * note title setter
+     * note title setter.
+     * 
+     * @param title.
      */
-    public void setTitle(final String title) {
-        this.title = title;
+    public void setTitle(final String newTitle) {
+        this.title = newTitle;
     }
 
     
     /**
-     * note text getter
+     * note text getter.
+     * 
+     * @return String.
      */
     public String getText() {
         return text;
@@ -151,15 +169,19 @@ public class Note {
 
     
     /**
-     * note text setter
+     * note text setter.
+     * 
+     * @param text.
      */
-    public void setText(final String text) {
-        this.text = text;
+    public void setText(final String newText) {
+        this.text = newText;
     }
 
     
     /**
-     * note isChecklist getter
+     * note isChecklist getter.
+     * 
+     * @return boolean.
      */
     public boolean isChecklist() {
         return isChecklist;
@@ -167,25 +189,31 @@ public class Note {
 
     
     /**
-     * note isChecklist setter
+     * note isChecklist setter.
+     * 
+     * @param isChecklist.
      */
-    public void setChecklist(final boolean isChecklist) {
-        this.isChecklist = isChecklist;
+    public void setChecklist(final boolean newIsChecklist) {
+        this.isChecklist = newIsChecklist;
     }
 
     
     /**
-     * note list of checklists getter
+     * note list of checklists getter.
+     * 
+     * @return List.
      */
     public List<Checkitem> getChecklistList() {
         return checklistList;
     }
     
     /**
-     * note list of checklists setter
+     * note list of checklists setter.
+     * 
+     * @param checklistList.
      */
-    public void setChecklistList(final List<Checkitem> checklistList) {
-        this.checklistList = checklistList;
+    public void setChecklistList(final List<Checkitem> newChecklistList) {
+        this.checklistList = newChecklistList;
     }
 
     @Override

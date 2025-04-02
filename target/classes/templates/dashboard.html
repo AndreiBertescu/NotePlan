@@ -124,9 +124,9 @@
                 <p class="note-title" th:text="${note.title}">A title</p>
                 <p class="note-text" th:if="${note.isChecklist == false}" th:utext="${note.text}">Some text</p>
                 <div class="note-checkitem" th:if="${note.isChecklist != false}" th:each="checkitem : ${note.checklistList}">
-				  <input type="checkbox" onClick="checkboxHelper()" th:checked="${checkitem.isChecked}">
-				  <p th:if="${note.isChecklist != false}" class="note-text-checkitem" th:utext="${checkitem.text}">Some text</p>
-				</div>
+                  <input type="checkbox" onClick="checkboxHelper()" th:checked="${checkitem.isChecked}">
+                  <p th:if="${note.isChecklist != false}" class="note-text-checkitem" th:utext="${checkitem.text}">Some text</p>
+                </div>
               </div>
             </div>
           </div>
