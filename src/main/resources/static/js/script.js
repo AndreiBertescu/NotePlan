@@ -69,7 +69,7 @@ function unloadDeleteOverlay () {
 
 window.showNote = showNote
 function showNote (eventId) {
-  let form = document.getElementById('notes-form')
+  const form = document.getElementById('notes-form')
   form.action = window.location.pathname + '/getNoteDetails/' + eventId
   form.submit()
 }
@@ -77,8 +77,9 @@ function showNote (eventId) {
 let id = 0
 let prevCall = 0
 
+window.addNewCheckItem = addNewCheckItem
 function addNewCheckItem (index) {
-  let checklistContainer = document.getElementById('checklist-scroll-container-' + index)
+  const checklistContainer = document.getElementById('checklist-scroll-container-' + index)
 
   if (prevCall !== 1 && index === 1) {
     id = 1
@@ -93,12 +94,12 @@ function addNewCheckItem (index) {
 
   if (index === 1) {
     newCheckItem.innerHTML =
-    ' <input type=\'checkbox\' name=\'checkbox' + id + '\' th:checked=\'${isChecklist}\'> ' +
+    ' <input type=\'checkbox\' name=\'checkbox' + id + '\' th:checked=\'[[${isChecklist}]]\'> ' +
     ' <input type=\'text\' class=\'form-entry yes-checklist-input\' name=\'checkitem' + id + '\' maxlength=\'50\' placeholder=\'New item\' required> ' +
     ' <button type=\'button\' class=\'overlay-button cancel-btn\' onClick=\'deleteCheckitem()\'>Delete</button> '
   } else {
     newCheckItem.innerHTML =
-    ' <input type=\'checkbox\' name=\'checkbox' + id + '\' th:checked=\'${isChecklist}\'> ' +
+    ' <input type=\'checkbox\' name=\'checkbox' + id + '\' th:checked=\'[[${isChecklist}]]\'> ' +
     ' <input type=\'text\' class=\'form-entry\' name=\'checkitem' + id + '\' maxlength=\'50\' placeholder=\'New item\' required> ' +
     ' <button type=\'button\' class=\'overlay-button cancel-btn\' onClick=\'deleteCheckitem()\'>Delete</button> '
   }
@@ -108,14 +109,15 @@ function addNewCheckItem (index) {
   id++
 }
 
+window.deleteCheckitem = deleteCheckitem
 function deleteCheckitem () {
   event.target.closest('.checkitem').remove()
 }
 
 window.unshowNote = unshowNote
 function unshowNote () {
-  let form = document.getElementById('view-note-overlay-form')
-  let action = /* [[@{/noteplan.ro/dashboard/deleteSmodel}]] */ window.location.pathname + '/deleteSmodel'
+  const form = document.getElementById('view-note-overlay-form')
+  const action = /* [[@{/noteplan.ro/dashboard/deleteSmodel}]] */ window.location.pathname + '/deleteSmodel'
 
   form.setAttribute('action', action)
   form.submit()

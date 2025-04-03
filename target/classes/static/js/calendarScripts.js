@@ -7,7 +7,7 @@ const gotoBtn = document.querySelector('.goto-btn')
 const dateInput = document.querySelector('.date-input')
 
 let today = new Date()
-let activeDay = 0
+// let activeDay = 0
 let month = today.getMonth()
 let year = today.getFullYear()
 
@@ -38,7 +38,7 @@ const eventsArr = [{
 }]
 
 getEvents()
-//console.log(eventsArr)
+// console.log(eventsArr)
 
 // function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
 function initCalendar () {
@@ -77,7 +77,7 @@ function initCalendar () {
       year === new Date().getFullYear() &&
       month === new Date().getMonth()
     ) {
-      activeDay = i
+      // activeDay = i
       if (event) {
         days += `<div class='day today active event' id='day${i}'>${i}<style>#day${i}::after{ background: ${color};}</style></div>`
       } else {
@@ -128,7 +128,7 @@ function addListner () {
   const days = document.querySelectorAll('.day')
   days.forEach((day) => {
     day.addEventListener('click', (e) => {
-      activeDay = Number(e.target.innerHTML)
+      // activeDay = Number(e.target.innerHTML)
       // remove active
       days.forEach((day) => {
         day.classList.remove('active')
@@ -142,8 +142,8 @@ function addListner () {
           const days = document.querySelectorAll('.day')
           days.forEach((day) => {
             if (
-              !day.classList.contains('prev-date')
-              && day.innerHTML === e.target.innerHTML
+              !day.classList.contains('prev-date') &&
+              day.innerHTML === e.target.innerHTML
             ) {
               day.classList.add('active')
             }
@@ -156,8 +156,8 @@ function addListner () {
           const days = document.querySelectorAll('.day')
           days.forEach((day) => {
             if (
-              !day.classList.contains('next-date')
-              && day.innerHTML === e.target.innerHTML
+              !day.classList.contains('next-date') &&
+              day.innerHTML === e.target.innerHTML
             ) {
               day.classList.add('active')
             }
@@ -165,7 +165,7 @@ function addListner () {
         }, 100)
       } else {
         e.target.classList.add('active')
-        
+
         if (e.target.classList.contains('event')) {
           jump(e.target.innerHTML.split('<')[0], month, year)
         }
@@ -213,13 +213,13 @@ function gotoDate () {
 
 // function to get events from local storage
 function getEvents () {
-  let eventDateElements = document.querySelectorAll('.event-day')
+  const eventDateElements = document.querySelectorAll('.event-day')
 
-  eventDateElements.forEach(function(eventDay) {
-	const element = eventDay.querySelector('.event-date')
+  eventDateElements.forEach(function (eventDay) {
+    const element = eventDay.querySelector('.event-date')
 
     const date = element.textContent.trim()
-	const parts = date.split(' of ')
+    const parts = date.split(' of ')
 
     const day = parseInt(parts[0], 10)
     const month = months.indexOf(parts[1].split(' ')[0]) + 1
@@ -227,10 +227,10 @@ function getEvents () {
     const color = eventDay.querySelector('.small-hr').style.backgroundColor
 
     eventsArr.push({
-	  day: day,
-	  month: month,
-      year: year,
-      color: color,
+      day,
+      month,
+      year,
+      color,
       events: [{
         title: 'Event 1',
         time: '10:00 AM'
@@ -257,7 +257,7 @@ function jump (day, month, year) {
   const todayy = new Date(year, month, day)
   const eventDateElements = document.querySelectorAll('.event-date')
 
-  eventDateElements.forEach(function(element) {
+  eventDateElements.forEach( function(element) {
     const date = element.textContent.trim()
     const parts = date.split(' of ')
 
