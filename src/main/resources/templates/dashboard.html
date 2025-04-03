@@ -207,7 +207,7 @@
         </label>
       </div>
       <div id="yes-checklist" class="form-group">
-        <button type="button" class="new-checkitem-btn overlay-button note-btn" onClick="addNewCheckItem('1')">Add new item</button>
+        <button type="button" class="new-checkitem-btn overlay-button note-btn" onClick="addNewCheckItem(1)">Add new item</button>
         <div class="checklist-scroll-container" id="checklist-scroll-container-1">
           <div class="checkitem">
             <input type="checkbox" name="checkbox0">
@@ -303,7 +303,7 @@
         </label>
       </div>
       <div id="yes-checklist-update" class="form-group" th:if="${selectedNote.isChecklist == true}">
-        <button type="button" class="new-checkitem-btn overlay-button note-btn" onClick="addNewCheckItem('2')">Add new item</button>
+        <button type="button" class="new-checkitem-btn overlay-button note-btn" onClick="addNewCheckItem(2)">Add new item</button>
         <div class="checklist-scroll-container" id="checklist-scroll-container-2">
           <div class="checkitem" th:each="checkitem, i: ${selectedNote.checklist}">
             <input type="checkbox" th:name="'checkbox' + ${i.index}" th:checked="${checkitem.isChecked}">

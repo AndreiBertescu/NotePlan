@@ -1,7 +1,10 @@
 ---
 name: Spring-Linter
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   super-lint:
@@ -19,3 +22,12 @@ jobs:
           JSCPD_CONFIG_FILE: jscpd-linter.jscpd.json
           VALIDATE_JAVASCRIPT_STANDARD: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  approval:
+    needs: super-lint
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Pause for approval
+        run: echo "Waiting for approval..."
+
