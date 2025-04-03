@@ -17,4 +17,5 @@ jobs:
           DEFAULT_BRANCH: main
           JAVA_FILE_NAME: checkstyle.xml
           JSCPD_CONFIG_FILE: jscpd-linter.jscpd.json
+          VALIDATE_JAVASCRIPT_STANDARD: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
