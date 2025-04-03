@@ -5,16 +5,6 @@
 
 <module name="Checker">
     <module name="TreeWalker">
-        <!-- Suppress Utility Class Constructor Check
-        <module name="HideUtilityClassConstructor">
-            <property name="severity" value="ignore"/>
-        </module> -->
-
-        <!-- Suppress Design for Extension Check
-        <module name="DesignForExtension">
-            <property name="severity" value="ignore"/>
-        </module> -->
-
         <!-- Suppress Method Name Check - sql requires specific method names -->
         <module name="MethodName">
             <property name="severity" value="ignore"/>
@@ -27,6 +17,16 @@
 
         <!-- Suppress Visibility Modifier Check 
         <module name="VisibilityModifier">
+            <property name="severity" value="ignore"/>
+        </module> -->
+		
+        <!-- Suppress Utility Class Constructor Check
+        <module name="HideUtilityClassConstructor">
+            <property name="severity" value="ignore"/>
+        </module> -->
+
+        <!-- Suppress Design for Extension Check
+        <module name="DesignForExtension">
             <property name="severity" value="ignore"/>
         </module> -->
     </module>
