@@ -15,7 +15,7 @@ public class CustomSecurityUser extends User implements UserDetails {
     /**
      * stores all the authorities for this user.
      */
-    Set<Authority> authorities = new HashSet<>();
+    private Set<Authority> authorities = new HashSet<>();
 
     /**
      * blank constructor.

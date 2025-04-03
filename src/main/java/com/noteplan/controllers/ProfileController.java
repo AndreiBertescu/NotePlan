@@ -22,12 +22,12 @@ public class ProfileController {
      * UserService instantiation.
      */
     @Autowired
-    UserService userService;
+    private UserService userService;
     
     /**
      * SecurityContextLogoutHandler instantiation.
      */
-    SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+    private SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 
     /**
      * loads the profile web page.

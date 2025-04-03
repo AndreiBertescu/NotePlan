@@ -32,24 +32,24 @@ public class LoginController {
      * UserService instantiation.
      */
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     /**
      * ConfirmationTokenRepository instantiation.
      */
     @Autowired
-    ConfirmationTokenRepository confirmationTokenRepository;
+    private ConfirmationTokenRepository confirmationTokenRepository;
 
     /**
      * EmailService instantiation.
      */
     @Autowired
-    EmailService emailService;
+    private EmailService emailService;
 
     /**
      * SecurityContextLogoutHandler instantiation.
      */
-    SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+    private SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 
     /**
      * loads the login web page.

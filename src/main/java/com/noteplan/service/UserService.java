@@ -15,13 +15,13 @@ public class UserService {
      * UserRepository interface.
      */
     @Autowired
-    UserRepository userRepo;
+    private UserRepository userRepo;
 
     /**
      * PasswordEncoder interface.
      */
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
     
     /**
      * checks if email is already in use.

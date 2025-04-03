@@ -5,30 +5,30 @@
 
 <module name="Checker">
     <module name="TreeWalker">
-        <!-- Suppress Utility Class Constructor Check -->
+        <!-- Suppress Utility Class Constructor Check
         <module name="HideUtilityClassConstructor">
             <property name="severity" value="ignore"/>
-        </module>
+        </module> -->
 
-        <!-- Suppress Visibility Modifier Check -->
-        <module name="VisibilityModifier">
-            <property name="severity" value="ignore"/>
-        </module>
-
-        <!-- Suppress Design for Extension Check -->
+        <!-- Suppress Design for Extension Check
         <module name="DesignForExtension">
             <property name="severity" value="ignore"/>
-        </module>
+        </module> -->
 
-        <!-- Suppress Javadoc Method Check -->
+        <!-- Suppress Method Name Check - sql requires specific method names -->
+        <module name="MethodName">
+            <property name="severity" value="ignore"/>
+        </module>
+		
+        <!-- Suppress Javadoc Method Check - not enough comments for every param -->
         <module name="JavadocMethod">
             <property name="severity" value="ignore"/>
         </module>
 
-        <!-- Suppress Method Name Check -->
-        <module name="MethodName">
+        <!-- Suppress Visibility Modifier Check 
+        <module name="VisibilityModifier">
             <property name="severity" value="ignore"/>
-        </module>
+        </module> -->
     </module>
 
     <!-- Suppress File Tab Character Check -->

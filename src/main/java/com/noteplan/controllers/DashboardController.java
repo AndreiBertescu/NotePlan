@@ -43,25 +43,25 @@ public class DashboardController {
      * EventService instantiation.
      */
     @Autowired
-    EventService eventService;
+    private EventService eventService;
 
     /**
      * NoteService instantiation.
      */
     @Autowired
-    NoteService noteService;
+    private NoteService noteService;
 
     /**
      * EventRepository instantiation.
      */
     @Autowired
-    EventRepository eventRepo;
+    private EventRepository eventRepo;
 
     /**
      * NoteRepository instantiation.
      */
     @Autowired
-    NoteRepository noteRepo;
+    private NoteRepository noteRepo;
 
     /**
      * initializes the selectedEvent atribute with an new Event object.

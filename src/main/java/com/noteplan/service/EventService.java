@@ -14,7 +14,7 @@ public class EventService {
      * EventRepository interfacce.
      */
     @Autowired
-    EventRepository eventRepo;
+    private EventRepository eventRepo;
 
     /**
      * saves an event in the db.

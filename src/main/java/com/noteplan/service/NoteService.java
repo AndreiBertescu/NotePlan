@@ -17,7 +17,7 @@ public class NoteService {
      * NoteRepository interface.
      */
     @Autowired
-    NoteRepository noteRepo;
+    private NoteRepository noteRepo;
 
     /**
      * saves the new note to the db.
