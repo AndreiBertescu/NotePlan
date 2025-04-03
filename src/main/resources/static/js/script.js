@@ -89,19 +89,19 @@ function addNewCheckItem (index) {
     prevCall = 2
   }
 
-  let newCheckItem = document.createElement('div')
+  const newCheckItem = document.createElement('div')
   newCheckItem.classList.add('checkitem')
 
   if (index === 1) {
-    newCheckItem.innerHTML =
-    ' <input type=\'checkbox\' name=\'checkbox' + id + '\' th:checked=\'[[${isChecklist}]]\'> ' +
-    ' <input type=\'text\' class=\'form-entry yes-checklist-input\' name=\'checkitem' + id + '\' maxlength=\'50\' placeholder=\'New item\' required> ' +
-    ' <button type=\'button\' class=\'overlay-button cancel-btn\' onClick=\'deleteCheckitem()\'>Delete</button> '
+    newCheckItem.innerHTML = 
+    `<input type="checkbox" name="checkbox${id}" th:checked="[[${isChecklist}]]">
+    <input type="text" class="form-entry yes-checklist-input" name="checkitem${id}" maxlength="50" placeholder="New item" required>
+    <button type="button" class="overlay-button cancel-btn" onClick="deleteCheckitem()">Delete</button>`
   } else {
     newCheckItem.innerHTML =
-    ' <input type=\'checkbox\' name=\'checkbox' + id + '\' th:checked=\'[[${isChecklist}]]\'> ' +
-    ' <input type=\'text\' class=\'form-entry\' name=\'checkitem' + id + '\' maxlength=\'50\' placeholder=\'New item\' required> ' +
-    ' <button type=\'button\' class=\'overlay-button cancel-btn\' onClick=\'deleteCheckitem()\'>Delete</button> '
+    `<input type="checkbox" name="checkbox${id}" th:checked="[[${isChecklist}]]">
+    <input type="text" class="form-entry" name="checkitem${id}" maxlength="50" placeholder="New item" required>
+    <button type="button" class="overlay-button cancel-btn" onClick="deleteCheckitem()">Delete</button>`
   }
 
   checklistContainer.appendChild(newCheckItem)

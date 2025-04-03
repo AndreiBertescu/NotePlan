@@ -257,7 +257,7 @@ function jump (day, month, year) {
   const todayy = new Date(year, month, day)
   const eventDateElements = document.querySelectorAll('.event-date')
 
-  eventDateElements.forEach( function(element) {
+  eventDateElements.forEach(function (element) {
     const date = element.textContent.trim()
     const parts = date.split(' of ')
 
