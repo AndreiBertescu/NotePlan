@@ -30,4 +30,3 @@ jobs:
     steps:
       - name: Pause for approval
         run: echo "Waiting for approval..."
-
