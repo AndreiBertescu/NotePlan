@@ -27,6 +27,7 @@ jobs:
           
   check-properties:
     name: Check app.properties for prod profile
+    needs: super-lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -40,7 +41,7 @@ jobs:
           fi
 
   approval:
-    needs: super-lint
+    needs: check-properties
     runs-on: ubuntu-latest
     environment: production
     steps:

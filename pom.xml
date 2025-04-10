@@ -81,7 +81,7 @@
 			<plugin>
 			    <groupId>com.lazerycode.jmeter</groupId>
 			    <artifactId>jmeter-maven-plugin</artifactId>
-			    <version>3.8.0</version>
+			    <version>3.7.0</version>
 			    <executions>
         			<!-- Prepares JMeter test configuration -->
 			    	<execution>
@@ -99,6 +99,15 @@
 			            </goals>
 			        </execution>
 			    </executions>
+			    
+			    <configuration>
+			        <!-- Location of your JMeter test scripts (JMX files) -->
+			        <testFilesDirectory>${project.basedir}/src/main/resources</testFilesDirectory>
+			
+			        <!-- Ensure results are stored in the target directory -->
+        			<generateReports>true</generateReports>
+			        <resultsDirectory>${project.basedir}/target/jmeter/results</resultsDirectory>
+			    </configuration>
 			</plugin>
 		</plugins>
 	</build>
