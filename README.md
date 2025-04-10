@@ -11,10 +11,17 @@ NotePlan is an app where you can centralize all your events and notes. The app i
 - To deploy the project on Railway, a MySQL service needs to be created. Additionally, within the project service, the environment variables from the "application.properties" file need to be added.
 
 ## Roadmap
-- Add CI/CD Actions & Git Rules
-- Performance tests and profiling the application
+- Add CI/CD Actions
+- Add Junit tests
+- Try to implement Docker
 - Make the site compatible with smaller screen displays.
 - Develop a mobile app version of NotePlan.
+
+## Version 1.4
+- Added GitHub Actions and Git rules: they lint the entire codebase, verify that the latest commit is configured for the production environment, and wait for reviewer approval before allowing deployment.
+- Added various performance tests.
+- Included VisualVM profiler results in the performance_reports directory.
+- Added JMeter tests to measure HTTPS request response times for login, data insertion into the MySQL database, and logout. These results have been compiled into an HTML dashboard available in the performance_reports directory.
 
 ## Version 1.3
 - Added two working profiles: production and development.
