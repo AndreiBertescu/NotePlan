@@ -78,6 +78,28 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+			    <groupId>com.lazerycode.jmeter</groupId>
+			    <artifactId>jmeter-maven-plugin</artifactId>
+			    <version>3.8.0</version>
+			    <executions>
+        			<!-- Prepares JMeter test configuration -->
+			    	<execution>
+			          <id>configuration</id>
+			          <goals>
+			            <goal>configure</goal>
+			          </goals>
+			        </execution>
+			        
+        			<!-- Executes JMeter tests -->
+			        <execution>
+			            <id>jmeter-tests</id>
+			            <goals>
+			                <goal>jmeter</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
 		</plugins>
 	</build>
 
