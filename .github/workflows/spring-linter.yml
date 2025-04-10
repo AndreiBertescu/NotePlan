@@ -24,6 +24,20 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_JAVASCRIPT_STANDARD: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+  check-properties:
+    name: Check app.properties for prod profile
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check if spring.profiles.active is set to prod
+        run: |
+          if ! grep -q 'spring.profiles.active = prod' src/main/resources/application.properties; then
+            echo "Error: spring.profiles.active is not set to prod"
+            exit 1
+          fi
 
   approval:
     needs: super-lint
