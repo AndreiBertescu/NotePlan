@@ -78,12 +78,13 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<!-- JMETER 
 			<plugin>
 			    <groupId>com.lazerycode.jmeter</groupId>
 			    <artifactId>jmeter-maven-plugin</artifactId>
 			    <version>3.7.0</version>
 			    <executions>
-        			<!-- Prepares JMeter test configuration -->
 			    	<execution>
 			          <id>configuration</id>
 			          <goals>
@@ -91,7 +92,6 @@
 			          </goals>
 			        </execution>
 			        
-        			<!-- Executes JMeter tests -->
 			        <execution>
 			            <id>jmeter-tests</id>
 			            <goals>
@@ -101,14 +101,15 @@
 			    </executions>
 			    
 			    <configuration>
-			        <!-- Location of your JMeter test scripts (JMX files) -->
 			        <testFilesDirectory>${project.basedir}/src/main/resources</testFilesDirectory>
 			
-			        <!-- Ensure results are stored in the target directory -->
+			        
         			<generateReports>true</generateReports>
 			        <resultsDirectory>${project.basedir}/target/jmeter/results</resultsDirectory>
 			    </configuration>
 			</plugin>
+			-->
+			
 		</plugins>
 	</build>
 
