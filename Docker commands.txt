@@ -1,0 +1,14 @@
+docker build -t name:tag .	== build image
+
+docker run name:tag	== runs image
+
+docker ps -a == shows all containers
+docker rm (docker ps -a -q) == removes all containers
+docker rm containerTag	== remove container
+
+docker images == shows all images
+docker rmi -f $(docker images -aq) == removes all images
+docker rmi imageTag	== remove image
+
+docker-compose up --build == builds docker compose
+docker-compose up == runs docker-compose

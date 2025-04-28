@@ -1,15 +1,22 @@
-FROM openjdk:17-jdk-slim
+# Stage 1: Build the application
+FROM openjdk:17-jdk-slim AS build
+
 WORKDIR /app
 
-# Copy Maven wrapper and everything needed to build
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 COPY src ./src
 
-# Make the wrapper executable and build the JAR
-RUN mvn clean package -DskipTests
-COPY target/*.jar app.jar
+RUN ./mvnw clean package -DskipTests
+
+# Stage 2: Run the application
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+# Copy the built .jar from the build stage
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -1,4 +1,6 @@
+# Sensitive information
 application-dev.properties
+.env
 
 # Compiled class file
 *.class
