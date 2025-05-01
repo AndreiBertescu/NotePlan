@@ -42,7 +42,8 @@ jobs:
             exit 1
           fi
 
-  approval:
+  wait-for-approval:
+    name: Wait for approval
     needs: check-properties
     runs-on: ubuntu-latest
     environment: production
@@ -51,8 +52,8 @@ jobs:
         run: echo "Waiting for approval..."
         
   push-image:
-    needs: approval
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Push Docker image
+    needs: wait-for-approval
     runs-on: ubuntu-latest
 
     permissions:
