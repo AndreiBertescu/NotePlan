@@ -26,7 +26,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   check-properties:
-    name: Check app.properties for prod profile
+    name: Check for prod profile
     needs: super-lint
     runs-on: ubuntu-latest
     steps:
@@ -73,11 +73,11 @@ jobs:
 
       - name: Build and tag Docker image
         run: |
-          IMAGE_NAME=ghcr.io/${{ github.repository }}/noteplan:latest
+          IMAGE_NAME=ghcr.io/andreibertescu/noteplan:latest
           docker build -t $IMAGE_NAME .
           echo "Built $IMAGE_NAME"
 
       - name: Push Docker image to GHCR
         run: |
-          IMAGE_NAME=ghcr.io/${{ github.repository }}/noteplan:latest
+          IMAGE_NAME=ghcr.io/andreibertescu/noteplan:latest
           docker push $IMAGE_NAME
