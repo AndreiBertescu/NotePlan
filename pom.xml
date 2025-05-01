@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.noteplan</groupId>
 	<artifactId>NotePlan</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.5-LATEST</version>
 	<name>NotePlan</name>
 	<description>Calendar and note keeping app</description>
 	<properties>
