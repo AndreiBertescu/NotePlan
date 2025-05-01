@@ -4,18 +4,23 @@
 NotePlan is an app where you can centralize all your events and notes. The app itself is built using Spring Boot and Spring Security. All data is stored on a MySQL server, and communication between the database and the Java applet is facilitated by Hibernate. I have designed all the various web pages for the app, except for the semantic calendar, which was inspired by a YouTube video. [Video link](https://www.youtube.com/watch?v=6EVgmpm4z5U&t=1939s).
 
 ## Notes
-- To access the site on the development profile use the URL: <http://localhost/noteplan.ro/>
-- The project is also deployed for a limitied amount of time at this link: [NotePlan](https://noteplan-production.up.railway.app/)
-- To run the project locally, a MYSQL database needs to be created according to the specifications in the "application-dev.properties" file. Additionally, the variables ${EMAIL} and ${EMAIL_PASSWORD} in the "application.properties" file need to be replaced with actual values.
-- The project was developed in **Eclipse IDE for Java EE Developers**, with the **Spring Tool Suite 4.29.0** package installed. The sql aspect of the app was made using MYSQL Server and Workbench apps.
-- To deploy the project on Railway, a MySQL service needs to be created. Additionally, within the project service, the environment variables from the "application.properties" file need to be added.
+- To access the site locally without Docker, uncomment the `spring.profiles.active = dev` line, set the required environment variables, build the project using Maven, and open the following URL in your browser: <http://localhost:8080/>.
+- To run the project locally, a MySQL database must be created and running on your machine. Additionally, the ${EMAIL} and ${EMAIL_PASSWORD} placeholders in the `application.properties` file need to be replaced with actual values.
+- An easier alternative is to use the provided `docker-compose.yml` file, which sets up both the application and the MySQL database. Once running, access the app at the same URL.
+- The project is also deployed on Railway for a limited time at the following link: [NotePlan](https://noteplan-production.up.railway.app/).
+- Development was done in **Eclipse IDE for Java EE Developers**, with the **Spring Tool Suite 4.29.0** plugin installed. The SQL components were developed using MySQL Server and MySQL Workbench.
+- To deploy the project on Railway, a MySQL service must be created. Then, within the project’s Railway service, all relevant environment variables from `application.properties` must be configured.
 
 ## Roadmap
-- Add CI/CD Actions
 - Add Junit tests
-- Try to implement Docker
 - Make the site compatible with smaller screen displays.
 - Develop a mobile app version of NotePlan.
+
+## Version 1.5
+- Successfully dockerized the application. Created a `Dockerfile` to containerize the Spring Boot app and a `docker-compose.yml` file that includes a MySQL service, streamlining local development and testing.
+- Set up a CI workflow using GitHub Actions to automatically build the Docker image and publish it to the [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+- Ensured environment variables and MySQL connection configuration are properly passed at runtime via Docker Compose or Railway.
+- Addressed memory usage issues that impacted deployment on platforms with limited resources like Railway.
 
 ## Version 1.4
 - Added GitHub Actions and Git rules: they lint the entire codebase, verify that the latest commit is configured for the production environment, and wait for reviewer approval before allowing deployment.

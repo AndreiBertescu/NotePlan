@@ -64,7 +64,7 @@ public class SecurityConfig {
         return http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/", "/home", "/js/**", "/css/**").permitAll();
-                    auth.requestMatchers("/", "/index", "/register", "/login", "/confirmation", "/verificationStatus",
+                    auth.requestMatchers("/", "/health", "/index", "/register", "/login", "/confirmation", "/verificationStatus",
                             "/confirm-account", "/resendEmail").permitAll();
                     auth.anyRequest().hasRole("USER");
                 }).formLogin(form -> form.loginPage("/login").permitAll().defaultSuccessUrl("/dashboard", true))

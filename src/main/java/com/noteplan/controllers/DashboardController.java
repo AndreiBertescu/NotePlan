@@ -114,6 +114,18 @@ public class DashboardController {
             return "index";
         }
     }
+    
+    /**
+     * checks the health of the web application.
+     *
+     * @param authentication.
+     *
+     * @return String.
+     */
+    @GetMapping("/health")
+    public String health() {
+        return "health";
+    }
 
     /**
      * loads the dashboard web page, all the notes and event from the specific user, and initializes/formats them.
