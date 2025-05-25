@@ -1,0 +1,42 @@
+PS C:\Users\andre\NotePlan> docker build -t noteplan:latest .
+[+] Building 108.7s (15/15) FINISHED docker:desktop-linux
+ => [internal] load build definition from Dockerfile                   0.1s
+ => => transferring dockerfile: 485B                                   0.0s
+ => [internal] load metadata for docker.io/library/openjdk:17-jdk-slim 3.1s
+ => [auth] library/openjdk:pull token for registry-1.docker.io         0.0s
+ => [internal] load .dockerignore                                      0.1s
+ => => transferring context: 2B                                        0.0s
+ => [internal] load build context                                      0.6s
+ => => transferring context: 291.35kB                                  0.5s
+ => [build 1/8] FROM docker.io/library/openjdk:17-jdk-slim@sha256	  20.4s
+ => [build 2/8] WORKDIR /app                                           0.4s
+ => [build 3/8] COPY mvnw .                                            0.1s
+ => [build 4/8] COPY .mvn .mvn                                         0.1s
+ => [build 5/8] COPY pom.xml .                                         0.1s
+ => [build 6/8] COPY src ./src                                         0.1s
+ => [build 7/8] RUN chmod +x mvnw                                      0.5s
+ => [build 8/8] RUN ./mvnw clean package -DskipTests                  79.1s
+ => [stage-1 3/3] COPY --from=build /app/target/*.jar app.jar          0.1s
+ => exporting to image                                                 3.8s
+
+PS C:\Users\andre\NotePlan> docker images
+REPOSITORY   TAG       IMAGE ID       CREATED              SIZE
+noteplan     latest    493e51689d77   About a minute ago   738MB
+
+PS C:\Users\andre\NotePlan> docker run noteplan:latest
+
+INFO : Starting NotePlanApplication v1.5-LATEST using Java 17.0.2 with PID 1
+INFO : The following 1 profile is active: "dev"
+INFO : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO : Finished Spring Data repository scanning in 91 ms. Found 4 JPA repository interfaces.
+INFO : Tomcat initialized with port(s): 8080 (http)
+INFO : Starting service [Tomcat]
+INFO : Starting Servlet engine: [Apache Tomcat/10.1.15]
+INFO : Initializing Spring embedded WebApplicationContext
+INFO : Root WebApplicationContext: initialization completed in 1981 ms
+INFO : HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO : HHH000412: Hibernate ORM core version 6.2.13.Final
+INFO : HHH000406: Using bytecode reflection optimizer
+INFO : No LoadTimeWeaver setup: ignoring JPA class transformer
+INFO : HikariPool-1 - Starting.
+
