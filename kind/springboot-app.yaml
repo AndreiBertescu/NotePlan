@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-app
+  template:
+    metadata:
+      labels:
+        app: springboot-app
+    spec:
+      containers:
+      - name: springboot-app
+        image: ghcr.io/andreibertescu/noteplan:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            secretKeyRef:
+              name: spring-datasource-secrets
+              key: SPRING_DATASOURCE_URL
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: spring-datasource-secrets
+              key: SPRING_DATASOURCE_USERNAME
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: spring-datasource-secrets
+              key: SPRING_DATASOURCE_PASSWORD
+        - name: SPRING_MAIL_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: spring-datasource-secrets
+              key: SPRING_MAIL_USERNAME
+        - name: SPRING_MAIL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: spring-datasource-secrets
+              key: SPRING_MAIL_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-app-service
+spec:
+  selector:
+    app: springboot-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP

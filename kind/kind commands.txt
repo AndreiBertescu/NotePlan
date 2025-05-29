@@ -1,0 +1,25 @@
+kubectl config get-contexts == lists all clusters
+kind create cluster == creates a cluster
+kind delete cluster --name clusterName == deletes a cluster
+
+kubectl get pods == list all pods(~=containers)
+kubectl get services == list all services (the access points / networks used by each pod)
+kubectl get pvc == list all persistent data storage volumes
+kubectl get secrets == list all secrets (enviroment variables)
+
+kubectl apply -f name.yaml == 'commits' a yaml file to the Kubernetes cluster
+kubectl scale deployment deploymentName --replicas=0 == scales a deployment to zero replicas
+kubectl delete deployment deploymentName == deletes deployment
+kubectl delete pod podName == deletes a specific pod
+kubectl delete secret secretName == deletes a specific secret
+
+kubectl logs podName == see logs of deployment
+kubectl cluster-info == get current cluser info
+wsl --list --verbose == list installed distros
+wsl -d distroName == enter specified wsl
+
+kubectl port-forward svc/serviceName hostPort:wslPort == port forwarding from wsl to localhost
+kubectl port-forward svc/serviceName hostPort:wslPort & == port forwarding in the backround
+
+echo -n value | base64 == base64 encode
+echo value | base64 --decode == base64 decode
